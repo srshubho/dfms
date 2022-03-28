@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class calf extends Model
 {
@@ -14,17 +15,15 @@ class calf extends Model
         'gender',
         'estimated_live_weight',
         'color_id',
-        'parent',
+        'parent_id',
     ];
-    protected $primaryKey = 'id';
-    protected $keyType = 'string';
-    public $incrementing = false;
+
 
     protected static function boot(){
         parent::boot();
         static::creating(function($model){
-            if(empty($model->id)){
-                $model->id = Str::uuid();
+            if(empty($model->calf_id)){
+                $model->calf_id = Str::uuid();
             }
         });
     }

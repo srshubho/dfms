@@ -18,8 +18,7 @@ class Cow extends Model
         'name',
         'date_of_purchased',
         'date_of_production',
-        'inhouse',
-        'is_purchased',
+        'inhouse_or_purchased',
         'gender',
         'estimated_live_weight',
         'transaction_cost',
@@ -28,15 +27,11 @@ class Cow extends Model
         'supplier_id',
         'status_id',
     ];
-    protected $primaryKey = 'id';
-    protected $keyType = 'string';
-    public $incrementing = false;
-
     protected static function boot(){
         parent::boot();
         static::creating(function($model){
-            if(empty($model->id)){
-                $model->id = Str::uuid();
+            if(empty($model->cow_id)){
+                $model->cow_id = Str::uuid();
             }
         });
     }

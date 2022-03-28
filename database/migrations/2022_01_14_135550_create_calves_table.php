@@ -14,15 +14,17 @@ class CreateCalvesTable extends Migration
     public function up()
     {
         Schema::create('calves', function (Blueprint $table) {
-            $table->string('id')->unique();
+
+            $table->id();
+            $table->string('calf_id')->unique();
             $table->string('name')->nullable();
-            $table->unsignedBigInteger('color_id');
+            $table->unsignedBigInteger('color_id')->nullable();
             $table->date('date_of_birth');
-            $table->float('estimated_live_weight',8,2);
-            $table->string('parent');
-            $table->boolean('gender');
+            $table->float('estimated_live_weight',8,2)->nullable();
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->boolean('gender')->default(1);
             $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
-            $table->foreign('parent')->references('id')->on('cows')->onDelete('cascade');
+            $table->foreign('parent_id')->references('id')->on('cows')->onDelete('cascade');
             $table->timestamps();
         });
     }
