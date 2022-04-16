@@ -26,8 +26,8 @@ class ColorFactory extends Factory
     {
         $name = $this->faker->randomElement($this->colors);
         return [
-            'name' => $name ,
-            'code' => $this->getColorCode($name),
+            'color_name' => $name ,
+            'color_code' => $this->getColorCode($name),
         ];
     }
 }

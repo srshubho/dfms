@@ -2,6 +2,8 @@
 
 use App\Models\Cow;
 use App\Models\Supplier;
+use App\Models\calf;
+use App\Models\Shade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
@@ -15,50 +17,113 @@ use Illuminate\Support\Facades\DB;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/supplier',function (Request $request){
+Route::prefix('supplier')->group(function () {
+
+    Route::get('/',function (Request $request){
+        
+        $data = DB::table('suppliers')->get();
+        return response()->json($data);
+    });
+    Route::get('/{id}',function (Request $request , $id){
     
-    $data = DB::table('suppliers')->get();
+    $data = DB::table('suppliers')->where('id', '=', $id)->get();
     return response()->json($data);
-});
-Route::get('/cow',function (Request $request){
+    });
+    Route::post('/',function (Request $request){
     
-    $data = Cow::all();
+    $data = Supplier::create($request->all());
+
+    $data->save();
     return response()->json($data);
+    });
 });
+Route::prefix('shade')->group(function () {
+
+    Route::get('/',function (Request $request){
+        $data = DB::table('shades')->get();
+        return response()->json($data);        
+    });
+    Route::get('/{id}',function (Request $request , $id){
+        
+        $data = DB::table('shades')->where('id', '=', $id)->get();
+        return response()->json($data);
+    });
+    Route::post('/',function (Request $request){
+        
+        $data = Shade::create($request->all());
+
+        $data->save();
+        return response()->json($data);
+    });
+    Route::get('/calf',function (Request $request){
+    
+    $data = DB::table('shades')
+        ->where('shade_type', '=', 0)
+        ->get();
+        return response()->json($data);
+    });
+});
+Route::prefix('cow')->group(function () {
+
+    Route::get('/',function (Request $request){
+        $data = DB::table('cows')->get();
+        return response()->json($data);        
+    });
+    Route::get('/{id}',function (Request $request , $id){
+    
+    $data = DB::table('cows')->where('id', '=', $id)->get();
+    return response()->json($data);
+    });
+    Route::post('/',function (Request $request){
+    
+    $data = Cow::create($request->all());
+
+    $data->save();
+    return response()->json($data);
+    });
+});
+Route::prefix('calf')->group(function () {
+
+    Route::get('/',function (Request $request){
+        $data = DB::table('calves')
+        ->select("*","calves.id as id")
+         ->join('colors', 'calves.calf_color_id', '=', 'colors.id')
+         ->join('shades', 'calves.calf_shade_id', '=', 'shades.id')
+        ->get();
+        return response()->json($data);       
+    });
+    Route::get('/{id}',function (Request $request , $id){
+    
+        $data = DB::table('calves')->where('id', '=', $id)->get();
+        return response()->json($data);
+    });
+    Route::post('/',function (Request $request){
+    
+    $data = calf::create($request->all());
+
+    $data->save();
+    return response()->json($data);
+    });
+});
+
 Route::get('/color',function (Request $request){
     
     $data = DB::table('colors')->get();
     return response()->json($data);
 });
-Route::get('/calves',function (Request $request){
+
+Route::get('/colorOption',function (Request $request){
     
-    $data = DB::table('calves')->get();
+    $data = DB::table('colors')
+    ->select("id","color_name as value")
+    ->get();
     return response()->json($data);
 });
-Route::get('/calves/{id}',function (Request $request , $id){
-    
-    $data = DB::table('calves')->where('id', '=', $id)->get();
-    return response()->json($data);
-});
-Route::post('/supplier',function (Request $request){
-    
-    $data = new Supplier;
-    $data->name = $request->name;
-    $data->phone = $request->phone;
-    $data->address = $request->address;
-    $data->save();
-    return response()->json($data);
-});
-Route::post('/cow',function (Request $request){
-    $data = Cow::create($request->all());
-    // $data = new Cow();
-    // $data->name = $request->name;
-    // $data->color_id = $request->color_id;
-    // $data->estimated_live_weight = $request->estimated_live_weight;
-    // $data->inhouse_or_purchased = $request->inhouse_or_purchased;
-    $data->save();
-    return response()->json($data);
-});
+
+
+
+
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

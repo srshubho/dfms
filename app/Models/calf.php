@@ -10,12 +10,13 @@ class calf extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
-        'date_of_birth',
-        'gender',
-        'estimated_live_weight',
-        'color_id',
-        'parent_id',
+        'calf_name',
+        'calf_date_of_birth',
+        'calf_gender',
+        'calf_estimated_live_weight',
+        'calf_color_id',
+        'calf_parent_id',
+        'calf_shade_id',
     ];
 
 

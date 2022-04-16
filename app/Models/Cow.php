@@ -15,17 +15,17 @@ class Cow extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'date_of_purchased',
-        'date_of_production',
-        'inhouse_or_purchased',
-        'gender',
-        'estimated_live_weight',
-        'transaction_cost',
-        'labour_cost',
-        'color_id',
-        'supplier_id',
-        'status_id',
+        'cow_name',
+        'cow_date_of_purchased',
+        'cow_date_of_production',
+        'cow_type_id',
+        'cow_gender',
+        'cow_estimated_live_weight',
+        'cow_transaction_cost',
+        'cow_labour_cost',
+        'cow_color_id',
+        'cow_supplier_id',
+        'cow_status_id',
     ];
     protected static function boot(){
         parent::boot();
