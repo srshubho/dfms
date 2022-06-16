@@ -26,6 +26,7 @@ class Cow extends Model
         'cow_color_id',
         'cow_supplier_id',
         'cow_status_id',
+        'cow_shade_id',
     ];
     protected static function boot(){
         parent::boot();
