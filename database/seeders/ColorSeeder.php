@@ -7,15 +7,16 @@ use Illuminate\Support\Facades\DB;
 
 class ColorSeeder extends Seeder
 {
-    private $colors = ["Black","Brown","Black and White"];
-    private function getColorCode($color){
-        if(strpos($color,"and")){
+    private $colors = ["Black", "Brown", "Black and White"];
+    private function getColorCode($color)
+    {
+        if (strpos($color, "and")) {
             $pos = strpos($color, "and");
             $first = substr($color, 0, 1);
-            $second = substr($color, $pos+4, 1);
-            return strtoupper($first.'&'.$second);
-        }else{
-            return strtoupper(substr($color,0,2));
+            $second = substr($color, $pos + 4, 1);
+            return strtoupper($first . '&' . $second);
+        } else {
+            return strtoupper(substr($color, 0, 2));
         }
     }
     /**
@@ -25,11 +26,10 @@ class ColorSeeder extends Seeder
      */
     public function run()
     {
-        for($i=0;$i<count($this->colors);$i++){
+        for ($i = 0; $i < count($this->colors); $i++) {
             DB::table('colors')->insert([
-                "name" => $this->colors[$i],
-                "code" => $this->getColorCode($this->colors[$i]),
-
+                "color_name" => $this->colors[$i],
+                "color_code" => $this->getColorCode($this->colors[$i]),
             ]);
         }
     }

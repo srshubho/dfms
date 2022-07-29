@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Shade;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,17 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    // Auth::logout();
+    // return redirect()->route('login');
+    if (auth()->user()->user_type == 1) {
+        return redirect()->route('admin.dashboard');
+    }
+})->middleware(['auth'])->name('/');
 
-Route::get('/shades/add', function () {
-    return view('shades.create')->with("message","");
-})->name('shades.create');
-
-Route::post('/shades/store', function (Request $request) {
-    // ddd($request->all());
-    $data = Shade::create($request->all());
-    $data->save();
-    return view('shades.create')->with("message","Inserted Successfully");
-
-})->name('shades.store');
+require __DIR__ . '/auth.php';
