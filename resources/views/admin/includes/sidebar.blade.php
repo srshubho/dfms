@@ -38,10 +38,24 @@
                 Dashboard
             </a>
         </li>
-        <li class="bold {{ request()->is('admin/color') ? 'active' : '' }}">
+        <li
+            class="bold {{ request()->is('admin/color') ? 'active' : '' }}
+            {{ request()->is('admin/color/create') ? 'active' : '' }}
+            {{ request()->is('admin/color/*/edit') ? 'active' : '' }}
+            ">
             <a href="{{ route('admin.color.index') }}" class="waves-effect waves-cyan">
                 <i class="fa-solid fa-palette"></i>
                 Color
+            </a>
+        </li>
+        <li
+            class="bold {{ request()->is('admin/supplier') ? 'active' : '' }}
+            {{ request()->is('admin/supplier/create') ? 'active' : '' }}
+            {{ request()->is('admin/supplier/*/edit') ? 'active' : '' }}
+            ">
+            <a href="{{ route('admin.supplier.index') }}" class="waves-effect waves-cyan">
+                <i class="fa-solid fa-person-carry-box"></i>
+                Supplier
             </a>
         </li>
 

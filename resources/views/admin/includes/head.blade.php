@@ -27,3 +27,13 @@
  @livewireStyles
 
  @stack('css')
+
+ <style>
+     .primary-background-color {
+         background-color: rgb(46 101 108);
+     }
+
+     .primary-text-color {
+         color: rgb(46 101 108);
+     }
+ </style>

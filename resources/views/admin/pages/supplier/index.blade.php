@@ -32,16 +32,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col s12 m12 l12">
-                            <h5 class="breadcrumbs-title">Colors</h5>
-                            {{-- <ol class="breadcrumbs">
-                                <li>
-                                    <a href="index.html">Dashboard</a>
-                                </li>
-                                <li>
-                                    <a href="#">UI Elements</a>
-                                </li>
-                                <li class="active">Cards</li>
-                            </ol> --}}
+                            <h5 class="breadcrumbs-title">Suppliers</h5>
                         </div>
                     </div>
                 </div>
@@ -56,11 +47,11 @@
                     <div id="table-datatables">
                         <div class="row">
                             <div class="col">
-                                <h4 class="header">Colors list</h4>
+                                <h4 class="header">Suppliers list</h4>
                             </div>
                             <div class="col">
                                 <h4 class="header">
-                                    <a href="{{ route('admin.color.create') }}">
+                                    <a href="{{ route('admin.supplier.create') }}">
                                         <i class="fa-solid fa-square-plus" style="color: rgb(46 101 108)"></i>
                                     </a>
                                 </h4>
@@ -72,8 +63,9 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Color Name</th>
-                                            <th>Color Code</th>
+                                            <th>Supplier Name</th>
+                                            <th>Supplier Phone</th>
+                                            <th>Supplier Address</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -81,20 +73,22 @@
                                     <tfoot>
                                         <tr>
                                             <th>#</th>
-                                            <th>Color Name</th>
-                                            <th>Color Code</th>
+                                            <th>Supplier Name</th>
+                                            <th>Supplier Phone</th>
+                                            <th>Supplier Address</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
 
                                     <tbody>
-                                        @forelse ($colors as $color)
+                                        @forelse ($suppliers as $supplier)
                                             <tr>
                                                 <td>{{ $loop->index + 1 }}</td>
-                                                <td>{{ $color->color_name }}</td>
-                                                <td>{{ $color->color_code }}</td>
+                                                <td>{{ $supplier->supplier_name }}</td>
+                                                <td>{{ $supplier->supplier_phone }}</td>
+                                                <td>{{ $supplier->supplier_address }}</td>
                                                 <td>
-                                                    <a href="{{ route('admin.color.edit', $color->id) }}">
+                                                    <a href="{{ route('admin.supplier.edit', $supplier->id) }}">
                                                         <i class="far fa-edit" style="color: rgb(85, 75, 158);"></i>
                                                     </a>
                                                     <a class="modal-trigger" href="#modal3">
@@ -105,7 +99,7 @@
                                                             <p>Are you sure want to delete?</p>
                                                         </div>
                                                         <div class="modal-footer teal lighten-3">
-                                                            <form action="{{ route('admin.color.destroy', $color->id) }}" method="POST">
+                                                            <form action="{{ route('admin.supplier.destroy', $supplier->id) }}" method="POST">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" class="waves-effect waves-green red lighten-2 btn-flat">
