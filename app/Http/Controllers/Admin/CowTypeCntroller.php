@@ -76,7 +76,7 @@ class CowTypeCntroller extends Controller
     {
         $this->dataStore($request, $cowType);
 
-        return redirect()->route('admin.cow-type.index')->with(['message' => 'Shade updated successfully!', 'alert-type' => 'success']);
+        return redirect()->route('admin.cow-type.index')->with(['message' => 'Cowtype updated successfully!', 'alert-type' => 'success']);
     }
 
     /**

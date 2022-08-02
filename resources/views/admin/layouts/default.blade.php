@@ -16,7 +16,10 @@
             @include('admin.includes.header')
             <!-- END HEADER -->
 
-            <main class="h-full overflow-y-auto">
+            <main class="h-full overflow-y-auto" style="
+    /* background-color: #b04bef21; */
+    background-color: #29a4d312;
+">
                 <!--start container-->
                 @yield('content')
                 <!--end container-->

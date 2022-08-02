@@ -53,6 +53,14 @@
                     <span class="ml-4">Supplier</span>
                 </a>
             </li>
+            <li class="relative px-6 py-3">
+                @include('admin.includes.active_sidebar', ['links' => ['cow', 'cow/create', 'cow/*/edit']])
+                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                    href="{{ route('admin.cow.index') }}">
+                    <i class="fa-thin fa-cow"></i>
+                    <span class="ml-4"> Cow</span>
+                </a>
+            </li>
         </ul>
         {{-- <div class="px-6 my-6">
             <button
@@ -127,6 +135,14 @@
                     href="{{ route('admin.supplier.index') }}">
                     <i class="fa-solid fa-person-carry-box"></i>
                     <span class="ml-4">Supplier</span>
+                </a>
+            </li>
+            <li class="relative px-6 py-3">
+                @include('admin.includes.active_sidebar', ['links' => ['cow', 'cow/create', 'cow/*/edit']])
+                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                    href="{{ route('admin.cow.index') }}">
+                    <i class="fa-thin fa-cow"></i>
+                    <span class="ml-4">Cow</span>
                 </a>
             </li>
         </ul>

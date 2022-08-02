@@ -6,28 +6,17 @@
 @section('content')
     <div class="container grid px-6 mx-auto">
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Colors
+            Cows
         </h2>
-
-        {{-- <div
-            class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
-            <div class="p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
-                <span class="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">New</span>
-                <span class="font-semibold mr-2 text-left flex-auto">Get the coolest t-shirts from our brand new store</span>
-                <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
-                </svg>
-            </div>
-        </div> --}}
 
         <!-- With actions -->
         <div class="flex items-center justify-between ">
             <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-                Color List
+                Cows List
             </h4>
 
             <a class="p-2 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-                href="{{ route('admin.color.create') }}">
+                href="{{ route('admin.cow.create') }}">
                 <span>Create &RightArrow;</span>
             </a>
         </div>
@@ -39,20 +28,48 @@
                         <tr
                             class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                             <th class="px-4 py-3">#</th>
-                            <th class="px-4 py-3">Color Name</th>
-                            <th class="px-4 py-3">Color Code</th>
+                            <th class="px-4 py-3">Cow Name</th>
+                            <th class="px-4 py-3">Cow Date Of Purchased</th>
+                            <th class="px-4 py-3">Cow Date Of Production</th>
+                            <th class="px-4 py-3">Cow Date Of Birth</th>
+                            <th class="px-4 py-3">Cow Gender</th>
+                            <th class="px-4 py-3">Cow Estimated Live Weight</th>
+                            <th class="px-4 py-3">Cow Transaction Cost</th>
+                            <th class="px-4 py-3">Cow Labour Cost</th>
+                            <th class="px-4 py-3">Cow Status Type</th>
+                            <th class="px-4 py-3">Cow Color Id</th>
+                            <th class="px-4 py-3">Cow Supplier Id</th>
+                            <th class="px-4 py-3">Cow Type Id</th>
+                            <th class="px-4 py-3">Cow Shade Id</th>
                             <th class="px-4 py-3">Action</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                        @forelse ($colors as $color)
+                        @forelse ($cows as $cow)
                             <tr class="text-gray-700 dark:text-gray-400">
                                 <td class="px-4 py-3">{{ $loop->index + 1 }}</td>
-                                <td class="px-4 py-3">{{ $color->color_name }}</td>
-                                <td class="px-4 py-3">{{ $color->color_code }}</td>
+                                <td class="px-4 py-3">{{ $cow->cow_name }}</td>
+                                <td class="px-4 py-3">{{ $cow->cow_date_of_purchased }}</td>
+                                <td class="px-4 py-3">{{ $cow->cow_date_of_production }}</td>
+                                <td class="px-4 py-3">{{ $cow->cow_date_of_birth }}</td>
+                                <td class="px-4 py-3">
+                                    @if ($cow->cow_gender == 1)
+                                        Male
+                                    @else
+                                        Female
+                                    @endif
+                                </td>
+                                <td class="px-4 py-3">{{ $cow->cow_estimated_live_weight }}</td>
+                                <td class="px-4 py-3">{{ $cow->cow_transaction_cost }}</td>
+                                <td class="px-4 py-3">{{ $cow->cow_labour_cost }}</td>
+                                <td class="px-4 py-3">{{ $cow->cow_status_type }}</td>
+                                <td class="px-4 py-3">{{ $cow->color ? $cow->color->color_name : '' }}</td>
+                                <td class="px-4 py-3">{{ $cow->supplier ? $cow->supplier->supplier_name : '' }}</td>
+                                <td class="px-4 py-3">{{ $cow->type ? $cow->type->cow_type_name : '' }}</td>
+                                <td class="px-4 py-3">{{ $cow->shade ? $cow->shade->shade_no : '' }}</td>
                                 <td class="px-4 py-3">
                                     <div class="flex items-center space-x-4 text-sm">
-                                        <a href="{{ route('admin.color.edit', $color->id) }}">
+                                        <a href="{{ route('admin.cow.edit', $cow->id) }}">
                                             <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                                                 <path
                                                     d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">

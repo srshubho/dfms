@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CowController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\ShadeController;
@@ -16,5 +17,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'is_admin']], functi
         Route::resource('cow-type', CowTypeCntroller::class);
         Route::resource('supplier', SupplierController::class);
         Route::resource('shade', ShadeController::class);
+        Route::resource('cow', CowController::class);
     });
 });
