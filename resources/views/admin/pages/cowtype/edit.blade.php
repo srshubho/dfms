@@ -3,30 +3,30 @@
 @section('content')
     <div class="container px-6 mx-auto grid">
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Colors
+            Cow Types
         </h2>
 
         <!-- General elements -->
         <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-            Edit Color
+            Edit Cow Type
         </h4>
 
         <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-            <form action="{{ route('admin.color.update', $color->id) }}" method="POST">
+            <form action="{{ route('admin.cow-type.update', $cowType->id) }}" method="POST">
                 {{ csrf_field() }}
                 @method('PUT')
                 <label class="block text-sm">
-                    <span class="text-gray-700 dark:text-gray-400">Color Name</span>
-                    <input type="text" name="color_name" id="color_name" value="{{ $color->color_name }}"
+                    <span class="text-gray-700 dark:text-gray-400">Cow Type Name</span>
+                    <input type="text" name="cow_type_name" id="cow_type_name"
+                        value="{{ old('cow_type_name') ? old('cow_type_name') : $cowType->cow_type_name }}" required
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                        placeholder="Enter color name" />
-                    @error('color_name')
+                        placeholder="Enter Cow Type Name" />
+                    @error('cow_type_name')
                         <span class="text-xs text-red-600 dark:text-red-400">
                             {{ $message }}
                         </span>
                     @enderror
                 </label>
-                
                 <div class="flex items-center justify-between ">
                     <div></div>
                     <button

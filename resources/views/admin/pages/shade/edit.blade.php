@@ -3,26 +3,25 @@
 @section('content')
     <div class="container px-6 mx-auto grid">
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Suppliers
+            Shades
         </h2>
 
         <!-- General elements -->
         <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-            Edit Supplier
+            Edit Shade
         </h4>
 
         <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-            <form action="{{ route('admin.supplier.update', $supplier->id) }}" method="POST">
+            <form action="{{ route('admin.shade.update', $shade->id) }}" method="POST">
                 {{ csrf_field() }}
                 @method('PUT')
 
                 <label class="block mt-4 text-sm">
-                    <span class="text-gray-700 dark:text-gray-400">Supplier Name</span>
-                    <input type="text" name="supplier_name" id="supplier_name"
-                        value="{{ old('supplier_name') ? old('supplier_name') : $supplier->supplier_name }}" required
+                    <span class="text-gray-700 dark:text-gray-400">Shade No</span>
+                    <input type="text" name="shade_no" id="shade_no" value="{{ old('shade_no') ? old('shade_no') : $shade->shade_no }}" required
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                        placeholder="Enter Supplier Name" />
-                    @error('supplier_name')
+                        placeholder="Enter Shade No" />
+                    @error('shade_no')
                         <span class="text-xs text-red-600 dark:text-red-400">
                             {{ $message }}
                         </span>
@@ -30,12 +29,12 @@
                 </label>
 
                 <label class="block mt-4 text-sm">
-                    <span class="text-gray-700 dark:text-gray-400">Supplier Phone</span>
-                    <input type="tel" name="supplier_phone" id="supplier_phone"
-                        value="{{ old('supplier_phone') ? old('supplier_phone') : $supplier->supplier_phone }}" required
+                    <span class="text-gray-700 dark:text-gray-400">Shade Area</span>
+                    <input type="number" name="shade_area" id="shade_area" value="{{ old('shade_area') ? old('shade_area') : $shade->shade_area }}"
+                        required
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                        placeholder="Enter Supplier Phone" />
-                    @error('supplier_phone')
+                        placeholder="Enter Shade Area" />
+                    @error('shade_area')
                         <span class="text-xs text-red-600 dark:text-red-400">
                             {{ $message }}
                         </span>
@@ -43,12 +42,33 @@
                 </label>
 
                 <label class="block mt-4 text-sm">
-                    <span class="text-gray-700 dark:text-gray-400">Supplier Address</span>
-                    <input type="text" name="supplier_address" id="supplier_address"
-                        value="{{ old('supplier_address') ? old('supplier_address') : $supplier->supplier_address }}" required
+                    <span class="text-gray-700 dark:text-gray-400">Shade Capacity</span>
+                    <input type="number" name="shade_capacity" id="shade_capacity"
+                        value="{{ old('shade_capacity') ? old('shade_capacity') : $shade->shade_capacity }}" required
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                        placeholder="Enter Supplier Address" />
-                    @error('supplier_address')
+                        placeholder="Enter Shade Capacity" />
+                    @error('shade_capacity')
+                        <span class="text-xs text-red-600 dark:text-red-400">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </label>
+
+                <label class="block mt-4 text-sm">
+                    <span class="text-gray-700 dark:text-gray-400">
+                        Shade Type
+                    </span>
+                    <select name="shade_type"
+                        class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                        <option value="" disabled selected>Choose cow type</option>
+                        @foreach ($cowtypes as $cowtype)
+                            <option value="{{ $cowtype->id }}" {{ old('shade_type') ? 'selected' : '' }}
+                                {{ $cowtype->id == $shade->shade_type ? 'selected' : '' }}>
+                                {{ $cowtype->cow_type_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('shade_type')
                         <span class="text-xs text-red-600 dark:text-red-400">
                             {{ $message }}
                         </span>

@@ -1,56 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
 
 <head>
     @include('admin.includes.head')
 </head>
 
 <body>
-    <!-- Start Page Loading -->
-    {{-- @include('admin.includes.loader') --}}
-    <!-- End Page Loading -->
+    <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
+        <!-- START LEFT SIDEBAR NAV-->
+        @include('admin.includes.sidebar')
+        <!-- END LEFT SIDEBAR NAV-->
 
-    <!-- START HEADER -->
-    @include('admin.includes.header')
-    <!-- END HEADER -->
+        <div class="flex flex-col flex-1 w-full">
+            <!-- START HEADER -->
+            @include('admin.includes.header')
+            <!-- END HEADER -->
 
-    <!-- START MAIN -->
-    <div id="main">
-        <!-- START WRAPPER -->
-        <div class="wrapper">
-
-            <!-- START LEFT SIDEBAR NAV-->
-            @include('admin.includes.sidebar')
-            <!-- END LEFT SIDEBAR NAV-->
-
-            <!-- START CONTENT -->
-            <section id="content">
-
+            <main class="h-full overflow-y-auto">
                 <!--start container-->
                 @yield('content')
                 <!--end container-->
-
-            </section>
-            <!-- END CONTENT -->
-
-            <!-- START RIGHT SIDEBAR NAV-->
-            @include('admin.includes.right-sidebar')
-            <!-- LEFT RIGHT SIDEBAR NAV-->
+            </main>
 
         </div>
-        <!-- END WRAPPER -->
-
     </div>
-    <!-- END MAIN -->
-
-    <!-- START FOOTER -->
-    @include('admin.includes.footer')
-    <!-- END FOOTER -->
-
-    <!-- ============    Scripts    =============== -->
-    @include('admin.includes.scripts')
-    <!-- ============    Scripts    =============== -->
-
 </body>
 
 </html>

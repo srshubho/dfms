@@ -1,151 +1,198 @@
 @extends('admin.layouts.default')
 
 @push('css')
-    <style>
-        .modal {
-            width: 25% !important;
-        }
-
-        .modal .modal-footer {
-            width: 95% !important;
-        }
-    </style>
-
-    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
-    <link href="{{ asset('admin/js/plugins/prism/prism.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
-    <link href="{{ asset('admin/js/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
-    <link href="{{ asset('admin/js/plugins/data-tables/css/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
-    <link href="{{ asset('admin/js/plugins/chartist-js/chartist.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
 @endpush
 
 @section('content')
-    <div class="container">
-        <div class="section">
+    <div class="container grid px-6 mx-auto">
+        <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+            Suppliers
+        </h2>
 
-            <!--breadcrumbs start-->
-            <div id="breadcrumbs-wrapper">
-                <!-- Search for small screen -->
-                <div class="header-search-wrapper grey hide-on-large-only">
-                    <i class="mdi-action-search active"></i>
-                    <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col s12 m12 l12">
-                            <h5 class="breadcrumbs-title">Suppliers</h5>
-                        </div>
-                    </div>
-                </div>
+        <!-- With actions -->
+        <div class="flex items-center justify-between ">
+            <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
+                Suppliers List
+            </h4>
+
+            <a class="p-2 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+                href="{{ route('admin.supplier.create') }}">
+                <span>Create &RightArrow;</span>
+            </a>
+        </div>
+
+        <div class="w-full overflow-hidden rounded-lg shadow-xs">
+            <div class="w-full overflow-x-auto">
+                <table class="w-full whitespace-no-wrap">
+                    <thead>
+                        <tr
+                            class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                            <th class="px-4 py-3">#</th>
+                            <th class="px-4 py-3">Supplier Name</th>
+                            <th class="px-4 py-3">Supplier Phone</th>
+                            <th class="px-4 py-3">Supplier Address</th>
+                            <th class="px-4 py-3">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                        @forelse ($suppliers as $supplier)
+                            <tr class="text-gray-700 dark:text-gray-400">
+                                <td class="px-4 py-3">{{ $loop->index + 1 }}</td>
+                                <td class="px-4 py-3">{{ $supplier->supplier_name }}</td>
+                                <td class="px-4 py-3">{{ $supplier->supplier_phone }}</td>
+                                <td class="px-4 py-3">{{ $supplier->supplier_address }}</td>
+                                <td class="px-4 py-3">
+                                    <div class="flex items-center space-x-4 text-sm">
+                                        <a href="{{ route('admin.supplier.edit', $supplier->id) }}">
+                                            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                                                <path
+                                                    d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
+                                                </path>
+                                            </svg>
+                                        </a>
+                                        <button
+                                            class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                                            aria-label="Delete">
+                                            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd"
+                                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                        <button @click="openModal"
+                                            class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                                            Open Modal
+                                        </button>
+                                        <!-- Modal backdrop. This what you want to place close to the closing body tag -->
+                                        <div x-show="isModalOpen" x-transition:enter="transition ease-out duration-150"
+                                            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                                            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
+                                            x-transition:leave-end="opacity-0"
+                                            class="fixed inset-0 z-30 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center">
+                                            <!-- Modal -->
+                                            <div x-show="isModalOpen" x-transition:enter="transition ease-out duration-150"
+                                                x-transition:enter-start="opacity-0 transform translate-y-1/2" x-transition:enter-end="opacity-100"
+                                                x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
+                                                x-transition:leave-end="opacity-0  transform translate-y-1/2" @click.away="closeModal"
+                                                @keydown.escape="closeModal"
+                                                class="w-full px-6 py-4 overflow-hidden bg-white rounded-t-lg dark:bg-gray-800 sm:rounded-lg sm:m-4 sm:max-w-xl"
+                                                role="dialog" id="modal">
+                                                <!-- Remove header if you don't want a close icon. Use modal body to place modal tile. -->
+                                                <header class="flex justify-end">
+                                                    <button
+                                                        class="inline-flex items-center justify-center w-6 h-6 text-gray-400 transition-colors duration-150 rounded dark:hover:text-gray-200 hover: hover:text-gray-700"
+                                                        aria-label="close" @click="closeModal">
+                                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" role="img" aria-hidden="true">
+                                                            <path
+                                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                                clip-rule="evenodd" fill-rule="evenodd"></path>
+                                                        </svg>
+                                                    </button>
+                                                </header>
+                                                <!-- Modal body -->
+                                                <div class="mt-4 mb-6">
+                                                    <!-- Modal title -->
+                                                    <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300">
+                                                        Modal header {{ $loop->index }}
+                                                    </p>
+                                                    <!-- Modal description -->
+                                                    <p class="text-sm text-gray-700 dark:text-gray-400">
+                                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum et
+                                                        eligendi repudiandae voluptatem tempore!
+                                                    </p>
+                                                </div>
+                                                <footer
+                                                    class="flex flex-col items-center justify-end px-6 py-3 -mx-6 -mb-4 space-y-4 sm:space-y-0 sm:space-x-6 sm:flex-row bg-gray-50 dark:bg-gray-800">
+                                                    <button @click="closeModal"
+                                                        class="w-full px-5 py-3 text-sm font-medium leading-5 text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 sm:px-4 sm:py-2 sm:w-auto active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray">
+                                                        Cancel
+                                                    </button>
+                                                    <button
+                                                        class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                                                        Accept
+                                                    </button>
+                                                </footer>
+                                            </div>
+                                        </div>
+                                        <!-- End of modal backdrop -->
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr colspan="3">No colors found</tr>
+                        @endforelse
+                    </tbody>
+                </table>
             </div>
-            <!--breadcrumbs end-->
-
-            <!--DataTables example-->
-            <div class="card">
-                <div class="card-content">
-                    {{-- <span class="card-title">Colors</span> --}}
-
-                    <div id="table-datatables">
-                        <div class="row">
-                            <div class="col">
-                                <h4 class="header">Suppliers list</h4>
-                            </div>
-                            <div class="col">
-                                <h4 class="header">
-                                    <a href="{{ route('admin.supplier.create') }}">
-                                        <i class="fa-solid fa-square-plus" style="color: rgb(46 101 108)"></i>
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 s12 m8 l9">
-                                <table id="data-table-simple" class="responsive-table display" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Supplier Name</th>
-                                            <th>Supplier Phone</th>
-                                            <th>Supplier Address</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Supplier Name</th>
-                                            <th>Supplier Phone</th>
-                                            <th>Supplier Address</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
-
-                                    <tbody>
-                                        @forelse ($suppliers as $supplier)
-                                            <tr>
-                                                <td>{{ $loop->index + 1 }}</td>
-                                                <td>{{ $supplier->supplier_name }}</td>
-                                                <td>{{ $supplier->supplier_phone }}</td>
-                                                <td>{{ $supplier->supplier_address }}</td>
-                                                <td>
-                                                    <a href="{{ route('admin.supplier.edit', $supplier->id) }}">
-                                                        <i class="far fa-edit" style="color: rgb(85, 75, 158);"></i>
-                                                    </a>
-                                                    <a class="modal-trigger" href="#modal3">
-                                                        <i class="far fa-trash-alt" style="color: red;"></i>
-                                                    </a>
-                                                    <div id="modal3" class="modal">
-                                                        <div class="modal-content red white-text">
-                                                            <p>Are you sure want to delete?</p>
-                                                        </div>
-                                                        <div class="modal-footer teal lighten-3">
-                                                            <form action="{{ route('admin.supplier.destroy', $supplier->id) }}" method="POST">
-                                                                @csrf
-                                                                @method('delete')
-                                                                <button type="submit" class="waves-effect waves-green red lighten-2 btn-flat">
-                                                                    Agree
-                                                                </button>
-                                                            </form>
-                                                            <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">
-                                                                Disagree
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @empty
-                                            <tr colspan="3">No colors found</tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <br>
-            <div class="divider"></div>
+            {{-- <div
+                class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+                <span class="flex items-center col-span-3">
+                    Showing 21-30 of 100
+                </span>
+                <span class="col-span-2"></span>
+                <!-- Pagination -->
+                <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                    <nav aria-label="Table navigation">
+                        <ul class="inline-flex items-center">
+                            <li>
+                                <button class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Previous">
+                                    <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
+                                        <path
+                                            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                            clip-rule="evenodd" fill-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                            </li>
+                            <li>
+                                <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                                    1
+                                </button>
+                            </li>
+                            <li>
+                                <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                                    2
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    class="px-3 py-1 text-white transition-colors duration-150 bg-purple-600 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple">
+                                    3
+                                </button>
+                            </li>
+                            <li>
+                                <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                                    4
+                                </button>
+                            </li>
+                            <li>
+                                <span class="px-3 py-1">...</span>
+                            </li>
+                            <li>
+                                <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                                    8
+                                </button>
+                            </li>
+                            <li>
+                                <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                                    9
+                                </button>
+                            </li>
+                            <li>
+                                <button class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">
+                                    <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
+                                        <path
+                                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                            clip-rule="evenodd" fill-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
+                </span>
+            </div> --}}
         </div>
     </div>
 @endsection
 
 @push('scripts1')
-    <!-- data-tables -->
-    <script type="text/javascript" src="{{ asset('admin/js/plugins/data-tables/js/jquery.dataTables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/plugins/data-tables/data-tables-script.js') }}"></script>
-    <script type="text/javascript">
-        /*Show entries on click hide*/
-        // $(document).ready(function() {
-        //     $(".dropdown-content.select-dropdown li").on("click", function() {
-        //         var that = this;
-        //         setTimeout(function() {
-        //             if ($(that).parent().hasClass('active')) {
-        //                 $(that).parent().removeClass('active');
-        //                 $(that).parent().hide();
-        //             }
-        //         }, 100);
-        //     });
-        // });
-    </script>
 @endpush

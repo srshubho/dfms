@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\CowType;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Shade extends Model
 {
@@ -15,4 +16,9 @@ class Shade extends Model
         'shade_capacity',
         'shade_type',
     ];
+
+    public function cowtype()
+    {
+        return $this->belongsTo(CowType::class, 'shade_type', 'id');
+    }
 }

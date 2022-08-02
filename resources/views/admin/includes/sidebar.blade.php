@@ -1,85 +1,141 @@
-<aside id="left-sidebar-nav">
-    <ul id="slide-out" class="side-nav fixed leftside-navigation">
-        <li class="user-details cyan darken-2">
-            <div class="row">
-                <div class="col col s4 m4 l4">
-                    <img src="{{ asset('admin/images/avatar.jpg') }}" alt="" class="circle responsive-img valign profile-image">
-                </div>
-                <div class="col col s8 m8 l8">
-                    <ul id="profile-dropdown" class="dropdown-content">
-                        <li>
-                            <a href="#"><i class="mdi-action-face-unlock"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="mdi-action-settings"></i> Settings</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="mdi-communication-live-help"></i> Help</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="mdi-action-lock-outline"></i> Lock</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#"
-                        data-activates="profile-dropdown">
-                        John Doe<i class="mdi-navigation-arrow-drop-down right"></i>
-                    </a>
-                    <p class="user-roal">Administrator</p>
-                </div>
-            </div>
-        </li>
-        <li class="bold {{ request()->is('admin/index') ? 'active' : '' }}">
-            <a href="{{ route('admin.dashboard') }}" class="waves-effect waves-cyan">
-                <i class="mdi-action-dashboard"></i>
-                Dashboard
-            </a>
-        </li>
-        <li
-            class="bold {{ request()->is('admin/color') ? 'active' : '' }}
-            {{ request()->is('admin/color/create') ? 'active' : '' }}
-            {{ request()->is('admin/color/*/edit') ? 'active' : '' }}
-            ">
-            <a href="{{ route('admin.color.index') }}" class="waves-effect waves-cyan">
-                <i class="fa-solid fa-palette"></i>
-                Color
-            </a>
-        </li>
-        <li
-            class="bold {{ request()->is('admin/supplier') ? 'active' : '' }}
-            {{ request()->is('admin/supplier/create') ? 'active' : '' }}
-            {{ request()->is('admin/supplier/*/edit') ? 'active' : '' }}
-            ">
-            <a href="{{ route('admin.supplier.index') }}" class="waves-effect waves-cyan">
-                <i class="fa-solid fa-person-carry-box"></i>
-                Supplier
-            </a>
-        </li>
+<!-- Desktop sidebar -->
+<aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
+    <div class="py-4 text-gray-500 dark:text-gray-400">
+        <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="{{ route('/') }}">
+            DFMS
+        </a>
+        <ul class="mt-6">
+            <li class="relative px-6 py-3">
+                {{-- <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span> --}}
+                @include('admin.includes.active_sidebar', ['links' => ['dashboard']])
+                <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                    href="{{ route('admin.dashboard') }}">
+                    <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                        </path>
+                    </svg>
+                    <span class="ml-4">Dashboard</span>
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li class="relative px-6 py-3">
+                @include('admin.includes.active_sidebar', ['links' => ['color', 'color/create', 'color/*/edit']])
+                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                    href="{{ route('admin.color.index') }}">
+                    <i class="fa-solid fa-palette"></i>
+                    <span class="ml-4">Color</span>
+                </a>
+            </li>
+            <li class="relative px-6 py-3">
+                @include('admin.includes.active_sidebar', ['links' => ['cow-type', 'cow-type/create', 'cow-type/*/edit']])
+                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                    href="{{ route('admin.cow-type.index') }}">
+                    <i class="fa-thin fa-cow"></i>
+                    <span class="ml-4"> Cow Type</span>
+                </a>
+            </li>
+            <li class="relative px-6 py-3">
+                @include('admin.includes.active_sidebar', ['links' => ['shade', 'shade/create', 'shade/*/edit']])
+                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                    href="{{ route('admin.shade.index') }}">
+                    <i class="fa-solid fa-shutters"></i>
+                    <span class="ml-4">Shade</span>
+                </a>
+            </li>
+            <li class="relative px-6 py-3">
+                @include('admin.includes.active_sidebar', ['links' => ['supplier', 'supplier/create', 'supplier/*/edit']])
+                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                    href="{{ route('admin.supplier.index') }}">
+                    <i class="fa-solid fa-person-carry-box"></i>
+                    <span class="ml-4">Supplier</span>
+                </a>
+            </li>
+        </ul>
+        {{-- <div class="px-6 my-6">
+            <button
+                class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                Create account
+                <span class="ml-2" aria-hidden="true">+</span>
+            </button>
+        </div> --}}
+    </div>
+</aside>
 
-        {{-- <li class="no-padding">
-            <ul class="collapsible collapsible-accordion">
-                <li class="bold">
-                    <a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i>
-                        Layouts
-                    </a>
-                    <div class="collapsible-body">
-                        <ul>
-                            <li>
-                                <a href="layout-fullscreen.html">Full Screen</a>
-                            </li>
-                            <li>
-                                <a href="layout-horizontal-menu.html">Horizontal Menu</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </li> --}}
-    </ul>
-    <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan">
-        <i class="mdi-navigation-menu"></i>
-    </a>
+<!-- Mobile sidebar -->
+<!-- Backdrop -->
+<div x-show="isSideMenuOpen" x-transition:enter="transition ease-in-out duration-150" x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in-out duration-150" x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0" class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center">
+</div>
+<aside class="fixed inset-y-0 z-20 flex-shrink-0 w-64 mt-16 overflow-y-auto bg-white dark:bg-gray-800 md:hidden" x-show="isSideMenuOpen"
+    x-transition:enter="transition ease-in-out duration-150" x-transition:enter-start="opacity-0 transform -translate-x-20"
+    x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in-out duration-150" x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0 transform -translate-x-20" @click.away="closeSideMenu" @keydown.escape="closeSideMenu">
+    <div class="py-4 text-gray-500 dark:text-gray-400">
+        <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
+            DFMS
+        </a>
+        <ul class="mt-6">
+            <li class="relative px-6 py-3">
+                {{-- <span class="{{ request()->is('admin/dashboart') ? 'absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg' : '' }}"
+                    aria-hidden="true">
+                </span> --}}
+                @include('admin.includes.active_sidebar', ['links' => ['dashboard']])
+                <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                    href="{{ route('admin.dashboard') }}">
+                    <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                        </path>
+                    </svg>
+                    <span class="ml-4">Dashboard</span>
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li class="relative px-6 py-3">
+                @include('admin.includes.active_sidebar', ['links' => ['color', 'color/create', 'color/*/edit']])
+                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                    href="{{ route('admin.color.index') }}">
+                    <i class="fa-solid fa-palette"></i>
+                    <span class="ml-4">Color</span>
+                </a>
+            </li>
+            <li class="relative px-6 py-3">
+                @include('admin.includes.active_sidebar', ['links' => ['cow-type', 'cow-type/create', 'cow-type/*/edit']])
+                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                    href="{{ route('admin.cow-type.index') }}">
+                    <i class="fa-thin fa-cow"></i>
+                    <span class="ml-4">Cow Type</span>
+                </a>
+            </li>
+            <li class="relative px-6 py-3">
+                @include('admin.includes.active_sidebar', ['links' => ['shade', 'shade/create', 'shade/*/edit']])
+                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                    href="{{ route('admin.shade.index') }}">
+                    <i class="fa-solid fa-shutters"></i>
+                    <span class="ml-4">Shade</span>
+                </a>
+            </li>
+            <li class="relative px-6 py-3">
+                @include('admin.includes.active_sidebar', ['links' => ['supplier', 'supplier/create', 'supplier/*/edit']])
+                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                    href="{{ route('admin.supplier.index') }}">
+                    <i class="fa-solid fa-person-carry-box"></i>
+                    <span class="ml-4">Supplier</span>
+                </a>
+            </li>
+        </ul>
+        {{-- <div class="px-6 my-6">
+            <button
+                class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                Create account
+                <span class="ml-2" aria-hidden="true">+</span>
+            </button>
+        </div> --}}
+    </div>
 </aside>

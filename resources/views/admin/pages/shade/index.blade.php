@@ -6,17 +6,17 @@
 @section('content')
     <div class="container grid px-6 mx-auto">
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Colors
+            Shades
         </h2>
 
         <!-- With actions -->
         <div class="flex items-center justify-between ">
             <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-                Color List
+                Shades List
             </h4>
 
             <a class="p-2 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-                href="{{ route('admin.color.create') }}">
+                href="{{ route('admin.shade.create') }}">
                 <span>Create &RightArrow;</span>
             </a>
         </div>
@@ -28,20 +28,24 @@
                         <tr
                             class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                             <th class="px-4 py-3">#</th>
-                            <th class="px-4 py-3">Color Name</th>
-                            <th class="px-4 py-3">Color Code</th>
+                            <th class="px-4 py-3">Shade No</th>
+                            <th class="px-4 py-3">Shade Area</th>
+                            <th class="px-4 py-3">Shade Capacity</th>
+                            <th class="px-4 py-3">Shade Type</th>
                             <th class="px-4 py-3">Action</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                        @forelse ($colors as $color)
+                        @forelse ($shades as $shade)
                             <tr class="text-gray-700 dark:text-gray-400">
                                 <td class="px-4 py-3">{{ $loop->index + 1 }}</td>
-                                <td class="px-4 py-3">{{ $color->color_name }}</td>
-                                <td class="px-4 py-3">{{ $color->color_code }}</td>
+                                <td class="px-4 py-3">{{ $shade->shade_no }}</td>
+                                <td class="px-4 py-3">{{ $shade->shade_area }}</td>
+                                <td class="px-4 py-3">{{ $shade->shade_capacity }}</td>
+                                <td class="px-4 py-3">{{ $shade->cowtype->cow_type_name }}</td>
                                 <td class="px-4 py-3">
                                     <div class="flex items-center space-x-4 text-sm">
-                                        <a href="{{ route('admin.color.edit', $color->id) }}">
+                                        <a href="{{ route('admin.shade.edit', $shade->id) }}">
                                             <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                                                 <path
                                                     d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
