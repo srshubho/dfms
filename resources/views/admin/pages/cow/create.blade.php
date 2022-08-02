@@ -29,19 +29,6 @@
 
                 <!-- Cards -->
                 <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">
-                    {{-- <label class="block mt-4 text-sm">
-                        <span class="text-gray-700 dark:text-gray-400">Cow ID</span>
-                        <span class="text-red-500 dark:text-red-100">*</span>
-                        <input type="text" name="cow_id" id="cow_id" value="{{ old('cow_id') ? old('cow_id') : '' }}" required
-                            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                            placeholder="Enter Cow ID" />
-                        @error('cow_id')
-                            <span class="text-xs text-red-600 dark:text-red-400">
-                                {{ $message }}
-                            </span>
-                        @enderror
-                    </label> --}}
-
                     <label class="block mt-4 text-sm">
                         <span class="text-gray-700 dark:text-gray-400">Cow Date Of Purchased</span>
                         <input type="date" name="cow_date_of_purchased" id="cow_date_of_purchased"
@@ -79,9 +66,8 @@
                     </label>
 
                     <label class="block mt-4 text-sm">
-                        <span class="text-gray-700 dark:text-gray-400">
-                            Gender
-                        </span>
+                        <span class="text-gray-700 dark:text-gray-400"> Gender </span>
+                        <span class="text-red-500 dark:text-red-100">*</span>
                         <select name="cow_gender" required
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                             <option value="" disabled selected>Choose Gender</option>
@@ -136,6 +122,7 @@
 
                     <label class="block mt-4 text-sm">
                         <span class="text-gray-700 dark:text-gray-400">Cow Status Type</span>
+                        <span class="text-red-500 dark:text-red-100">*</span>
                         <input type="text" name="cow_status_type" id="cow_status_type"
                             value="{{ old('cow_status_type') ? old('cow_status_type') : '' }}" required
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
@@ -221,6 +208,22 @@
                             @endforeach
                         </select>
                         @error('cow_shade_id')
+                            <span class="text-xs text-red-600 dark:text-red-400">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </label>
+
+                    <label class="block mt-4 text-sm">
+                        <span class="text-gray-700 dark:text-gray-400"> Purchased or In-house </span>
+                        <span class="text-red-500 dark:text-red-100">*</span>
+                        <select name="is_purchased" required
+                            class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                            <option value="" disabled selected>Choose shade</option>
+                            <option value="1" {{ old('is_purchased') ? 'selected' : '' }}>In-House</option>
+                            <option value="2" {{ old('is_purchased') ? 'selected' : '' }}>Purchased</option>
+                        </select>
+                        @error('is_purchased')
                             <span class="text-xs text-red-600 dark:text-red-400">
                                 {{ $message }}
                             </span>

@@ -41,6 +41,7 @@
                             <th class="px-4 py-3">Cow Supplier Id</th>
                             <th class="px-4 py-3">Cow Type Id</th>
                             <th class="px-4 py-3">Cow Shade Id</th>
+                            <th class="px-4 py-3">Purchased / In-house</th>
                             <th class="px-4 py-3">Action</th>
                         </tr>
                     </thead>
@@ -67,6 +68,13 @@
                                 <td class="px-4 py-3">{{ $cow->supplier ? $cow->supplier->supplier_name : '' }}</td>
                                 <td class="px-4 py-3">{{ $cow->type ? $cow->type->cow_type_name : '' }}</td>
                                 <td class="px-4 py-3">{{ $cow->shade ? $cow->shade->shade_no : '' }}</td>
+                                <td class="px-4 py-3">
+                                    @if ($cow->is_purchased == 1)
+                                        In-House
+                                    @else
+                                        Purchased
+                                    @endif
+                                </td>
                                 <td class="px-4 py-3">
                                     <div class="flex items-center space-x-4 text-sm">
                                         <a href="{{ route('admin.cow.edit', $cow->id) }}">

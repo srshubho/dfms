@@ -113,12 +113,13 @@ class CowController extends Controller
             'cow_gender' => 'required|',
             'cow_estimated_live_weight' => 'nullable|integer',
             'cow_transaction_cost' => 'nullable|integer',
-            'cow_labour_cost' => 'nullable|integer',
+            'cow_labour_cost' => 'nullable|',
             'cow_status_type' => 'required|string',
             'cow_color_id' => 'nullable|string',
             'cow_supplier_id' => 'nullable|string',
             'cow_type_id' => 'nullable|string',
             'cow_shade_id' => 'nullable|string',
+            'is_purchased' => 'required|string',
         ]);
 
         $cow->cow_name = $request->cow_name;
@@ -134,6 +135,7 @@ class CowController extends Controller
         $cow->cow_supplier_id = $request->cow_supplier_id;
         $cow->cow_type_id = $request->cow_type_id;
         $cow->cow_shade_id = $request->cow_shade_id;
+        $cow->is_purchased = $request->is_purchased;
 
         $cow->save();
     }

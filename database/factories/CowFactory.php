@@ -22,6 +22,7 @@ class CowFactory extends Factory
             'cow_labour_cost' => $this->faker->randomFloat($nbMaxDecimals = NULL, $min = 1000, $max = 1500),
             'cow_estimated_live_weight' => rand(100, 300),
             'cow_status_type' => "0",
+            'is_purchased' => rand(1, 2)
 
         ];
     }

@@ -86,12 +86,10 @@
                         <select name="cow_gender" required
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                             <option value="" disabled selected>Choose Gender</option>
-                            <option value="1" {{ old('cow_gender') ? 'selected' : '' }}
-                                {{ $cow->cow_gender == 1 ? 'selected' : '' }}>
+                            <option value="1" {{ old('cow_gender') ? 'selected' : '' }} {{ $cow->cow_gender == 1 ? 'selected' : '' }}>
                                 Male
                             </option>
-                            <option value="2" {{ old('cow_gender') ? 'selected' : '' }}
-                                {{ $cow->cow_gender == 2 ? 'selected' : '' }}>
+                            <option value="2" {{ old('cow_gender') ? 'selected' : '' }} {{ $cow->cow_gender == 2 ? 'selected' : '' }}>
                                 Female
                             </option>
                         </select>
@@ -232,6 +230,26 @@
                             @endforeach
                         </select>
                         @error('cow_shade_id')
+                            <span class="text-xs text-red-600 dark:text-red-400">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </label>
+
+                    <label class="block mt-4 text-sm">
+                        <span class="text-gray-700 dark:text-gray-400"> Purchased or In-house </span>
+                        <span class="text-red-500 dark:text-red-100">*</span>
+                        <select name="is_purchased" required
+                            class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                            <option value="" disabled selected>Choose shade</option>
+                            <option value="1" {{ old('is_purchased') ? 'selected' : '' }} {{ $cow->is_purchased == 1 ? 'selected' : '' }}>
+                                In-House
+                            </option>
+                            <option value="2" {{ old('is_purchased') ? 'selected' : '' }} {{ $cow->is_purchased == 2 ? 'selected' : '' }}>
+                                Purchased
+                            </option>
+                        </select>
+                        @error('is_purchased')
                             <span class="text-xs text-red-600 dark:text-red-400">
                                 {{ $message }}
                             </span>
