@@ -117,7 +117,9 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr colspan="3">No colors found</tr>
+                                <tr colspan="5">
+                                    <p class="text-center text-white-100 dark:text-gray-400"> No suppliers found </p>
+                                </tr>
                             @endforelse
                         </tbody>
                     </table>

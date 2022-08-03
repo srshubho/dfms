@@ -119,7 +119,9 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr colspan="3">No colors found</tr>
+                                <tr colspan="6">
+                                    <p class="text-center text-white-100 dark:text-gray-400"> No shades found </p>
+                                </tr>
                             @endforelse
                         </tbody>
                     </table>

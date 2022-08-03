@@ -126,13 +126,14 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr colspan="4" class="text-white-100">No colors found</tr>
+                                <tr colspan="4">
+                                    <p class="text-center text-white-100 dark:text-gray-400"> No colors found </p>
+                                </tr>
                             @endforelse
                         </tbody>
                     </table>
 
                     {{ $colors->onEachSide(5)->links() }}
-
                 </div>
             </div>
         </div>
