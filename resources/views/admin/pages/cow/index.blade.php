@@ -32,8 +32,6 @@
                                 <th class="px-4 py-3">Cow ID</th>
                                 <th class="px-4 py-3">Name</th>
                                 <th class="px-4 py-3">Supplier</th>
-                                <th class="px-4 py-3">Type</th>
-                                <th class="px-4 py-3">Shade</th>
                                 <th class="px-4 py-3">Purchased / In-house</th>
                                 <th class="px-4 py-3">Action</th>
                             </tr>
@@ -45,8 +43,6 @@
                                     <td class="px-4 py-3">{{ $cow->cow_id }}</td>
                                     <td class="px-4 py-3">{{ $cow->cow_name }}</td>
                                     <td class="px-4 py-3">{{ $cow->supplier ? $cow->supplier->supplier_name : '' }}</td>
-                                    <td class="px-4 py-3">{{ $cow->type ? $cow->type->cow_type_name : '' }}</td>
-                                    <td class="px-4 py-3">{{ $cow->shade ? $cow->shade->shade_no : '' }}</td>
                                     <td class="px-4 py-3">
                                         @if ($cow->is_purchased == 1)
                                             <span

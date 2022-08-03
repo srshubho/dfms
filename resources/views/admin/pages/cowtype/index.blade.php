@@ -118,7 +118,7 @@
                         </tbody>
                     </table>
 
-                    {{ $cowTypes->onEachSide(5)->links() }}
+                    {{ $cowtypes->onEachSide(5)->links() }}
                 </div>
             </div>
         </div>
