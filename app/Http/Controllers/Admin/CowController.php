@@ -19,7 +19,7 @@ class CowController extends Controller
      */
     public function index()
     {
-        $cows = Cow::all();
+        $cows = Cow::paginate(10);
         return view('admin.pages.cow.index', compact('cows'));
     }
 
@@ -57,9 +57,9 @@ class CowController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Cow $cow)
     {
-        //
+        return view('admin.pages.cow.show', compact('cow'));
     }
 
     /**

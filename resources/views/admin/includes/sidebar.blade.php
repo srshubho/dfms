@@ -6,9 +6,14 @@
         </a>
         <ul class="mt-6">
             <li class="relative px-6 py-3">
-                {{-- <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span> --}}
                 @include('admin.includes.active_sidebar', ['links' => ['dashboard']])
-                <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                @include('admin.includes.individual_sidebar', [
+                    'links' => ['dashboard'],
+                    'name' => 'Dashboard',
+                    'route' => 'admin.dashboard',
+                    'icon' => '<i class="fa-light fa-house"></i>',
+                ])
+                {{-- <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
                     href="{{ route('admin.dashboard') }}">
                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         viewBox="0 0 24 24" stroke="currentColor">
@@ -17,49 +22,55 @@
                         </path>
                     </svg>
                     <span class="ml-4">Dashboard</span>
-                </a>
+                </a> --}}
+
             </li>
         </ul>
         <ul>
             <li class="relative px-6 py-3">
                 @include('admin.includes.active_sidebar', ['links' => ['color', 'color/create', 'color/*/edit']])
-                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                    href="{{ route('admin.color.index') }}">
-                    <i class="fa-solid fa-palette"></i>
-                    <span class="ml-4">Color</span>
-                </a>
+                @include('admin.includes.individual_sidebar', [
+                    'links' => ['color', 'color/create', 'color/*/edit'],
+                    'name' => 'Color',
+                    'route' => 'admin.color.index',
+                    'icon' => '<i class="fa-solid fa-palette"></i>',
+                ])
             </li>
             <li class="relative px-6 py-3">
                 @include('admin.includes.active_sidebar', ['links' => ['cow-type', 'cow-type/create', 'cow-type/*/edit']])
-                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                    href="{{ route('admin.cow-type.index') }}">
-                    <i class="fa-thin fa-cow"></i>
-                    <span class="ml-4"> Cow Type</span>
-                </a>
+                @include('admin.includes.individual_sidebar', [
+                    'links' => ['cow-type', 'cow-type/create', 'cow-type/*/edit'],
+                    'name' => 'Cow Type',
+                    'route' => 'admin.cow-type.index',
+                    'icon' => '<i class="fa-thin fa-cow"></i>',
+                ])
             </li>
             <li class="relative px-6 py-3">
                 @include('admin.includes.active_sidebar', ['links' => ['shade', 'shade/create', 'shade/*/edit']])
-                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                    href="{{ route('admin.shade.index') }}">
-                    <i class="fa-solid fa-shutters"></i>
-                    <span class="ml-4">Shade</span>
-                </a>
+                @include('admin.includes.individual_sidebar', [
+                    'links' => ['shade', 'shade/create', 'shade/*/edit'],
+                    'name' => 'Shade',
+                    'route' => 'admin.shade.index',
+                    'icon' => '<i class="fa-solid fa-shutters"></i>',
+                ])
             </li>
             <li class="relative px-6 py-3">
                 @include('admin.includes.active_sidebar', ['links' => ['supplier', 'supplier/create', 'supplier/*/edit']])
-                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                    href="{{ route('admin.supplier.index') }}">
-                    <i class="fa-solid fa-person-carry-box"></i>
-                    <span class="ml-4">Supplier</span>
-                </a>
+                @include('admin.includes.individual_sidebar', [
+                    'links' => ['supplier', 'supplier/create', 'supplier/*/edit'],
+                    'name' => 'Supplier',
+                    'route' => 'admin.supplier.index',
+                    'icon' => '<i class="fa-solid fa-person-carry-box"></i>',
+                ])
             </li>
             <li class="relative px-6 py-3">
-                @include('admin.includes.active_sidebar', ['links' => ['cow', 'cow/create', 'cow/*/edit']])
-                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                    href="{{ route('admin.cow.index') }}">
-                    <i class="fa-thin fa-cow"></i>
-                    <span class="ml-4"> Cow</span>
-                </a>
+                @include('admin.includes.active_sidebar', ['links' => ['cow', 'cow/create', 'cow/*/edit', 'cow/*']])
+                @include('admin.includes.individual_sidebar', [
+                    'links' => ['cow', 'cow/create', 'cow/*/edit'],
+                    'name' => 'Cow',
+                    'route' => 'admin.cow.index',
+                    'icon' => '<i class="fa-thin fa-cow"></i>',
+                ])
             </li>
         </ul>
         {{-- <div class="px-6 my-6">
@@ -88,9 +99,6 @@
         </a>
         <ul class="mt-6">
             <li class="relative px-6 py-3">
-                {{-- <span class="{{ request()->is('admin/dashboart') ? 'absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg' : '' }}"
-                    aria-hidden="true">
-                </span> --}}
                 @include('admin.includes.active_sidebar', ['links' => ['dashboard']])
                 <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
                     href="{{ route('admin.dashboard') }}">

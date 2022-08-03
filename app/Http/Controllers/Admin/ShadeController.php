@@ -16,7 +16,7 @@ class ShadeController extends Controller
      */
     public function index()
     {
-        $shades = Shade::all();
+        $shades = Shade::paginate(10);
         return view('admin.pages.shade.index', compact('shades'));
     }
 

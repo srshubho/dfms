@@ -20,13 +20,6 @@
 
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta2/css/all.css">
 
-<!-- Toast Notification -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" defer></script>
-{{-- Toast Notification --}}
-@include('admin.includes.alert')
-
-@stack('scripts2')
-
 @livewireStyles
 
 @stack('css')

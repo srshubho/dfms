@@ -15,7 +15,7 @@ class CowTypeCntroller extends Controller
      */
     public function index()
     {
-        $cowtypes = CowType::all();
+        $cowtypes = CowType::paginate(10);
         return view('admin.pages.cowtype.index', compact('cowtypes'));
     }
 

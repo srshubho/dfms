@@ -14,6 +14,6 @@ class CowSeeder extends Seeder
      */
     public function run()
     {
-        Cow::factory()->count(5)->create();
+        Cow::factory()->count(50)->create();
     }
 }
