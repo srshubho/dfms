@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\SupplierController;
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'is_admin']], function () {
     Route::name('admin.')->group(function () {
         Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+        Route::get('settings', [AdminController::class, 'settings'])->name('settings');
+        Route::post('change-password', [AdminController::class, 'changePassword'])->name('change-password');
 
         Route::resource('color', ColorController::class);
         Route::resource('cow-type', CowTypeCntroller::class);

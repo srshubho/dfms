@@ -6,9 +6,11 @@ use App\Models\Cow;
 use App\Models\Color;
 use App\Models\Shade;
 use App\Models\CowType;
+use App\Models\CowImage;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class CowController extends Controller
 {
@@ -112,7 +114,7 @@ class CowController extends Controller
             'cow_date_of_birth' => 'nullable|date',
             'cow_gender' => 'required|',
             'cow_estimated_live_weight' => 'nullable|integer',
-            'cow_transaction_cost' => 'nullable|integer',
+            'cow_transaction_cost' => 'nullable|numeric',
             'cow_labour_cost' => 'nullable|',
             'cow_status_type' => 'required|string',
             'cow_color_id' => 'nullable|string',
@@ -138,5 +140,18 @@ class CowController extends Controller
         $cow->is_purchased = $request->is_purchased;
 
         $cow->save();
+
+        $cow_Id = $cow->id;
+
+        if ($request->hasFile('cow_images')) {
+            $images = request()->file('cow_images');
+            foreach ($images as $image) {
+                $imageModel = new CowImage();
+                $imageUrl = $image->storeAs('public/cow/images', $image->getClientOriginalName());
+                $imageModel->cow_Id = $cow_Id;
+                $imageModel->image = Storage::url($imageUrl);
+                $imageModel->save();
+            }
+        }
     }
 }

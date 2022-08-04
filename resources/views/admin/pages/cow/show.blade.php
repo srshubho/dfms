@@ -244,6 +244,23 @@
                         </div>
 
                     </div>
+
+                    <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Gallery</h4>
+
+                    <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
+
+                        @forelse ($cow->cowImages as $image)
+                            <!-- Card -->
+                            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-700">
+                                <img src="{{ $image->image }}" alt="">
+                            </div>
+                        @empty
+                            <p class="mb-4 text-center font-semibold text-gray-600 dark:text-gray-300">
+                                No Images Found
+                            </p>
+                        @endforelse
+
+                    </div>
                 </div>
             </div>
         </div>

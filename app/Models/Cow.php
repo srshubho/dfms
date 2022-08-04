@@ -59,4 +59,9 @@ class Cow extends Model
     {
         return $this->belongsTo(Shade::class, 'cow_shade_id');
     }
+
+    public function cowImages()
+    {
+        return $this->hasMany(CowImage::class);
+    }
 }

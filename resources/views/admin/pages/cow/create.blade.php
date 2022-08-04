@@ -12,7 +12,7 @@
         </h4>
 
         <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-            <form action="{{ route('admin.cow.store') }}" method="POST">
+            <form action="{{ route('admin.cow.store') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <label class="block mt-4 text-sm">
@@ -21,6 +21,18 @@
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         placeholder="Enter Cow Name" />
                     @error('cow_name')
+                        <span class="text-xs text-red-600 dark:text-red-400">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </label>
+
+                <label class="block mt-4 text-sm">
+                    <span class="text-gray-700 dark:text-gray-400">Cow Images</span>
+                    <input type="file" name="cow_images[]" id="cow_images"
+                        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                        placeholder="Select cow images" multiple />
+                    @error('cow_images')
                         <span class="text-xs text-red-600 dark:text-red-400">
                             {{ $message }}
                         </span>
@@ -67,7 +79,7 @@
 
                     <label class="block mt-4 text-sm">
                         <span class="text-gray-700 dark:text-gray-400"> Gender </span>
-                        <span class="text-red-500 dark:text-red-100">*</span>
+                        <span class="text-red-900 dark:text-red-500">*</span>
                         <select name="cow_gender" required
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                             <option value="" disabled selected>Choose Gender</option>
@@ -122,7 +134,7 @@
 
                     <label class="block mt-4 text-sm">
                         <span class="text-gray-700 dark:text-gray-400">Cow Status Type</span>
-                        <span class="text-red-500 dark:text-red-100">*</span>
+                        <span class="text-red-900 dark:text-red-500">*</span>
                         <input type="text" name="cow_status_type" id="cow_status_type"
                             value="{{ old('cow_status_type') ? old('cow_status_type') : '' }}" required
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
@@ -216,12 +228,12 @@
 
                     <label class="block mt-4 text-sm">
                         <span class="text-gray-700 dark:text-gray-400"> Purchased or In-house </span>
-                        <span class="text-red-500 dark:text-red-100">*</span>
+                        <span class="text-red-900 dark:text-red-500">*</span>
                         <select name="is_purchased" required
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                             <option value="" disabled selected>Choose shade</option>
-                            <option value="1" {{ old('is_purchased') ? 'selected' : '' }}>In-House</option>
-                            <option value="2" {{ old('is_purchased') ? 'selected' : '' }}>Purchased</option>
+                            <option value="1" {{ old('is_purchased') ? 'selected' : '' }}> In-House </option>
+                            <option value="2" {{ old('is_purchased') ? 'selected' : '' }}> Purchased </option>
                         </select>
                         @error('is_purchased')
                             <span class="text-xs text-red-600 dark:text-red-400">
