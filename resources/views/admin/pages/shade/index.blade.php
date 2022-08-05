@@ -54,6 +54,9 @@
                                                     </path>
                                                 </svg>
                                             </a>
+                                            {{-- <a href="{{ route('admin.shade.show', $shade->id) }}">
+                                                <i class="fa-solid fa-eye" style="color: rgb(78, 180, 221)"></i>
+                                            </a> --}}
                                             <button
                                                 class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray deleteButton"
                                                 aria-label="Delete" id="deleteButton{{ $shade->id }}" data-id="{{ $shade->id }}"

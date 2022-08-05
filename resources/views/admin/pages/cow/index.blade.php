@@ -29,7 +29,7 @@
                             <tr
                                 class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                                 <th class="px-4 py-3">#</th>
-                                <th class="px-4 py-3">Cow ID</th>
+                                {{-- <th class="px-4 py-3">Cow ID</th> --}}
                                 <th class="px-4 py-3">Name</th>
                                 <th class="px-4 py-3">Supplier</th>
                                 <th class="px-4 py-3">Purchased / In-house</th>
@@ -40,7 +40,7 @@
                             @forelse ($cows as $cow)
                                 <tr class="text-gray-700 dark:text-gray-400">
                                     <td class="px-4 py-3">{{ $loop->index + 1 }}</td>
-                                    <td class="px-4 py-3">{{ $cow->cow_id }}</td>
+                                    {{-- <td class="px-4 py-3">{{ $cow->cow_id }}</td> --}}
                                     <td class="px-4 py-3">{{ $cow->cow_name }}</td>
                                     <td class="px-4 py-3">{{ $cow->supplier ? $cow->supplier->supplier_name : '' }}</td>
                                     <td class="px-4 py-3">

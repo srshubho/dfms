@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Cow;
 use App\Models\User;
+use App\Models\Shade;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
 use App\Http\Controllers\Controller;
@@ -12,7 +15,10 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.pages.index');
+        $shade = Shade::count();
+        $cow = Cow::count();
+        $supplier = Supplier::count();
+        return view('admin.pages.index', compact('cow', 'shade', 'supplier'));
     }
 
     public function settings()
