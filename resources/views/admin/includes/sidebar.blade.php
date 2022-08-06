@@ -46,9 +46,9 @@
                 ])
             </li>
             <li class="relative px-6 py-3">
-                @include('admin.includes.active_sidebar', ['links' => ['shade', 'shade/create', 'shade/*/edit']])
+                @include('admin.includes.active_sidebar', ['links' => ['shade', 'shade/create', 'shade/*/edit', 'shade/*']])
                 @include('admin.includes.individual_sidebar', [
-                    'links' => ['shade', 'shade/create', 'shade/*/edit'],
+                    'links' => ['shade', 'shade/create', 'shade/*/edit', 'shade/*'],
                     'name' => 'Shade',
                     'route' => 'admin.shade.index',
                     'icon' => '<i class="fa-solid fa-shutters"></i>',
@@ -66,7 +66,7 @@
             <li class="relative px-6 py-3">
                 @include('admin.includes.active_sidebar', ['links' => ['cow', 'cow/create', 'cow/*/edit', 'cow/*']])
                 @include('admin.includes.individual_sidebar', [
-                    'links' => ['cow', 'cow/create', 'cow/*/edit'],
+                    'links' => ['cow', 'cow/create', 'cow/*/edit', 'cow/*'],
                     'name' => 'Cow',
                     'route' => 'admin.cow.index',
                     'icon' => '<i class="fa-thin fa-cow"></i>',
