@@ -6,17 +6,17 @@
 @section('content')
     <div class="container grid px-6 mx-auto">
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Shades
+            Users
         </h2>
 
         <!-- With actions -->
         <div class="flex items-center justify-between ">
             <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-                Shades List
+                Users List
             </h4>
 
             <a class="p-2 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-                href="{{ route('admin.shade.create') }}">
+                href="{{ route('admin.user.create') }}">
                 <span>Create &RightArrow;</span>
             </a>
         </div>
@@ -29,24 +29,34 @@
                             <tr
                                 class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                                 <th class="px-4 py-3">#</th>
-                                <th class="px-4 py-3">Shade No</th>
-                                <th class="px-4 py-3">Shade Area</th>
-                                <th class="px-4 py-3">Shade Capacity</th>
-                                <th class="px-4 py-3">Shade Type</th>
+                                <th class="px-4 py-3">Name</th>
+                                <th class="px-4 py-3">Email</th>
+                                <th class="px-4 py-3">User Type</th>
                                 <th class="px-4 py-3">Action</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                            @forelse ($shades as $shade)
+                            @forelse ($users as $user)
                                 <tr class="text-gray-700 dark:text-gray-400">
                                     <td class="px-4 py-3">{{ $loop->index + 1 }}</td>
-                                    <td class="px-4 py-3">{{ $shade->shade_no }}</td>
-                                    <td class="px-4 py-3">{{ $shade->shade_area }}</td>
-                                    <td class="px-4 py-3">{{ $shade->shade_capacity }}</td>
-                                    <td class="px-4 py-3">{{ $shade->cowtype->cow_type_name }}</td>
+                                    <td class="px-4 py-3">{{ $user->name }}</td>
+                                    <td class="px-4 py-3">{{ $user->email }}</td>
+                                    <td class="px-4 py-3">
+                                        @if ($user->user_type == 1)
+                                            <span
+                                                class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600">
+                                                Admin
+                                            </span>
+                                        @else
+                                            <span
+                                                class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                                Staff
+                                            </span>
+                                        @endif
+                                    </td>
                                     <td class="px-4 py-3">
                                         <div class="flex items-center space-x-4 text-sm">
-                                            <a href="{{ route('admin.shade.edit', $shade->id) }}">
+                                            <a href="{{ route('admin.user.edit', $user->id) }}">
                                                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                                     style="color: rgb(95, 69, 224)">
                                                     <path
@@ -54,13 +64,10 @@
                                                     </path>
                                                 </svg>
                                             </a>
-                                            <a href="{{ route('admin.shade.show', $shade->id) }}">
-                                                <i class="fa-solid fa-eye" style="color: rgb(78, 180, 221)"></i>
-                                            </a>
                                             <button
                                                 class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray deleteButton"
-                                                aria-label="Delete" id="deleteButton{{ $shade->id }}" data-id="{{ $shade->id }}"
-                                                onclick="dataDelete({{ $shade->id }})" @click="openModal">
+                                                aria-label="Delete" id="deleteButton{{ $user->id }}" data-id="{{ $user->id }}"
+                                                onclick="dataDelete({{ $user->id }})" @click="openModal">
                                                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                                     style="color: rgb(230, 82, 82)">
                                                     <path fill-rule="evenodd"
@@ -73,8 +80,8 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr colspan="6">
-                                    <p class="text-center text-white-100 dark:text-gray-400"> No shades found </p>
+                                <tr colspan="5">
+                                    <p class="text-center text-white-100 dark:text-gray-400"> No users found </p>
                                 </tr>
                             @endforelse
 
@@ -84,7 +91,7 @@
                         </tbody>
                     </table>
 
-                    {{ $shades->onEachSide(5)->links() }}
+                    {{ $users->onEachSide(5)->links() }}
                 </div>
             </div>
         </div>
@@ -96,7 +103,7 @@
     <script>
         function dataDelete(id) {
             var data_id = $("#deleteButton" + id).data('value');
-            let route = "{{ route('admin.shade.destroy', ['shade' => ':id']) }}";
+            let route = "{{ route('admin.user.destroy', ['user' => ':id']) }}";
             route = route.replace(":id", id);
 
             $("#route").attr("action", route)

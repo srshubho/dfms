@@ -12,7 +12,14 @@
         </h4>
 
         <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-            <form action="{{ route('admin.cow.store') }}" method="POST" enctype="multipart/form-data">
+            @livewire('admin.cow.create', [
+                'colors' => $colors,
+                'suppliers' => $suppliers,
+                'cowTypes' => $cowTypes,
+                'shades' => $shades,
+            ])
+
+            {{-- <form action="{{ route('admin.cow.store') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <label class="block mt-4 text-sm">
@@ -251,7 +258,7 @@
                         <span>Create</span>
                     </button>
                 </div>
-            </form>
+            </form> --}}
         </div>
     </div>
 @endsection

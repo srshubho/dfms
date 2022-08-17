@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CowController;
+use App\Http\Controllers\Admin\CalfController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\ShadeController;
@@ -15,10 +17,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'is_admin']], functi
         Route::get('settings', [AdminController::class, 'settings'])->name('settings');
         Route::post('change-password', [AdminController::class, 'changePassword'])->name('change-password');
 
+        Route::resource('user', UserController::class);
         Route::resource('color', ColorController::class);
         Route::resource('cow-type', CowTypeCntroller::class);
         Route::resource('supplier', SupplierController::class);
         Route::resource('shade', ShadeController::class);
+        Route::resource('calf', CalfController::class);
         Route::resource('cow', CowController::class);
     });
 });
