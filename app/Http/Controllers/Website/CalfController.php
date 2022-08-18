@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Website;
 
-use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-class UserController extends Controller
+class CalfController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(10);
-        return view('website.pages.admin.user.index', compact('users'));
+        //
     }
 
     /**
@@ -25,7 +24,18 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('website.pages.admin.user.create');
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
     }
 
     /**
@@ -47,8 +57,19 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('website.pages.admin.user.edit', compact('user'));
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
     }
 
     /**
@@ -57,9 +78,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $user->delete();
-        return redirect()->back();
+        //
     }
 }

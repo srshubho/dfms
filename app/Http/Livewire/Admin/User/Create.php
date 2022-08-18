@@ -73,7 +73,7 @@ class Create extends Component
         // ));
 
         if ($save) {
-            return redirect()->route('admin.user.index')->with(['message' => 'User successfully added!', 'alert-type' => 'success']);
+            return redirect()->route('user.index')->with(['message' => 'User successfully added!', 'alert-type' => 'success']);
         } else {
             session()->flash('failed', 'User added failed!');
             return redirect()->route('user.create');
