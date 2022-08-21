@@ -23,6 +23,7 @@ class isAdmin
             // }
             return $next($request);
         }
-        return abort(404);
+        // return abort(404);
+        return response()->view("website.pages.access_denied");
     }
 }

@@ -35,60 +35,73 @@
                 ])
             </li>
         @endif
-        <li class="relative px-6 py-3">
-            @include('website.includes.active_sidebar', ['links' => ['color', 'color/create', 'color/*/edit']])
-            @include('website.includes.individual_sidebar', [
-                'links' => ['color', 'color/create', 'color/*/edit'],
-                'name' => 'Color',
-                'route' => 'color.index',
-                'icon' => '<i class="fa-solid fa-palette"></i>',
-            ])
-        </li>
-        <li class="relative px-6 py-3">
-            @include('website.includes.active_sidebar', ['links' => ['cow-type', 'cow-type/create', 'cow-type/*/edit']])
-            @include('website.includes.individual_sidebar', [
-                'links' => ['cow-type', 'cow-type/create', 'cow-type/*/edit'],
-                'name' => 'Cow Type',
-                'route' => 'cow-type.index',
-                'icon' => '<i class="fa-thin fa-cow"></i>',
-            ])
-        </li>
-        <li class="relative px-6 py-3">
-            @include('website.includes.active_sidebar', ['links' => ['shade', 'shade/create', 'shade/*/edit', 'shade/*']])
-            @include('website.includes.individual_sidebar', [
-                'links' => ['shade', 'shade/create', 'shade/*/edit', 'shade/*'],
-                'name' => 'Shade',
-                'route' => 'shade.index',
-                'icon' => '<i class="fa-solid fa-shutters"></i>',
-            ])
-        </li>
-        <li class="relative px-6 py-3">
-            @include('website.includes.active_sidebar', ['links' => ['supplier', 'supplier/create', 'supplier/*/edit']])
-            @include('website.includes.individual_sidebar', [
-                'links' => ['supplier', 'supplier/create', 'supplier/*/edit'],
-                'name' => 'Supplier',
-                'route' => 'supplier.index',
-                'icon' => '<i class="fa-solid fa-person-carry-box"></i>',
-            ])
-        </li>
-        <li class="relative px-6 py-3">
-            @include('website.includes.active_sidebar', ['links' => ['calf', 'calf/create', 'calf/*/edit', 'calf/*']])
-            @include('website.includes.individual_sidebar', [
-                'links' => ['calf', 'calf/create', 'calf/*/edit', 'calf/*'],
-                'name' => 'Calves',
-                'route' => 'calf.index',
-                'icon' => '<i class="fa-thin fa-cow"></i>',
-            ])
-        </li>
-        <li class="relative px-6 py-3">
-            @include('website.includes.active_sidebar', ['links' => ['cow', 'cow/create', 'cow/*/edit', 'cow/*']])
-            @include('website.includes.individual_sidebar', [
-                'links' => ['cow', 'cow/create', 'cow/*/edit', 'cow/*'],
-                'name' => 'Cow',
-                'route' => 'cow.index',
-                'icon' => '<i class="fa-thin fa-cow"></i>',
-            ])
-        </li>
+        @if (auth()->user()->user_type == 1 || auth()->user()->user_type == 2)
+            <li class="relative px-6 py-3">
+                @include('website.includes.active_sidebar', ['links' => ['color', 'color/create', 'color/*/edit']])
+                @include('website.includes.individual_sidebar', [
+                    'links' => ['color', 'color/create', 'color/*/edit'],
+                    'name' => 'Color',
+                    'route' => 'color.index',
+                    'icon' => '<i class="fa-solid fa-palette"></i>',
+                ])
+            </li>
+            <li class="relative px-6 py-3">
+                @include('website.includes.active_sidebar', ['links' => ['cow-type', 'cow-type/create', 'cow-type/*/edit']])
+                @include('website.includes.individual_sidebar', [
+                    'links' => ['cow-type', 'cow-type/create', 'cow-type/*/edit'],
+                    'name' => 'Cow Type',
+                    'route' => 'cow-type.index',
+                    'icon' => '<i class="fa-thin fa-cow"></i>',
+                ])
+            </li>
+            <li class="relative px-6 py-3">
+                @include('website.includes.active_sidebar', ['links' => ['shade', 'shade/create', 'shade/*/edit', 'shade/*']])
+                @include('website.includes.individual_sidebar', [
+                    'links' => ['shade', 'shade/create', 'shade/*/edit', 'shade/*'],
+                    'name' => 'Shade',
+                    'route' => 'shade.index',
+                    'icon' => '<i class="fa-solid fa-shutters"></i>',
+                ])
+            </li>
+            <li class="relative px-6 py-3">
+                @include('website.includes.active_sidebar', ['links' => ['supplier', 'supplier/create', 'supplier/*/edit']])
+                @include('website.includes.individual_sidebar', [
+                    'links' => ['supplier', 'supplier/create', 'supplier/*/edit'],
+                    'name' => 'Supplier',
+                    'route' => 'supplier.index',
+                    'icon' => '<i class="fa-solid fa-person-carry-box"></i>',
+                ])
+            </li>
+            <li class="relative px-6 py-3">
+                @include('website.includes.active_sidebar', ['links' => ['calf', 'calf/create', 'calf/*/edit', 'calf/*']])
+                @include('website.includes.individual_sidebar', [
+                    'links' => ['calf', 'calf/create', 'calf/*/edit', 'calf/*'],
+                    'name' => 'Calves',
+                    'route' => 'calf.index',
+                    'icon' => '<i class="fa-thin fa-cow"></i>',
+                ])
+            </li>
+            <li class="relative px-6 py-3">
+                @include('website.includes.active_sidebar', ['links' => ['cow', 'cow/create', 'cow/*/edit', 'cow/*']])
+                @include('website.includes.individual_sidebar', [
+                    'links' => ['cow', 'cow/create', 'cow/*/edit', 'cow/*'],
+                    'name' => 'Cow',
+                    'route' => 'cow.index',
+                    'icon' => '<i class="fa-thin fa-cow"></i>',
+                ])
+            </li>
+            <li class="relative px-6 py-3">
+                @include('website.includes.active_sidebar', [
+                    'links' => ['assign-cow-to-staff', 'assign-cow-to-staff/create', 'assign-cow-to-staff/*/edit', 'assign-cow-to-staff/*'],
+                ])
+                @include('website.includes.individual_sidebar', [
+                    'links' => ['assign-cow-to-staff', 'assign-cow-to-staff/create', 'assign-cow-to-staff/*/edit', 'assign-cow-to-staff/*'],
+                    'name' => 'Assign Cow To Staff',
+                    'route' => 'assign-cow-to-staff.index',
+                    'icon' => '<i class="fa-thin fa-cow"></i>',
+                ])
+            </li>
+        @endif
     </ul>
     {{-- <div class="px-6 my-6">
         <button

@@ -180,6 +180,9 @@ module.exports = {
             "7xl": "5rem",
         },
         extend: {
+            width: {
+                53: "13.5rem",
+            },
             maxHeight: {
                 0: "0",
                 xl: "36rem",

@@ -20,6 +20,9 @@
     /* background-color: #b04bef21; */
     background-color: #29a4d312;
 ">
+
+                @include('website.includes.alert')
+
                 <!--start container-->
                 @yield('content')
                 <!--end container-->

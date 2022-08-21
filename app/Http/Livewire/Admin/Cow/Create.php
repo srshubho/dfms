@@ -17,7 +17,6 @@ class Create extends Component
         $cow_estimated_live_weight,
         $cow_transaction_cost,
         $cow_labour_cost,
-        $cow_status_type,
         $cow_color_id,
         $cow_supplier_id,
         $cow_type_id,
@@ -37,7 +36,6 @@ class Create extends Component
         'cow_estimated_live_weight' => 'nullable|integer',
         'cow_transaction_cost' => 'nullable|numeric',
         'cow_labour_cost' => 'nullable|',
-        'cow_status_type' => 'required|string',
         'cow_color_id' => 'nullable|string',
         'cow_supplier_id' => 'nullable|string',
         'cow_type_id' => 'nullable|string',
@@ -69,7 +67,6 @@ class Create extends Component
         $cow->cow_estimated_live_weight = $data['cow_estimated_live_weight'];
         $cow->cow_transaction_cost = $data['cow_transaction_cost'];
         $cow->cow_labour_cost = $data['cow_labour_cost'];
-        $cow->cow_status_type = $data['cow_status_type'];
         $cow->cow_color_id = $data['cow_color_id'];
         $cow->cow_supplier_id = $data['cow_supplier_id'];
         $cow->cow_type_id = $data['cow_type_id'];

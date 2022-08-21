@@ -47,6 +47,11 @@ function data() {
         togglePagesMenu() {
             this.isPagesMenuOpen = !this.isPagesMenuOpen;
         },
+        isAlertShow: true,
+        crossAlert() {
+            console.log(this.isAlertShow);
+            this.isAlertShow = !this.isAlertShow;
+        },
         // Modal
         isModalOpen: false,
         trapCleanup: null,

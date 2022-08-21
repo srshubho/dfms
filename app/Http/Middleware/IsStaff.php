@@ -16,6 +16,10 @@ class IsStaff
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if ((auth()->user()->is_admin == 0) && (auth()->user()->user_type == 3)) {
+            return $next($request);
+        }
+        // return abort(404);
+        return response()->view("website.pages.access_denied");
     }
 }
