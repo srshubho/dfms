@@ -16,10 +16,11 @@
             @include('website.includes.header')
             <!-- END HEADER -->
 
-            <main class="h-full overflow-y-auto" style="
-    /* background-color: #b04bef21; */
-    background-color: #29a4d312;
-">
+            <main class="h-full overflow-y-auto"
+                style="
+                    /* background-color: #b04bef21; */
+                    background-color: #29a4d312;
+                ">
 
                 @include('website.includes.alert')
 

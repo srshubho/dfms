@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use App\Models\Bull;
+use App\Models\Breed;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Breed extends Model
+class Bull extends Model
 {
     use HasFactory;
 
-    public function bull()
+    public function breed()
     {
-        return $this->hasMany(Bull::class);
+        return $this->belongsTo(Breed::class);
     }
 }

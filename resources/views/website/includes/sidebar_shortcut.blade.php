@@ -82,6 +82,15 @@
                 ])
             </li>
             <li class="relative px-6 py-3">
+                @include('website.includes.active_sidebar', ['links' => ['bull', 'bull/create', 'bull/*/edit']])
+                @include('website.includes.individual_sidebar', [
+                    'links' => ['bull', 'bull/create', 'bull/*/edit'],
+                    'name' => 'Bull',
+                    'route' => 'bull.index',
+                    'icon' => '<i class="fa-solid fa-skull-cow"></i>',
+                ])
+            </li>
+            <li class="relative px-6 py-3">
                 @include('website.includes.active_sidebar', ['links' => ['calf', 'calf/create', 'calf/*/edit', 'calf/*']])
                 @include('website.includes.individual_sidebar', [
                     'links' => ['calf', 'calf/create', 'calf/*/edit', 'calf/*'],

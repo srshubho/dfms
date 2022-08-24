@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BreedController;
 use App\Http\Controllers\Website\CowController;
+use App\Http\Controllers\Website\BullController;
 use App\Http\Controllers\Website\CalfController;
 use App\Http\Controllers\Website\ColorController;
 use App\Http\Controllers\Website\ShadeController;
@@ -30,6 +31,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('cow-type', CowTypeCntroller::class);
         Route::resource('supplier', SupplierController::class);
         Route::resource('shade', ShadeController::class);
+        Route::resource('bull', BullController::class);
         Route::resource('calf', CalfController::class);
         Route::resource('cow', CowController::class);
         Route::resource('assign-cow-to-staff', AssignCowToStaffController::class);
