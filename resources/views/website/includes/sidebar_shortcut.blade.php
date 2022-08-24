@@ -46,6 +46,15 @@
                 ])
             </li>
             <li class="relative px-6 py-3">
+                @include('website.includes.active_sidebar', ['links' => ['breed', 'breed/create', 'breed/*/edit']])
+                @include('website.includes.individual_sidebar', [
+                    'links' => ['breed', 'breed/create', 'breed/*/edit'],
+                    'name' => 'Breed',
+                    'route' => 'breed.index',
+                    'icon' => '<i class="fa-solid fa-block-quote"></i>',
+                ])
+            </li>
+            <li class="relative px-6 py-3">
                 @include('website.includes.active_sidebar', ['links' => ['cow-type', 'cow-type/create', 'cow-type/*/edit']])
                 @include('website.includes.individual_sidebar', [
                     'links' => ['cow-type', 'cow-type/create', 'cow-type/*/edit'],

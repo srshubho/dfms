@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BreedController;
 use App\Http\Controllers\Website\CowController;
 use App\Http\Controllers\Website\CalfController;
 use App\Http\Controllers\Website\ColorController;
@@ -24,6 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('settings', [SettingsController::class, 'settings'])->name('settings');
         Route::post('change-password', [SettingsController::class, 'changePassword'])->name('change-password');
 
+        Route::resource('breed', BreedController::class);
         Route::resource('color', ColorController::class);
         Route::resource('cow-type', CowTypeCntroller::class);
         Route::resource('supplier', SupplierController::class);
