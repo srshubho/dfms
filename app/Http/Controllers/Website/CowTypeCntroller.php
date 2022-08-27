@@ -94,10 +94,10 @@ class CowTypeCntroller extends Controller
     public function dataStore($request, $cowType)
     {
         $dataValidate = $request->validate([
-            'cow_type_name' => 'required|string|unique:cow_types',
+            'type_name' => 'required|string|unique:cow_types',
         ]);
 
-        $cowType->cow_type_name = $request->cow_type_name;
+        $cowType->type_name = $request->type_name;
 
         $cowType->save();
     }

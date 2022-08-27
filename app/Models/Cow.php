@@ -18,46 +18,46 @@ class Cow extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'cow_name',
-        'cow_date_of_purchased',
-        'cow_date_of_production',
-        'cow_type_id',
-        'cow_gender',
-        'cow_estimated_live_weight',
-        'cow_transaction_cost',
-        'cow_labour_cost',
-        'cow_color_id',
-        'cow_supplier_id',
-        'cow_shade_id',
+        'name',
+        'date_of_purchased',
+        'date_of_production',
+        'type_id',
+        'gender',
+        'estimated_live_weight',
+        'transaction_cost',
+        'labour_cost',
+        'color_id',
+        'supplier_id',
+        'shade_id',
     ];
     protected static function boot()
     {
         parent::boot();
         static::creating(function ($model) {
-            if (empty($model->cow_id)) {
-                $model->cow_id = Str::uuid();
+            if (empty($model->id)) {
+                $model->id = Str::uuid();
             }
         });
     }
 
     public function color()
     {
-        return $this->belongsTo(Color::class, 'cow_color_id');
+        return $this->belongsTo(Color::class, 'color_id');
     }
 
     public function supplier()
     {
-        return $this->belongsTo(Supplier::class, 'cow_supplier_id');
+        return $this->belongsTo(Supplier::class, 'supplier_id');
     }
 
     public function cowType()
     {
-        return $this->belongsTo(CowType::class, 'cow_type_id');
+        return $this->belongsTo(CowType::class, 'type_id');
     }
 
     public function shade()
     {
-        return $this->belongsTo(Shade::class, 'cow_shade_id');
+        return $this->belongsTo(Shade::class, 'shade_id');
     }
 
     public function cowImages()

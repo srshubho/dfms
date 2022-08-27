@@ -16,12 +16,12 @@ class CowFactory extends Factory
     public function definition()
     {
         return [
-            'cow_name' => $this->faker->randomElement($this->names),
-            'cow_date_of_purchased' => $this->faker->date(),
-            'cow_transaction_cost' => $this->faker->randomFloat($nbMaxDecimals = NULL, $min = 5000, $max = 7000),
-            'cow_labour_cost' => $this->faker->randomFloat($nbMaxDecimals = NULL, $min = 1000, $max = 1500),
-            'cow_estimated_live_weight' => rand(100, 300),
-            'cow_status_type' => "0",
+            'name' => $this->faker->randomElement($this->names),
+            'date_of_purchased' => $this->faker->date(),
+            'transition_cost' => $this->faker->randomFloat($nbMaxDecimals = NULL, $min = 5000, $max = 7000),
+            'labour_cost' => $this->faker->randomFloat($nbMaxDecimals = NULL, $min = 1000, $max = 1500),
+            'estimated_live_weight' => rand(100, 300),
+            'status_type' => "0",
             'is_purchased' => rand(1, 2)
 
         ];

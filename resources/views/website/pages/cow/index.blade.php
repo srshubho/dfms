@@ -41,7 +41,7 @@
                                 <tr class="text-gray-700 dark:text-gray-400">
                                     <td class="px-4 py-3">{{ $loop->index + 1 }}</td>
                                     {{-- <td class="px-4 py-3">{{ $cow->cow_id }}</td> --}}
-                                    <td class="px-4 py-3">{{ $cow->cow_name }}</td>
+                                    <td class="px-4 py-3">{{ $cow->name }}</td>
                                     <td class="px-4 py-3">{{ $cow->supplier ? $cow->supplier->supplier_name : '' }}</td>
                                     <td class="px-4 py-3">
                                         @if ($cow->is_purchased == 1)

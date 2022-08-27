@@ -4,42 +4,50 @@ namespace App\Http\Livewire\Admin\Cow;
 
 use App\Models\Cow;
 use Livewire\Component;
+use App\Models\CowImage;
+use Illuminate\Support\Str;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class Create extends Component
 {
+    use  WithFileUploads;
     public $colors, $suppliers, $cowTypes, $shades;
-    public $cow_name,
-        $cow_images,
-        $cow_date_of_purchased,
-        $cow_date_of_production,
-        $cow_date_of_birth,
-        $cow_gender,
-        $cow_estimated_live_weight,
-        $cow_transaction_cost,
-        $cow_labour_cost,
-        $cow_color_id,
-        $cow_supplier_id,
-        $cow_type_id,
-        $cow_shade_id,
+    public $name,
+        $primary_image,
+        $images,
+        $date_of_purchased,
+        $date_of_production,
+        $date_of_birth,
+        $gender,
+        $estimated_live_weight,
+        $transition_cost,
+        $labour_cost,
+        $color_id,
+        $supplier_id,
+        $type_id,
+        $shade_id,
         $is_purchased;
 
     public $disabled = true,
         $show = true,
-        $purchased = true;
+        $purchased = 0;
 
     protected $rules = [
-        'cow_name' => 'nullable|string',
-        'cow_date_of_purchased' => 'nullable|date',
-        'cow_date_of_production' => 'nullable|date',
-        'cow_date_of_birth' => 'nullable|date',
-        'cow_gender' => 'required|',
-        'cow_estimated_live_weight' => 'nullable|integer',
-        'cow_transaction_cost' => 'nullable|numeric',
-        'cow_labour_cost' => 'nullable|',
-        'cow_color_id' => 'nullable|string',
-        'cow_supplier_id' => 'nullable|string',
-        'cow_type_id' => 'nullable|string',
-        'cow_shade_id' => 'nullable|string',
+        'name' => 'nullable|string',
+        'primary_image' => '|max:4096',
+        'images.*' => '|max:4096',
+        'date_of_purchased' => 'nullable|date',
+        'date_of_production' => 'nullable|date',
+        'date_of_birth' => 'nullable|date',
+        'gender' => 'required|',
+        'estimated_live_weight' => 'nullable|integer',
+        'transition_cost' => 'nullable|numeric',
+        'labour_cost' => 'nullable|',
+        'color_id' => 'nullable|string',
+        'supplier_id' => 'nullable|string',
+        'type_id' => 'nullable|string',
+        'shade_id' => 'nullable|string',
         'is_purchased' => 'required|string',
     ];
 
@@ -47,10 +55,10 @@ class Create extends Component
     {
         if ($this->is_purchased == 1) {
             $this->disabled = false;
-            $this->purchased = false;
+            $this->purchased = 1;
         } else {
             $this->disabled = true;
-            $this->purchased = true;
+            $this->purchased = 2;
         }
     }
 
@@ -59,21 +67,39 @@ class Create extends Component
         $data = $this->validate();
 
         $cow = new Cow();
-        $cow->cow_name = $data['cow_name'];
-        $cow->cow_date_of_purchased = $data['cow_date_of_purchased'];
-        $cow->cow_date_of_production = $data['cow_date_of_production'];
-        $cow->cow_date_of_birth = $data['cow_date_of_birth'];
-        $cow->cow_gender = $data['cow_gender'];
-        $cow->cow_estimated_live_weight = $data['cow_estimated_live_weight'];
-        $cow->cow_transaction_cost = $data['cow_transaction_cost'];
-        $cow->cow_labour_cost = $data['cow_labour_cost'];
-        $cow->cow_color_id = $data['cow_color_id'];
-        $cow->cow_supplier_id = $data['cow_supplier_id'];
-        $cow->cow_type_id = $data['cow_type_id'];
-        $cow->cow_shade_id = $data['cow_shade_id'];
+        $cow->name = $data['name'];
+        if ($this->primary_image) {
+            $primary_imageUrl = $this->primary_image->store('public/cow');
+            $cow->primary_image = Storage::url($primary_imageUrl);
+        }
+        $cow->date_of_purchased = $data['date_of_purchased'];
+        $cow->date_of_production = $data['date_of_production'];
+        $cow->date_of_birth = $data['date_of_birth'];
+        $cow->gender = $data['gender'];
+        $cow->estimated_live_weight = $data['estimated_live_weight'];
+        $cow->transition_cost = $data['transition_cost'];
+        $cow->labour_cost = $data['labour_cost'];
+        $cow->color_id = $data['color_id'];
+        $cow->supplier_id = $data['supplier_id'];
+        $cow->type_id = $data['type_id'];
+        $cow->shade_id = $data['shade_id'];
         $cow->is_purchased = $data['is_purchased'];
 
         $cow->save();
+        
+        if ($this->images) {
+            // dd($cow->id);
+            foreach ($this->images as $key => $image) {
+                $imageUrl = $image->store('public/cow/gallery');
+
+                $cowImage = new CowImage();
+                $cowImage->id = $cow->id;
+                $cowImage->image =  Storage::url($imageUrl);
+                $save = $cowImage->save();
+            }
+        }
+
+        return redirect()->route('cow.index')->with(['message' => 'Cow created successfully!', 'alert-type' => 'success']);
     }
 
     public function render()

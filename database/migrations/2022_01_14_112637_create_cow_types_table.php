@@ -15,7 +15,7 @@ class CreateCowTypesTable extends Migration
     {
         Schema::create('cow_types', function (Blueprint $table) {
             $table->id();
-            $table->string('cow_type_name');
+            $table->string('type_name');
             $table->timestamps();
         });
     }

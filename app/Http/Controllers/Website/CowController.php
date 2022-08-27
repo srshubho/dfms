@@ -108,35 +108,35 @@ class CowController extends Controller
     public function dataStore($request, $cow)
     {
         $dataValidate = $request->validate([
-            'cow_name' => 'nullable|string',
-            'cow_date_of_purchased' => 'nullable|date',
-            'cow_date_of_production' => 'nullable|date',
-            'cow_date_of_birth' => 'nullable|date',
-            'cow_gender' => 'required|',
-            'cow_estimated_live_weight' => 'nullable|integer',
-            'cow_transaction_cost' => 'nullable|numeric',
-            'cow_labour_cost' => 'nullable|',
-            'cow_status_type' => 'required|string',
-            'cow_color_id' => 'nullable|string',
-            'cow_supplier_id' => 'nullable|string',
-            'cow_type_id' => 'nullable|string',
-            'cow_shade_id' => 'nullable|string',
+            'name' => 'nullable|string',
+            'date_of_purchased' => 'nullable|date',
+            'date_of_production' => 'nullable|date',
+            'date_of_birth' => 'nullable|date',
+            'gender' => 'required|',
+            'estimated_live_weight' => 'nullable|integer',
+            'transition_cost' => 'nullable|numeric',
+            'labour_cost' => 'nullable|',
+            'status_type' => 'required|string',
+            'color_id' => 'nullable|string',
+            'supplier_id' => 'nullable|string',
+            'type_id' => 'nullable|string',
+            'shade_id' => 'nullable|string',
             'is_purchased' => 'required|string',
         ]);
 
-        $cow->cow_name = $request->cow_name;
-        $cow->cow_date_of_purchased = $request->cow_date_of_purchased;
-        $cow->cow_date_of_production = $request->cow_date_of_production;
-        $cow->cow_date_of_birth = $request->cow_date_of_birth;
-        $cow->cow_gender = $request->cow_gender;
-        $cow->cow_estimated_live_weight = $request->cow_estimated_live_weight;
-        $cow->cow_transaction_cost = $request->cow_transaction_cost;
-        $cow->cow_labour_cost = $request->cow_labour_cost;
-        $cow->cow_status_type = $request->cow_status_type;
-        $cow->cow_color_id = $request->cow_color_id;
-        $cow->cow_supplier_id = $request->cow_supplier_id;
-        $cow->cow_type_id = $request->cow_type_id;
-        $cow->cow_shade_id = $request->cow_shade_id;
+        $cow->name = $request->name;
+        $cow->date_of_purchased = $request->date_of_purchased;
+        $cow->date_of_production = $request->date_of_production;
+        $cow->date_of_birth = $request->date_of_birth;
+        $cow->gender = $request->gender;
+        $cow->estimated_live_weight = $request->estimated_live_weight;
+        $cow->transition_cost = $request->transition_cost;
+        $cow->labour_cost = $request->labour_cost;
+        $cow->status_type = $request->status_type;
+        $cow->color_id = $request->color_id;
+        $cow->supplier_id = $request->supplier_id;
+        $cow->type_id = $request->type_id;
+        $cow->shade_id = $request->shade_id;
         $cow->is_purchased = $request->is_purchased;
 
         $cow->save();

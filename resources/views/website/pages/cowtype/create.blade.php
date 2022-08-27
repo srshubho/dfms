@@ -16,10 +16,10 @@
                 {{ csrf_field() }}
                 <label class="block text-sm">
                     <span class="text-gray-700 dark:text-gray-400">Cow Type Name</span>
-                    <input type="text" name="cow_type_name" id="cow_type_name" value="{{ old('cow_type_name') ? old('cow_type_name') : '' }}" required
+                    <input type="text" name="type_name" id="type_name" value="{{ old('type_name') ? old('type_name') : '' }}" required
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         placeholder="Enter Cow Type Name" />
-                    @error('cow_type_name')
+                    @error('type_name')
                         <span class="text-xs text-red-600 dark:text-red-400">
                             {{ $message }}
                         </span>

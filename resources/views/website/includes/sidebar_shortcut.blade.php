@@ -91,20 +91,20 @@
                 ])
             </li>
             <li class="relative px-6 py-3">
-                @include('website.includes.active_sidebar', ['links' => ['calf', 'calf/create', 'calf/*/edit', 'calf/*']])
-                @include('website.includes.individual_sidebar', [
-                    'links' => ['calf', 'calf/create', 'calf/*/edit', 'calf/*'],
-                    'name' => 'Calves',
-                    'route' => 'calf.index',
-                    'icon' => '<i class="fa-thin fa-cow"></i>',
-                ])
-            </li>
-            <li class="relative px-6 py-3">
                 @include('website.includes.active_sidebar', ['links' => ['cow', 'cow/create', 'cow/*/edit', 'cow/*']])
                 @include('website.includes.individual_sidebar', [
                     'links' => ['cow', 'cow/create', 'cow/*/edit', 'cow/*'],
                     'name' => 'Cow',
                     'route' => 'cow.index',
+                    'icon' => '<i class="fa-thin fa-cow"></i>',
+                ])
+            </li>
+            <li class="relative px-6 py-3">
+                @include('website.includes.active_sidebar', ['links' => ['calf', 'calf/create', 'calf/*/edit', 'calf/*']])
+                @include('website.includes.individual_sidebar', [
+                    'links' => ['calf', 'calf/create', 'calf/*/edit', 'calf/*'],
+                    'name' => 'Calves',
+                    'route' => 'calf.index',
                     'icon' => '<i class="fa-thin fa-cow"></i>',
                 ])
             </li>

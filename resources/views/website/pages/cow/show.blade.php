@@ -19,9 +19,9 @@
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
                 <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                    <h2 class="mb-4 text-center font-semibold text-gray-600 dark:text-gray-300">
-                        {{ $cow->cow_id }}
-                    </h2>
+                    <div class="flex justify-center my-4">
+                        <img src="{{ $cow->primary_image }}" alt="" class="w-52 justify-items-center">
+                    </div>
 
                     <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
 
@@ -35,7 +35,7 @@
                                     Name
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {{ $cow->cow_name }}
+                                    {{ $cow->name }}
                                 </p>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                                     Date Of Purchased
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {{ $cow->cow_date_of_purchased }}
+                                    {{ $cow->date_of_purchased }}
                                 </p>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                                     Date Of Production
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {{ $cow->cow_date_of_production }}
+                                    {{ $cow->date_of_production }}
                                 </p>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                                     Date Of Birth
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {{ $cow->cow_date_of_birth }}
+                                    {{ $cow->date_of_birth }}
                                 </p>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                                     Gender
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    @if ($cow->cow_gender == 1)
+                                    @if ($cow->gender == 1)
                                         Male
                                     @else
                                         Female
@@ -114,7 +114,7 @@
                                     Estimated Live Weight
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {{ $cow->cow_estimated_live_weight }}
+                                    {{ $cow->estimated_live_weight }}
                                 </p>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                                     Transaction
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {{ $cow->cow_transaction_cost }}
+                                    {{ $cow->transition_cost }} &#2547;
                                 </p>
                             </div>
                         </div>
@@ -141,10 +141,10 @@
                             </div>
                             <div>
                                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                    Labour
+                                    Labour cost
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {{ $cow->cow_labour_cost }}
+                                    {{ $cow->labour_cost }} &#2547;
                                 </p>
                             </div>
                         </div>
@@ -159,7 +159,7 @@
                                     Status
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {{ $cow->cow_status_type }}
+                                    {{ $cow->status_type }}
                                 </p>
                             </div>
                         </div>
@@ -204,7 +204,7 @@
                                     Type
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {{ $cow->type ? $cow->type->cow_type_name : '' }}
+                                    {{ $cow->type ? $cow->type->type_name : '' }}
                                 </p>
                             </div>
                         </div>

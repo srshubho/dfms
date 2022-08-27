@@ -64,7 +64,7 @@
                         @foreach ($cowtypes as $cowtype)
                             <option value="{{ $cowtype->id }}" {{ old('shade_type') ? 'selected' : '' }}
                                 {{ $cowtype->id == $shade->shade_type ? 'selected' : '' }}>
-                                {{ $cowtype->cow_type_name }}
+                                {{ $cowtype->type_name }}
                             </option>
                         @endforeach
                     </select>

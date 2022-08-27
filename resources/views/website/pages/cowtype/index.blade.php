@@ -37,7 +37,7 @@
                             @forelse ($cowtypes as $cowtype)
                                 <tr class="text-gray-700 dark:text-gray-400">
                                     <td class="px-4 py-3">{{ $loop->index + 1 }}</td>
-                                    <td class="px-4 py-3">{{ $cowtype->cow_type_name }}</td>
+                                    <td class="px-4 py-3">{{ $cowtype->type_name }}</td>
                                     <td class="px-4 py-3">
                                         <div class="flex items-center space-x-4 text-sm">
                                             <a href="{{ route('cow-type.edit', $cowtype->id) }}">

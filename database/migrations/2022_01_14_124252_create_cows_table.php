@@ -17,28 +17,35 @@ class CreateCowsTable extends Migration
         Schema::create('cows', function (Blueprint $table) {
             $table->id();
             $table->string('cow_id')->unique();
-            $table->string('cow_name')->nullable();
-            $table->date('cow_date_of_purchased')->nullable();
-            $table->date('cow_date_of_production')->nullable();
-            $table->date('cow_date_of_birth')->nullable();
-            $table->boolean('cow_gender')->default(1);
-            $table->float('cow_estimated_live_weight', 8, 2)->nullable();
-            $table->float('cow_transaction_cost', 8, 2)->nullable();
-            $table->float('cow_labour_cost', 8, 2)->nullable();
-            $table->string('cow_status_type');
+            $table->string('name')->nullable();
+            $table->string('primary_image')->nullable();
+            $table->boolean('gender')->default(1);
+            $table->date('date_of_birth')->nullable();
+            $table->date('date_of_production')->nullable();
+            $table->float('estimated_live_weight', 8, 2)->nullable();
+            $table->float('estimated_price', 8, 2)->nullable();
+            $table->date('date_of_purchased')->nullable();
+            $table->float('purchased_price', 8, 2)->nullable();
+            $table->float('transition_cost', 8, 2)->nullable();
+            $table->float('labour_cost', 8, 2)->nullable();
             $table->boolean('is_purchased');
 
-            $table->unsignedBigInteger('cow_color_id')->nullable()->default(Null);
-            $table->foreign('cow_color_id')->references('id')->on('colors')->onDelete('cascade');
+            $table->unsignedBigInteger('breed_id')->nullable()->default(Null);
+            $table->foreign('breed_id')->references('id')->on('breeds')->onDelete('cascade');
 
-            $table->unsignedBigInteger('cow_supplier_id')->nullable();
-            $table->foreign('cow_supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
+            $table->string('status_type')->nullable();
 
-            $table->unsignedBigInteger('cow_type_id')->nullable();
-            $table->foreign('cow_type_id')->references('id')->on('cow_types')->onDelete('cascade');
+            $table->unsignedBigInteger('color_id')->nullable()->default(Null);
+            $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
 
-            $table->unsignedBigInteger('cow_shade_id')->nullable();
-            $table->foreign('cow_shade_id')->references('id')->on('shades')->onDelete('cascade');
+            $table->unsignedBigInteger('supplier_id')->nullable();
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
+
+            $table->unsignedBigInteger('type_id')->nullable();
+            $table->foreign('type_id')->references('id')->on('cow_types')->onDelete('cascade');
+
+            $table->unsignedBigInteger('shade_id')->nullable();
+            $table->foreign('shade_id')->references('id')->on('shades')->onDelete('cascade');
             $table->timestamps();
         });
     }
