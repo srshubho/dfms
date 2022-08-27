@@ -17,19 +17,21 @@ class CreateCalvesTable extends Migration
 
             $table->id();
             $table->string('calf_id')->unique();
-            $table->string('name')->nullable();
+            $table->string('name');
+            $table->string('primary_image')->nullable();
             $table->date('date_of_birth');
             $table->float('estimated_live_weight', 8, 2)->nullable();
             $table->boolean('gender')->default(1);
-
-            $table->unsignedBigInteger('parent_id')->nullable();
-            $table->foreign('parent_id')->references('id')->on('cows')->onDelete('cascade');
+            $table->boolean('breed_percentage');
 
             $table->unsignedBigInteger('color_id')->nullable();
             $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
 
             $table->unsignedBigInteger('shade_id')->nullable();
             $table->foreign('shade_id')->references('id')->on('shades')->onDelete('cascade');
+
+            $table->unsignedBigInteger('insemination_id')->nullable();
+            $table->foreign('insemination_id')->references('id')->on('inseminations')->onDelete('cascade');
 
             $table->timestamps();
         });

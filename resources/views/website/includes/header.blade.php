@@ -23,6 +23,52 @@
                     class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
                     type="text" placeholder="Search for projects" aria-label="Search" />
             </div> --}}
+
+            <ul class="flex items-center flex-shrink-0 space-x-6">
+                <!-- Profile menu -->
+                <li class="relative">
+                    <button class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none" @click="toggleShortcutMenu"
+                        @keydown.escape="closeShortcutMenu" aria-label="Account" aria-haspopup="true">
+                        <i class="fa-light fa-crate-empty text-2xl w-8 h-8 rounded-full"></i>
+                    </button>
+                    <template x-if="isShortcut">
+                        <ul x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
+                            x-transition:leave-end="opacity-0" @click.away="closeShortcutMenu" @keydown.escape="closeShortcutMenu"
+                            class="absolute left-0 w-48 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"
+                            aria-label="submenu">
+                            <li class="flex">
+                                <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                                    href="{{ route('color.create') }}">
+                                    <i class="fa-solid fa-plus w-4 h-4 mr-3"></i>
+                                    <span>Color</span>
+                                </a>
+                            </li>
+                            <li class="flex">
+                                <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                                    href="{{ route('breed.create') }}">
+                                    <i class="fa-solid fa-plus w-4 h-4 mr-3"></i>
+                                    <span>Breed</span>
+                                </a>
+                            </li>
+                            <li class="flex">
+                                <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                                    href="{{ route('cow-type.create') }}">
+                                    <i class="fa-solid fa-plus w-4 h-4 mr-3"></i>
+                                    <span>Cow Type</span>
+                                </a>
+                            </li>
+                            <li class="flex">
+                                <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                                    href="{{ route('shade.create') }}">
+                                    <i class="fa-solid fa-plus w-4 h-4 mr-3"></i>
+                                    <span>Shade</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </template>
+                </li>
+            </ul>
+
         </div>
 
         <ul class="flex items-center flex-shrink-0 space-x-6">

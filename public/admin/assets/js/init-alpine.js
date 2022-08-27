@@ -43,6 +43,13 @@ function data() {
         closeProfileMenu() {
             this.isProfileMenuOpen = false;
         },
+        isShortcut: false,
+        toggleShortcutMenu() {
+            this.isShortcut = !this.isShortcut;
+        },
+        closeShortcutmenu() {
+            this.isShortcut = isShortcut;
+        },
         isPagesMenuOpen: false,
         togglePagesMenu() {
             this.isPagesMenuOpen = !this.isPagesMenuOpen;

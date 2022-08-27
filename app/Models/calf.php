@@ -2,31 +2,48 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Color;
+use App\Models\Shade;
 use Illuminate\Support\Str;
+use App\Models\Insemination;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class calf extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'calf_name',
-        'calf_date_of_birth',
-        'calf_gender',
-        'calf_estimated_live_weight',
-        'calf_color_id',
-        'calf_parent_id',
-        'calf_shade_id',
+        'name',
+        'date_of_birth',
+        'gender',
+        'estimated_live_weight',
+        'color_id',
+        'shade_id',
     ];
 
 
-    protected static function boot(){
+    protected static function boot()
+    {
         parent::boot();
-        static::creating(function($model){
-            if(empty($model->calf_id)){
+        static::creating(function ($model) {
+            if (empty($model->calf_id)) {
                 $model->calf_id = Str::uuid();
             }
         });
     }
 
+    public function color()
+    {
+        return $this->belongsTo(Color::class, 'color_id');
+    }
+
+    public function insemination()
+    {
+        return $this->belongsTo(Insemination::class);
+    }
+
+    public function shade()
+    {
+        return $this->belongsTo(Shade::class, 'shade_id');
+    }
 }

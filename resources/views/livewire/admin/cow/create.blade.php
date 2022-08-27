@@ -6,7 +6,7 @@
         <span class="text-red-900 dark:text-red-500">*</span>
         <select wire:model="is_purchased" required
             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-            <option value="" selected>Choose Type</option>
+            <option value="" selected>Choose type</option>
             <option value="1"> In-House </option>
             <option value="2"> Purchased </option>
         </select>
@@ -21,7 +21,7 @@
         <span class="text-gray-700 dark:text-gray-400">Name</span>
         <input type="text" wire:model="name" id="name"
             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-            placeholder="Enter Cow name" />
+            placeholder="Enter cow name" />
         @error('name')
             <span class="text-xs text-red-600 dark:text-red-400">
                 {{ $message }}
@@ -83,7 +83,7 @@
             <span class="text-red-900 dark:text-red-500">*</span>
             <select wire:model="gender" required
                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                <option value="" selected>Choose Gender</option>
+                <option value="" selected>Choose gender</option>
                 <option value="1">Male</option>
                 <option value="2">Female</option>
             </select>
@@ -97,8 +97,19 @@
             <span class="text-gray-700 dark:text-gray-400">Estimated Live Weight</span>
             <input type="number" wire:model="estimated_live_weight" id="estimated_live_weight"
                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                placeholder="Enter Cow Estimated Live Weight" />
+                placeholder="Enter cow estimated live weight" />
             @error('estimated_live_weight')
+                <span class="text-xs text-red-600 dark:text-red-400">
+                    {{ $message }}
+                </span>
+            @enderror
+        </label>
+        <label class="block mt-4 text-sm">
+            <span class="text-gray-700 dark:text-gray-400">Breed percentage</span>
+            <input type="number" wire:model="breed_percentage" id="breed_percentage"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder="Enter cow estimated live weight" />
+            @error('breed_percentage')
                 <span class="text-xs text-red-600 dark:text-red-400">
                     {{ $message }}
                 </span>
@@ -123,25 +134,7 @@
                 </span>
             @enderror
         </label>
-        <label class="block mt-4 text-sm">
-            <span class="text-gray-700 dark:text-gray-400">
-                Cow Type
-            </span>
-            <select wire:model="type_id"
-                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                <option value="" selected>Choose Type</option>
-                @foreach ($cowTypes as $cowType)
-                    <option value="{{ $cowType->id }}">
-                        {{ $cowType->type_name }}
-                    </option>
-                @endforeach
-            </select>
-            @error('type_id')
-                <span class="text-xs text-red-600 dark:text-red-400">
-                    {{ $message }}
-                </span>
-            @enderror
-        </label>
+
         <label class="block mt-4 text-sm">
             <span class="text-gray-700 dark:text-gray-400">
                 Shade
@@ -185,10 +178,34 @@
             </label>
 
             <label class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Cow Purchased Price</span>
+                <input type="number" wire:model="purchased_price" id="purchased_price"
+                    class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                    placeholder="Enter cow purchased price" />
+                @error('purchased_price')
+                    <span class="text-xs text-red-600 dark:text-red-400">
+                        {{ $message }}
+                    </span>
+                @enderror
+            </label>
+
+            <label class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Cow Labour Cost</span>
+                <input type="number" wire:model="labour_cost" id="labour_cost"
+                    class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                    placeholder="Enter Cow Labour Cost" />
+                @error('labour_cost')
+                    <span class="text-xs text-red-600 dark:text-red-400">
+                        {{ $message }}
+                    </span>
+                @enderror
+            </label>
+
+            <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Cow Transaction Cost</span>
                 <input type="number" wire:model="transition_cost" id="transition_cost"
                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                    placeholder="Enter Cow Transaction Cost" />
+                    placeholder="Enter cow transaction cost" />
                 @error('transition_cost')
                     <span class="text-xs text-red-600 dark:text-red-400">
                         {{ $message }}
@@ -209,18 +226,6 @@
                     @endforeach
                 </select>
                 @error('supplier_id')
-                    <span class="text-xs text-red-600 dark:text-red-400">
-                        {{ $message }}
-                    </span>
-                @enderror
-            </label>
-
-            <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Cow Labour Cost</span>
-                <input type="number" wire:model="labour_cost" id="labour_cost"
-                    class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                    placeholder="Enter Cow Labour Cost" />
-                @error('labour_cost')
                     <span class="text-xs text-red-600 dark:text-red-400">
                         {{ $message }}
                     </span>

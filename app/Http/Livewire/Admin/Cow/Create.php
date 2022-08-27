@@ -23,6 +23,7 @@ class Create extends Component
         $estimated_live_weight,
         $transition_cost,
         $labour_cost,
+        $purchased_price,
         $color_id,
         $supplier_id,
         $type_id,
@@ -77,16 +78,16 @@ class Create extends Component
         $cow->date_of_birth = $data['date_of_birth'];
         $cow->gender = $data['gender'];
         $cow->estimated_live_weight = $data['estimated_live_weight'];
+        $cow->breed_percentage = $data['breed_percentage'];
         $cow->transition_cost = $data['transition_cost'];
         $cow->labour_cost = $data['labour_cost'];
         $cow->color_id = $data['color_id'];
         $cow->supplier_id = $data['supplier_id'];
-        $cow->type_id = $data['type_id'];
         $cow->shade_id = $data['shade_id'];
         $cow->is_purchased = $data['is_purchased'];
 
         $cow->save();
-        
+
         if ($this->images) {
             // dd($cow->id);
             foreach ($this->images as $key => $image) {

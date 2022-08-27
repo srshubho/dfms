@@ -24,6 +24,7 @@ class CreateCowsTable extends Migration
             $table->date('date_of_production')->nullable();
             $table->float('estimated_live_weight', 8, 2)->nullable();
             $table->float('estimated_price', 8, 2)->nullable();
+            $table->float('breed_percentage')->nullable();
             $table->date('date_of_purchased')->nullable();
             $table->float('purchased_price', 8, 2)->nullable();
             $table->float('transition_cost', 8, 2)->nullable();
@@ -40,9 +41,6 @@ class CreateCowsTable extends Migration
 
             $table->unsignedBigInteger('supplier_id')->nullable();
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
-
-            $table->unsignedBigInteger('type_id')->nullable();
-            $table->foreign('type_id')->references('id')->on('cow_types')->onDelete('cascade');
 
             $table->unsignedBigInteger('shade_id')->nullable();
             $table->foreign('shade_id')->references('id')->on('shades')->onDelete('cascade');

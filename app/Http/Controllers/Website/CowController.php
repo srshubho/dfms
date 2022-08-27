@@ -34,9 +34,8 @@ class CowController extends Controller
     {
         $colors = Color::all();
         $suppliers = Supplier::all();
-        $cowTypes = CowType::all();
         $shades = Shade::all();
-        return view('website.pages.cow.create', compact('colors', 'suppliers', 'cowTypes', 'shades'));
+        return view('website.pages.cow.create', compact('colors', 'suppliers', 'shades'));
     }
 
     /**
@@ -74,9 +73,8 @@ class CowController extends Controller
     {
         $colors = Color::all();
         $suppliers = Supplier::all();
-        $cowTypes = CowType::all();
         $shades = Shade::all();
-        return view('website.pages.cow.edit', compact('cow', 'colors', 'suppliers', 'cowTypes', 'shades'));
+        return view('website.pages.cow.edit', compact('cow', 'colors', 'suppliers', 'shades'));
     }
 
     /**

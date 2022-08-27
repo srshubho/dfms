@@ -16,9 +16,10 @@ class CalfFactory extends Factory
     public function definition()
     {
         return [
-            'calf_name' => $this->faker->randomElement($this->names),
-            'calf_date_of_birth' => $this->faker->date(),
-            'calf_estimated_live_weight' => rand(50, 100),
+            'name' => $this->faker->randomElement($this->names),
+            'date_of_birth' => $this->faker->date(),
+            'estimated_live_weight' => rand(50, 100),
+            'breed_percentage' => rand(50, 100),
         ];
     }
 }
