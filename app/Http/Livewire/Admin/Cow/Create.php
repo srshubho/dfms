@@ -93,7 +93,7 @@ class Create extends Component
                 $imageUrl = $image->store('public/cow/gallery');
 
                 $cowImage = new CowImage();
-                $cowImage->id = $cow->id;
+                $cowImage->cow_id = $cow->id;
                 $cowImage->image =  Storage::url($imageUrl);
                 $save = $cowImage->save();
             }
