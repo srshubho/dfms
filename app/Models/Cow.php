@@ -34,8 +34,8 @@ class Cow extends Model
     {
         parent::boot();
         static::creating(function ($model) {
-            if (empty($model->id)) {
-                $model->id = Str::uuid();
+            if (empty($model->cow_id)) {
+                $model->cow_id = Str::uuid();
             }
         });
     }
