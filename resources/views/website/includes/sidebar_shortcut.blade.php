@@ -100,6 +100,17 @@
                 ])
             </li>
             <li class="relative px-6 py-3">
+                @include('website.includes.active_sidebar', [
+                    'links' => ['insemination', 'insemination/create', 'insemination/*/edit', 'insemination/*'],
+                ])
+                @include('website.includes.individual_sidebar', [
+                    'links' => ['insemination', 'insemination/create', 'insemination/*/edit', 'insemination/*'],
+                    'name' => 'Insemination',
+                    'route' => 'insemination.index',
+                    'icon' => '<i class="fa-thin fa-cow"></i>',
+                ])
+            </li>
+            <li class="relative px-6 py-3">
                 @include('website.includes.active_sidebar', ['links' => ['calf', 'calf/create', 'calf/*/edit', 'calf/*']])
                 @include('website.includes.individual_sidebar', [
                     'links' => ['calf', 'calf/create', 'calf/*/edit', 'calf/*'],

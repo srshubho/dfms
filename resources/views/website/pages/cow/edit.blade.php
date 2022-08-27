@@ -85,7 +85,7 @@
                         </span>
                         <select name="cow_gender" required
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                            <option value="" disabled selected>Choose Gender</option>
+                            <option value="" selected>Choose Gender</option>
                             <option value="1" {{ old('cow_gender') ? 'selected' : '' }} {{ $cow->cow_gender == 1 ? 'selected' : '' }}>
                                 Male
                             </option>
@@ -158,7 +158,7 @@
                         </span>
                         <select name="cow_color_id"
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                            <option value="" disabled selected>Choose color</option>
+                            <option value="" selected>Choose color</option>
                             @foreach ($colors as $color)
                                 <option value="{{ $color->id }}" {{ old('cow_color_id') ? 'selected' : '' }}
                                     {{ $color->id == $cow->cow_color_id ? 'selected' : '' }}>
@@ -179,7 +179,7 @@
                         </span>
                         <select name="cow_supplier_id"
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                            <option value="" disabled selected>Choose Supplier</option>
+                            <option value="" selected>Choose Supplier</option>
                             @foreach ($suppliers as $supplier)
                                 <option value="{{ $supplier->id }}" {{ old('cow_supplier_id') ? 'selected' : '' }}
                                     {{ $supplier->id == $cow->cow_supplier_id ? 'selected' : '' }}>
@@ -200,7 +200,7 @@
                         </span>
                         <select name="cow_type_id"
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                            <option value="" disabled selected>Choose Type</option>
+                            <option value="" selected>Choose Type</option>
                             @foreach ($cowTypes as $cowType)
                                 <option value="{{ $cowType->id }}" {{ old('cow_type_id') ? 'selected' : '' }}
                                     {{ $cowType->id == $cow->cow_type_id ? 'selected' : '' }}>
@@ -221,7 +221,7 @@
                         </span>
                         <select name="cow_shade_id"
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                            <option value="" disabled selected>Choose shade</option>
+                            <option value="" selected>Choose shade</option>
                             @foreach ($shades as $shade)
                                 <option value="{{ $shade->id }}" {{ old('cow_shade_id') ? 'selected' : '' }}
                                     {{ $shade->id == $cow->cow_shade_id ? 'selected' : '' }}>
@@ -241,7 +241,7 @@
                         <span class="text-red-500 dark:text-red-100">*</span>
                         <select name="is_purchased" required
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                            <option value="" disabled selected>Choose shade</option>
+                            <option value="" selected>Choose shade</option>
                             <option value="1" {{ old('is_purchased') ? 'selected' : '' }} {{ $cow->is_purchased == 1 ? 'selected' : '' }}>
                                 In-House
                             </option>

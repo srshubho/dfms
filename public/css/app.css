@@ -1038,17 +1038,20 @@ select {
 .w-auto {
   width: auto;
 }
+.w-52 {
+  width: 13rem;
+}
 .w-32 {
   width: 8rem;
 }
 .w-3 {
   width: 0.75rem;
 }
-.w-28 {
-  width: 7rem;
+.w-36 {
+  width: 9rem;
 }
-.w-52 {
-  width: 13rem;
+.w-24 {
+  width: 6rem;
 }
 .min-w-0 {
   min-width: 0px;
@@ -1353,16 +1356,16 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(104 117 245 / var(--tw-bg-opacity));
 }
+.bg-gray-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(36 38 45 / var(--tw-bg-opacity));
+}
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
-}
-.object-center {
-  -o-object-position: center;
-     object-position: center;
 }
 .p-4 {
   padding: 1rem;

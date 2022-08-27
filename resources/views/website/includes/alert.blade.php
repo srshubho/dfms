@@ -40,9 +40,7 @@
                 </svg>
                 <span class="sr-only">Info</span>
                 <div class="ml-3 text-sm font-medium text-red-700 dark:text-red-800">
-                    A simple info alert with an <a href="#" class="font-semibold underline hover:text-red-800 dark:hover:text-red-900">example
-                        link</a>.
-                    Give it a click if you like.
+                    {{ Session::get('message') }}
                 </div>
                 <button type="button"
                     class="ml-auto -mx-1.5 -my-1.5 bg-red-100 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex h-8 w-8 dark:bg-red-200 dark:text-red-600 dark:hover:bg-red-300"
@@ -70,9 +68,7 @@
                 </svg>
                 <span class="sr-only">Info</span>
                 <div class="ml-3 text-sm font-medium text-yellow-700 dark:text-yellow-800">
-                    A simple info alert with an <a href="#"
-                        class="font-semibold underline hover:text-yellow-800 dark:hover:text-yellow-900">example
-                        link</a>. Give it a click if you like.
+                    {{ Session::get('message') }}
                 </div>
                 <button type="button"
                     class="ml-auto -mx-1.5 -my-1.5 bg-yellow-100 text-yellow-500 rounded-lg focus:ring-2 focus:ring-yellow-400 p-1.5 hover:bg-yellow-200 inline-flex h-8 w-8 dark:bg-yellow-200 dark:text-yellow-600 dark:hover:bg-yellow-300"

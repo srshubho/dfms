@@ -12,6 +12,7 @@ use App\Http\Controllers\Website\ShadeController;
 use App\Http\Controllers\Website\CowTypeCntroller;
 use App\Http\Controllers\Website\SettingsController;
 use App\Http\Controllers\Website\SupplierController;
+use App\Http\Controllers\Website\InseminationController;
 use App\Http\Controllers\Admin\AssignCowToStaffController;
 
 Route::group(['middleware' => ['auth']], function () {
@@ -34,6 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('bull', BullController::class);
         Route::resource('calf', CalfController::class);
         Route::resource('cow', CowController::class);
+        Route::resource('insemination', InseminationController::class);
         Route::resource('assign-cow-to-staff', AssignCowToStaffController::class);
     });
 

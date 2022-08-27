@@ -49,7 +49,7 @@
                     <span class="text-red-900 dark:text-red-500">*</span>
                     <select name="breed_id"
                         class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                        <option value="" disabled selected>Choose breed</option>
+                        <option value=""  selected>Choose breed</option>
                         @foreach ($breeds as $breed)
                             <option value="{{ $breed->id }}" {{ old('breed_id') ? 'selected' : '' }}
                                 {{ $bull->breed_id == $breed->id ? 'selected' : '' }}>

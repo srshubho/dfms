@@ -6,17 +6,17 @@
 @section('content')
     <div class="container grid px-6 mx-auto">
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Cows
+            Inseminations
         </h2>
 
         <!-- With actions -->
         <div class="flex items-center justify-between ">
             <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-                Cows List
+                Inseminations List
             </h4>
 
             <a class="p-2 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-                href="{{ route('cow.create') }}">
+                href="{{ route('insemination.create') }}">
                 <span>Create &RightArrow;</span>
             </a>
         </div>
@@ -29,45 +29,24 @@
                             <tr
                                 class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                                 <th class="px-4 py-3">#</th>
-                                {{-- <th class="px-4 py-3">Cow ID</th> --}}
-                                <th class="px-4 py-3">Name</th>
-                                <th class="px-4 py-3">Image</th>
-                                <th class="px-4 py-3">Supplier</th>
-                                <th class="px-4 py-3">Purchased / In-house</th>
+                                <th class="px-4 py-3">Insemination Id</th>
+                                <th class="px-4 py-3">Cow</th>
+                                <th class="px-4 py-3">Bull</th>
+                                <th class="px-4 py-3">Insemination Date</th>
                                 <th class="px-4 py-3">Action</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                            @forelse ($cows as $cow)
+                            @forelse ($inseminations as $insemination)
                                 <tr class="text-gray-700 dark:text-gray-400">
                                     <td class="px-4 py-3">{{ $loop->index + 1 }}</td>
-                                    {{-- <td class="px-4 py-3">{{ $cow->cow_id }}</td> --}}
-                                    <td class="px-4 py-3">{{ $cow->name }}</td>
-                                    <td class="px-4 py-3">
-                                        @if ($cow->primary_image)
-                                            <img src="{{ $cow->primary_image }}" alt=""
-                                                class="w-24 bg-white rounded-lg shadow-xs dark:bg-gray-700">
-                                        @else
-                                            <p class="text-xs">No image</p>
-                                        @endif
-                                    </td>
-                                    <td class="px-4 py-3">{{ $cow->supplier ? $cow->supplier->supplier_name : '' }}</td>
-                                    <td class="px-4 py-3">
-                                        @if ($cow->is_purchased == 1)
-                                            <span
-                                                class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600">
-                                                In-House
-                                            </span>
-                                        @else
-                                            <span
-                                                class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                                                Purchased
-                                            </span>
-                                        @endif
-                                    </td>
+                                    <td class="px-4 py-3">{{ $insemination->insemination_id }}</td>
+                                    <td class="px-4 py-3">{{ $insemination->cow->name }}</td>
+                                    <td class="px-4 py-3">{{ $insemination->bull->name }}</td>
+                                    <td class="px-4 py-3">{{ $insemination->insemination_date }}</td>
                                     <td class="px-4 py-3">
                                         <div class="flex items-center space-x-4 text-sm">
-                                            <a href="{{ route('cow.edit', $cow->id) }}">
+                                            <a href="{{ route('insemination.edit', $insemination->id) }}">
                                                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                                     style="color: rgb(95, 69, 224)">
                                                     <path
@@ -75,13 +54,10 @@
                                                     </path>
                                                 </svg>
                                             </a>
-                                            <a href="{{ route('cow.show', $cow->id) }}">
-                                                <i class="fa-solid fa-eye" style="color: rgb(78, 180, 221)"></i>
-                                            </a>
                                             <button
                                                 class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray deleteButton"
-                                                aria-label="Delete" id="deleteButton{{ $cow->id }}" data-id="{{ $cow->id }}"
-                                                onclick="dataDelete({{ $cow->id }})" @click="openModal">
+                                                aria-label="Delete" id="deleteButton{{ $insemination->id }}" data-id="{{ $insemination->id }}"
+                                                onclick="dataDelete({{ $insemination->id }})" @click="openModal">
                                                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                                     style="color: rgb(230, 82, 82)">
                                                     <path fill-rule="evenodd"
@@ -94,8 +70,8 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr colspan="6">
-                                    <p class="text-center text-white-100 dark:text-gray-400"> No cows found </p>
+                                <tr colspan="4">
+                                    <p class="text-center text-white-100 dark:text-gray-400"> No shades found </p>
                                 </tr>
                             @endforelse
 
@@ -105,11 +81,9 @@
                         </tbody>
                     </table>
 
-                    {{ $cows->onEachSide(5)->links() }}
-
+                    {{ $inseminations->onEachSide(5)->links() }}
                 </div>
             </div>
-
         </div>
     </div>
 @endsection
@@ -119,7 +93,7 @@
     <script>
         function dataDelete(id) {
             var data_id = $("#deleteButton" + id).data('value');
-            let route = "{{ route('cow.destroy', ['cow' => ':id']) }}";
+            let route = "{{ route('insemination.destroy', ['insemination' => ':id']) }}";
             route = route.replace(":id", id);
 
             $("#route").attr("action", route)

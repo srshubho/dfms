@@ -17,19 +17,19 @@ class CreateCalvesTable extends Migration
 
             $table->id();
             $table->string('calf_id')->unique();
-            $table->string('calf_name')->nullable();
-            $table->date('calf_date_of_birth');
-            $table->float('calf_estimated_live_weight', 8, 2)->nullable();
-            $table->boolean('calf_gender')->default(1);
+            $table->string('name')->nullable();
+            $table->date('date_of_birth');
+            $table->float('estimated_live_weight', 8, 2)->nullable();
+            $table->boolean('gender')->default(1);
 
-            $table->unsignedBigInteger('calf_parent_id')->nullable();
-            $table->foreign('calf_parent_id')->references('id')->on('cows')->onDelete('cascade');
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->foreign('parent_id')->references('id')->on('cows')->onDelete('cascade');
 
-            $table->unsignedBigInteger('calf_color_id')->nullable();
-            $table->foreign('calf_color_id')->references('id')->on('colors')->onDelete('cascade');
+            $table->unsignedBigInteger('color_id')->nullable();
+            $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
 
-            $table->unsignedBigInteger('calf_shade_id')->nullable();
-            $table->foreign('calf_shade_id')->references('id')->on('shades')->onDelete('cascade');
+            $table->unsignedBigInteger('shade_id')->nullable();
+            $table->foreign('shade_id')->references('id')->on('shades')->onDelete('cascade');
 
             $table->timestamps();
         });
