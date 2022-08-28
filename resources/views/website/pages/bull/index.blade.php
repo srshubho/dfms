@@ -69,7 +69,7 @@
                                 </tr>
                             @empty
                                 <tr colspan="4">
-                                    <p class="text-center text-white-100 dark:text-gray-400"> No shades found </p>
+                                    <p class="text-center text-white-100 dark:text-gray-400"> No bulls found </p>
                                 </tr>
                             @endforelse
 

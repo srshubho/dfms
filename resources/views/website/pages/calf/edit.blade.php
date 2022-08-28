@@ -145,11 +145,11 @@
                         </span>
                         <select name="insemination_id"
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                            <option value="" selected>Choose iznsemination</option>
+                            <option value="" selected>Choose insemination</option>
                             @foreach ($inseminations as $insemination)
                                 <option value="{{ $insemination->id }}" {{ old('insemination_id') ? 'selected' : '' }}
                                     {{ $calf->insemination_id == $insemination->id ? 'selected' : '' }}>
-                                    Mother: {{ $insemination->cow->name }}
+                                    {{ $insemination->insemination_id }}
                                 </option>
                             @endforeach
                         </select>
@@ -179,7 +179,7 @@
                     <div></div>
                     <button
                         class="mt-6 flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                        <span>Create</span>
+                        <span>Update</span>
                     </button>
                 </div>
             </form>

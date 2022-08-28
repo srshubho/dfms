@@ -83,7 +83,7 @@
                                 </tr>
                             @empty
                                 <tr colspan="6">
-                                    <p class="text-center text-white-100 dark:text-gray-400"> No cows found </p>
+                                    <p class="text-center text-white-100 dark:text-gray-400"> No calves found </p>
                                 </tr>
                             @endforelse
 
