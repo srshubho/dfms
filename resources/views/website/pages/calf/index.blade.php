@@ -47,7 +47,7 @@
                                             <img src="{{ $calf->primary_image }}" alt=""
                                                 class="w-24 bg-white rounded-lg shadow-xs dark:bg-gray-700">
                                         @else
-                                            <p class="text-xs">No image</p>
+                                            <p class="text-xs select-none">No image</p>
                                         @endif
                                     </td>
                                     <td class="px-4 py-3">{{ $calf->date_of_birth }}</td>
@@ -55,7 +55,7 @@
                                     <td class="px-4 py-3">{{ $calf->gender }}</td>
                                     <td class="px-4 py-3">
                                         <div class="flex items-center space-x-4 text-sm">
-                                            <a href="{{ route('cow.edit', $calf->id) }}">
+                                            <a href="{{ route('calf.edit', $calf->id) }}">
                                                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                                     style="color: rgb(95, 69, 224)">
                                                     <path
@@ -63,7 +63,7 @@
                                                     </path>
                                                 </svg>
                                             </a>
-                                            <a href="{{ route('cow.show', $calf->id) }}">
+                                            <a href="{{ route('calf.show', $calf->id) }}">
                                                 <i class="fa-solid fa-eye" style="color: rgb(78, 180, 221)"></i>
                                             </a>
                                             <button
@@ -107,7 +107,7 @@
     <script>
         function dataDelete(id) {
             var data_id = $("#deleteButton" + id).data('value');
-            let route = "{{ route('cow.destroy', ['cow' => ':id']) }}";
+            let route = "{{ route('calf.destroy', ['calf' => ':id']) }}";
             route = route.replace(":id", id);
 
             $("#route").attr("action", route)

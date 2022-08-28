@@ -48,7 +48,7 @@
                                             <img src="{{ $cow->primary_image }}" alt=""
                                                 class="w-24 bg-white rounded-lg shadow-xs dark:bg-gray-700">
                                         @else
-                                            <p class="text-xs">No image</p>
+                                            <p class="text-xs select-none">No image</p>
                                         @endif
                                     </td>
                                     <td class="px-4 py-3">{{ $cow->supplier ? $cow->supplier->supplier_name : '' }}</td>

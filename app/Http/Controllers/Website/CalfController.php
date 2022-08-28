@@ -74,7 +74,8 @@ Controller
     {
         $colors = Color::all();
         $shades = Shade::all();
-        return view('website.pages.calf.edit', compact('calf', 'colors', 'shades'));
+        $inseminations = Insemination::all();
+        return view('website.pages.calf.edit', compact('calf', 'colors', 'shades', 'inseminations'));
     }
 
     /**
