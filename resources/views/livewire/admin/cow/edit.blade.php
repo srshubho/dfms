@@ -41,11 +41,15 @@
                 </span>
             @enderror
         </label>
-        <img src="http://via.placeholder.com/100" alt="" class="w-52" id="preview-image" wire:ignore.self>
+        @if ($prev_image)
+            <img src="{{ $prev_image }}" alt="" class="w-52" id="preview-image" wire:ignore.self>
+        @else
+            <img src="http://via.placeholder.com/100" alt="" class="w-52" id="preview-image" wire:ignore.self>
+        @endif
     </div>
 
     <label class="block mt-4 text-sm">
-        <span class="text-gray-700 dark:text-gray-400">gallery</span>
+        <span class="text-gray-700 dark:text-gray-400">Gallery</span>
         <input type="file" wire:model="images" id="images"
             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
             placeholder="Select multiple images for this cow" multiple />
@@ -54,6 +58,9 @@
                 {{ $message }}
             </span>
         @enderror
+        <span class="text-xs text-gray-600 dark:text-gray-400">
+            Add more image to gallery.
+        </span>
     </label>
 
 
@@ -108,7 +115,7 @@
             <span class="text-gray-700 dark:text-gray-400">Breed percentage</span>
             <input type="number" wire:model="breed_percentage" id="breed_percentage"
                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                placeholder="Enter breed percentage" />
+                placeholder="Enter cow estimated live weight" />
             @error('breed_percentage')
                 <span class="text-xs text-red-600 dark:text-red-400">
                     {{ $message }}
@@ -239,7 +246,7 @@
         <div></div>
         <button
             class="mt-6 flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-            <span>Create</span>
+            <span>Update</span>
         </button>
     </div>
 </form>

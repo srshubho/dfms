@@ -28,11 +28,10 @@ class Create extends Component
         $supplier_id,
         $type_id,
         $shade_id,
+        $breed_percentage,
         $is_purchased;
 
-    public $disabled = true,
-        $show = true,
-        $purchased = 0;
+    public $purchased = 0;
 
     protected $rules = [
         'name' => 'nullable|string',
@@ -43,6 +42,7 @@ class Create extends Component
         'date_of_birth' => 'nullable|date',
         'gender' => 'required|',
         'estimated_live_weight' => 'nullable|integer',
+        'breed_percentage' => 'nullable|integer',
         'transition_cost' => 'nullable|numeric',
         'labour_cost' => 'nullable|',
         'color_id' => 'nullable|string',

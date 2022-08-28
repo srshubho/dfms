@@ -44,7 +44,7 @@
                             </span>
                         @enderror
                     </label>
-                    <img src="http://via.placeholder.com/100" alt="" class="w-52" id="preview-image">
+                    <img src="http://via.placeholder.com/400" alt="" class="w-48" id="preview-image">
                 </div>
 
                 <!-- Cards -->
@@ -97,7 +97,7 @@
                         </span>
                         <select name="color_id"
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                            <option value="" disabled selected>Choose color</option>
+                            <option value="" selected>Choose color</option>
                             @foreach ($colors as $color)
                                 <option value="{{ $color->id }}" {{ old('color_id') ? 'selected' : '' }}>
                                     {{ $color->color_name }}
@@ -117,7 +117,7 @@
                         </span>
                         <select name="shade_id"
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                            <option value="" disabled selected>Choose shade</option>
+                            <option value="" selected>Choose shade</option>
                             @foreach ($shades as $shade)
                                 <option value="{{ $shade->id }}" {{ old('shade_id') ? 'selected' : '' }}>
                                     {{ $shade->shade_no }}
@@ -137,7 +137,7 @@
                         </span>
                         <select name="insemination_id"
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                            <option value="" disabled selected>Choose shade</option>
+                            <option value="" selected>Choose iznsemination</option>
                             @foreach ($inseminations as $insemination)
                                 <option value="{{ $insemination->id }}" {{ old('insemination_id') ? 'selected' : '' }}>
                                     Mother: {{ $insemination->cow->name }}
