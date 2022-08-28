@@ -18,24 +18,56 @@ class ShadeSeeder extends Seeder
     public function run()
     {
         //
-        Shade::unguard();
+ 
+        $shades = [
+            [
+                'shade_no' => '01',
+                'shade_area' => 1500,
+                'shade_capacity' =>10 ,
+                 
 
-		//disable foreign key check for this connection before running seeders
-		DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        Shade::truncate();
-  
-        // $json = Storage::disk('local')->get('/data/shade.json');
-        $json = file_get_contents('storage/app/data/shade.json');
-        $contents = utf8_encode($json);
-        $shades = json_decode($contents,true);
+            ],
+            [
+                'shade_no' => '02',
+                'shade_area' => 1200,
+                'shade_capacity' => 15,
+                 
+
+            ],
+            [
+                'shade_no' => '03',
+                'shade_area' => 1500,
+                'shade_capacity' => 10,
+                 
+
+            ],
+            [
+                'shade_no' => '04',
+                'shade_area' => 1500,
+                'shade_capacity' => 10,
+                 
+
+            ],
+            [
+                'shade_no' => '05',
+                'shade_area' => 1200,
+                'shade_capacity' => 15,
+                 
+
+            ],
+            [
+                'shade_no' => '06',
+                'shade_area' => 1500,
+                'shade_capacity' => 10,
+                 
+
+
+
+            ],
+        ];
   
         foreach ($shades as $shade) {
-            Shade::query()->updateOrCreate([
-                'shade_no' => $shade['shade_no'],
-                'shade_area' => $shade['shade_area'],
-                'shade_capacity' => $shade['shade_capacity'],
-                'shade_type' => $shade['shade_type'],
-            ]);
+            Shade::create($shade);
         }
     }
 

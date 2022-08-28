@@ -17,7 +17,7 @@ class CreateBullsTable extends Migration
             $table->id();
             $table->string('name');
 
-            $table->unsignedBigInteger('breed_id');
+            $table->unsignedBigInteger('breed_id')->nullable();
             $table->foreign('breed_id')->references('id')->on('breeds')->onDelete('cascade');
 
             $table->float('breed_percentage')->nullable();

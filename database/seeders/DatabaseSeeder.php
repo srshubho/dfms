@@ -26,6 +26,10 @@ class DatabaseSeeder extends Seeder
             SupplierSeeder::class,
             CowSeeder::class,
             CalfSeeder::class,
+            BreedSeeder::class,
+            CowTypeSeeder::class,
+            ShadeSeeder::class,
+            BullSeeder::class,
         ]);
     }
 }
