@@ -40,7 +40,7 @@
                                 <tr class="text-gray-700 dark:text-gray-400">
                                     <td class="px-4 py-3">{{ $loop->index + 1 }}</td>
                                     <td class="px-4 py-3">{{ $bull->name }}</td>
-                                    <td class="px-4 py-3">{{ $bull->breed->breed_name }}</td>
+                                    <td class="px-4 py-3">{{  $bull->breed->breed_name ?? " "}}</td>
                                     <td class="px-4 py-3">{{ $bull->breed_percentage }}</td>
                                     <td class="px-4 py-3">
                                         <div class="flex items-center space-x-4 text-sm">

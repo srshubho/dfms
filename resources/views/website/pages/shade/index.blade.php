@@ -43,7 +43,7 @@
                                     <td class="px-4 py-3">{{ $shade->shade_no }}</td>
                                     <td class="px-4 py-3">{{ $shade->shade_area }}</td>
                                     <td class="px-4 py-3">{{ $shade->shade_capacity }}</td>
-                                    <td class="px-4 py-3">{{ $shade->cowtype->type_name }}</td>
+                                    <td class="px-4 py-3">{{ $shade->cowtype->type_name ?? " " }}</td>
                                     <td class="px-4 py-3">
                                         <div class="flex items-center space-x-4 text-sm">
                                             <a href="{{ route('shade.edit', $shade->id) }}">
