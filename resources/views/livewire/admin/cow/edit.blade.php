@@ -143,24 +143,27 @@
         </label>
 
         <label class="block mt-4 text-sm">
-            <span class="text-gray-700 dark:text-gray-400">
-                Shade
-            </span>
-            <select wire:model="shade_id"
-                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                <option value="" selected>Choose shade</option>
-                @foreach ($shades as $shade)
-                    <option value="{{ $shade->id }}">
-                        {{ $shade->shade_no }}
-                    </option>
-                @endforeach
-            </select>
-            @error('shade_id')
-                <span class="text-xs text-red-600 dark:text-red-400">
-                    {{ $message }}
-                </span>
-            @enderror
-        </label>
+                        <span class="text-gray-700 dark:text-gray-400">
+                            Shade
+                        </span>
+                        <select name="shade_id"
+                            class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                            <option value="" selected>Choose shade</option>
+                            @foreach ($shades as $shade)
+                                @if( $shade->shade_type && $shade->cowtype->type_name == "cow"  )
+                                    <option value="{{ $shade->id }}" {{ old('shade_id') ? 'selected' : '' }}
+                                        {{ $cow->shade_id == $shade->id ? 'selected' : '' }}>
+                                        {{ $shade->shade_no }}
+                                    </option>
+                                @endif
+                            @endforeach
+                        </select>
+                        @error('shade_id')
+                            <span class="text-xs text-red-600 dark:text-red-400">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </label>
     </div>
 
     <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">

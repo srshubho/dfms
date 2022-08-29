@@ -104,7 +104,7 @@
                         <select name="color_id"
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                             <option value="" selected>Choose color</option>
-                            @foreach ($colors as $color)
+                            @foreach ($colors as $color) 
                                 <option value="{{ $color->id }}" {{ old('color_id') ? 'selected' : '' }}
                                     {{ $calf->color_id == $color->id ? 'selected' : '' }}>
                                     {{ $color->color_name }}
@@ -126,10 +126,12 @@
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                             <option value="" selected>Choose shade</option>
                             @foreach ($shades as $shade)
-                                <option value="{{ $shade->id }}" {{ old('shade_id') ? 'selected' : '' }}
-                                    {{ $calf->shade_id == $shade->id ? 'selected' : '' }}>
-                                    {{ $shade->shade_no }}
-                                </option>
+                                @if( $shade->shade_type && $shade->cowtype->type_name == "calf"  )
+                                    <option value="{{ $shade->id }}" {{ old('shade_id') ? 'selected' : '' }}
+                                        {{ $calf->shade_id == $shade->id ? 'selected' : '' }}>
+                                        {{ $shade->shade_no }}
+                                    </option>
+                                @endif
                             @endforeach
                         </select>
                         @error('shade_id')

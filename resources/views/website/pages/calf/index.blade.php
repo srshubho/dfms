@@ -52,7 +52,7 @@
                                     </td>
                                     <td class="px-4 py-3">{{ $calf->date_of_birth }}</td>
                                     <td class="px-4 py-3">{{ $calf->estimated_live_weight }}</td>
-                                    <td class="px-4 py-3">{{ $calf->gender }}</td>
+                                    <td class="px-4 py-3">{{ $calf->gender ? "female" : "male" }}</td>
                                     <td class="px-4 py-3">
                                         <div class="flex items-center space-x-4 text-sm">
                                             <a href="{{ route('calf.edit', $calf->id) }}">

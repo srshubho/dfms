@@ -23,6 +23,7 @@ class CreateCalvesTable extends Migration
             $table->float('estimated_live_weight', 8, 2)->nullable();
             $table->boolean('gender')->default(1);
             $table->boolean('breed_percentage');
+            $table->string('status_type')->nullable();
 
             $table->unsignedBigInteger('color_id')->nullable();
             $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
