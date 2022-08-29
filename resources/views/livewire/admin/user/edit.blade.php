@@ -47,7 +47,8 @@
             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
             <option value="" selected>User Type</option>
             <option value="1"> Admin </option>
-            <option value="2"> Staff </option>
+            <option value="2"> Manager </option>
+            <option value="3"> Staff </option>
         </select>
         @error('user_type')
             <span class="text-xs text-red-600 dark:text-red-400">

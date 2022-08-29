@@ -47,6 +47,11 @@
                                                 class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600">
                                                 Admin
                                             </span>
+                                        @elseif ($user->user_type == 2)
+                                            <span
+                                                class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full dark:bg-yellow-700 dark:text-green-100">
+                                                Manager
+                                            </span>
                                         @else
                                             <span
                                                 class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
@@ -99,7 +104,6 @@
 @endsection
 
 @push('scripts')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function dataDelete(id) {
             var data_id = $("#deleteButton" + id).data('value');

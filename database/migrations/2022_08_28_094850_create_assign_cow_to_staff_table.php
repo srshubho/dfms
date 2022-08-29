@@ -16,9 +16,6 @@ return new class extends Migration
         Schema::create('assign_cow_to_staff', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('cow_id')->nullable();
-            $table->foreign('cow_id')->references('id')->on('cows')->onDelete('cascade');
-
             $table->unsignedBigInteger('staff_id');
             $table->foreign('staff_id')->references('id')->on('users')->onDelete('cascade');
 
