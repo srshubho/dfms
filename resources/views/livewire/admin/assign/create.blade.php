@@ -23,6 +23,7 @@
     <label class="block mt-4 text-sm">
         <span class="text-gray-700 dark:text-gray-400"> Cow </span>
         <span class="text-red-900 dark:text-red-500">*</span>
+        <p class="text-xs text-gray-700 dark:text-gray-400"> To select multiple: ctrl + left mouse </p>
         <select wire:model="cow" multiple
             class="block w-full h-52 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
             <option value="" selected>Choose cow</option>

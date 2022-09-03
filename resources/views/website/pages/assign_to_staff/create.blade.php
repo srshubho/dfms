@@ -18,33 +18,8 @@
         <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
             {{-- <livewire:admin.assign.create /> --}}
             @livewire('admin.assign.create', [
-                'users' => $users,
-                'cowTypes' => $cowTypes,
+                'users' => $users
             ])
-
-            {{-- <form action="{{ route('assign-cow-to-staff.store') }}" method="POST" enctype="multipart/form-data">
-                {{ csrf_field() }}
-
-                <label class="block mt-4 text-sm">
-                    <span class="text-gray-700 dark:text-gray-400">
-                        Cow
-                    </span>
-                    <select name="cow_id"
-                        class="block w-full mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                        <option value="" disabled selected>Choose cow</option>
-                        @foreach ($cows as $cow)
-                            <option value="{{ $cow->id }}" {{ old('cow_id') ? 'selected' : '' }}>
-                                {{ $cow->name }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('cow_id')
-                        <span class="text-xs text-red-600 dark:text-red-400">
-                            {{ $message }}
-                        </span>
-                    @enderror
-                </label>
-            </form> --}}
 
         </div>
 

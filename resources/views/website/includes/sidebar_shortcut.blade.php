@@ -121,6 +121,17 @@
             </li>
             <li class="relative px-6 py-3">
                 @include('website.includes.active_sidebar', [
+                    'links' => ['feeditem', 'feeditem/create', 'feeditem/*/edit'],
+                ])
+                @include('website.includes.individual_sidebar', [
+                    'links' => ['feeditem', 'feeditem/create', 'feeditem/*/edit'],
+                    'name' => 'Feed Item',
+                    'route' => 'feeditem.index',
+                    'icon' => '<i class="fa-solid fa-wheat"></i>',
+                ])
+            </li>
+            <li class="relative px-6 py-3">
+                @include('website.includes.active_sidebar', [
                     'links' => ['assign-cow-to-staff', 'assign-cow-to-staff/create', 'assign-cow-to-staff/*/edit', 'assign-cow-to-staff/*'],
                 ])
                 @include('website.includes.individual_sidebar', [

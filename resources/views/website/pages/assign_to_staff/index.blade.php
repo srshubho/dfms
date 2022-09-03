@@ -1,6 +1,11 @@
 @extends('website.layouts.default')
 
 @push('css')
+    <style>
+        tr:hover .displayInline {
+            display: inline
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -88,11 +93,17 @@
                             @forelse ($assignCowToStaffs as $assignCowToStaff)
                                 <tr class="text-gray-700 dark:text-gray-400">
                                     <td class="px-4 py-3">{{ $loop->index + 1 }}</td>
-                                    <td class="px-4 py-3">{{ $assignCowToStaff->user->name }}</td>
+                                    <td class="px-4 py-3  w-1/2">
+                                        {{ $assignCowToStaff->user->name }}
+                                        <a href="{{ route('assign-cow-to-staff.show', $assignCowToStaff) }}"
+                                            class="displayInline p-2 focus:outline-none text-xs font-thin text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 rounded-lg hidden dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                            Assign Task
+                                        </a>
+                                    </td>
 
-                                    <td class="px-4 py-3">
+                                    <td class="px-4 py-3 w-full">
                                         <p class="text-base font-semibold text-gray-600 dark:text-gray-300">Cow</p>
-                                        @foreach ($assignCowToStaff->assignList as $list)
+                                        @foreach ($assignCowToStaff->assignLists as $list)
                                             @if ($list->type == 1)
                                                 <a href="{{ route('cow.show', $list->cow->id) }}" class="text-sm block select-none ml-4 hover:underline">
                                                     {{ $list->cow->name }}
@@ -100,7 +111,7 @@
                                             @endif
                                         @endforeach
                                         <p class="mt-4 text-base font-semibold text-gray-600 dark:text-gray-300">Bull</p>
-                                        @foreach ($assignCowToStaff->assignList as $list)
+                                        @foreach ($assignCowToStaff->assignLists as $list)
                                             @if ($list->type == 2)
                                                 <a href="{{ route('bull.show', $list->bull->id) }}"
                                                     class="text-sm block select-none ml-4 hover:underline">
@@ -109,7 +120,7 @@
                                             @endif
                                         @endforeach
                                         <p class="mt-4 text-base font-semibold text-gray-600 dark:text-gray-300">Calf</p>
-                                        @foreach ($assignCowToStaff->assignList as $list)
+                                        @foreach ($assignCowToStaff->assignLists as $list)
                                             @if ($list->type == 3)
                                                 <a href="{{ route('calf.show', $list->calf->id) }}"
                                                     class="text-sm block select-none ml-4 hover:underline">

@@ -47,6 +47,34 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                        Total Calves
+                    </p>
+                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                        {{ $calf }}
+                    </p>
+                </div>
+            </div>
+            <!-- Card -->
+            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
+                    <i class="fa-thin fa-cow text-xl w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                        Total Bull
+                    </p>
+                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                        {{ $bull }}
+                    </p>
+                </div>
+            </div>
+            <!-- Card -->
+            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
+                    <i class="fa-thin fa-cow text-xl w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                         Total Cow
                     </p>
                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">

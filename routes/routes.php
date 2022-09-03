@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BreedController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Website\InseminationController;
 use App\Http\Controllers\Admin\AssignCowToStaffController;
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
     Route::group(['middleware' => ['is_admin']], function () {
         Route::resource('user', UserController::class);
@@ -23,11 +25,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     // COMMON ROUTES
     Route::group(['middleware' => ['is_admin_or_manager']], function () {
-        Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
         Route::get('settings', [SettingsController::class, 'settings'])->name('settings');
         Route::post('change-password', [SettingsController::class, 'changePassword'])->name('change-password');
 
         Route::resource('breed', BreedController::class);
+        Route::resource('feeditem', ItemController::class);
         Route::resource('color', ColorController::class);
         Route::resource('cow-type', CowTypeCntroller::class);
         Route::resource('supplier', SupplierController::class);
@@ -37,6 +39,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('cow', CowController::class);
         Route::resource('insemination', InseminationController::class);
         Route::resource('assign-cow-to-staff', AssignCowToStaffController::class);
+        Route::post('assign-task/{assign_task}', [AssignCowToStaffController::class, 'assigntask'])->name('assigntask');
+        // Route::get('')
     });
 
     // Route::name('admin.')->group(function () {

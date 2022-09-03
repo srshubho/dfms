@@ -76,7 +76,6 @@ class Create extends Component
         }
 
         $assignedBulls = AssignCowToStaffList::whereDate('created_at', $date)->where('type', 2)->get();
-        // dd($assignedBulls);
         if (count($assignedBulls) != 0) {
             $bullIds = [];
             foreach ($assignedBulls as $key => $assignedBull) {

@@ -1,18 +1,23 @@
 @extends('website.layouts.default')
 
 @push('css')
+    <style>
+        input[type="time"]::-webkit-calendar-picker-indicator {
+            filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);
+        }
+    </style>
 @endpush
 
 @section('content')
     <div class="container grid px-6 mx-auto">
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Cows
+            Assign Cow To Staff
         </h2>
 
         <!-- With actions -->
         <div class="flex items-center justify-between ">
             <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-                Cow Details
+                Assign Cow To Staff Details
             </h4>
         </div>
 
@@ -20,209 +25,102 @@
             <div class="w-full overflow-x-auto">
                 <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                     <div class="flex justify-center my-4">
-                        <img src="{{ $cow->primary_image }}" alt="" class="w-52 justify-items-center">
+                        <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
+                            {{ $assignCowToStaff->user->name }}
+                        </h4>
                     </div>
 
-                    <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+                    <form action="{{ route('assigntask', $assignCowToStaff) }}" method="POST">
+                        {{ csrf_field() }}
+                        <p class="text-base font-semibold text-gray-600 dark:text-gray-300">Cow</p>
 
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-700">
-                            <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-                                <i class="fa-thin fa-cow"></i>
-                            </div>
-                            <div>
-                                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                    Purchased / In-house
-                                </p>
-                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    @if ($cow->is_purchased == 1)
-                                        In-House
-                                    @else
-                                        Purchased
-                                    @endif
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-700">
-                            <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-                                <i class="fa-thin fa-cow"></i>
-                            </div>
-                            <div>
-                                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                    Name
-                                </p>
-                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {{ $cow->name }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-700">
-                            <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-                                <i class="fa-thin fa-cow"></i>
-                            </div>
-                            <div>
-                                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                    Gender
-                                </p>
-                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    @if ($cow->gender == 1)
-                                        Male
-                                    @else
-                                        Female
-                                    @endif
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-700">
-                            <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-                                <i class="fa-thin fa-cow"></i>
-                            </div>
-                            <div>
-                                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                    Date Of Birth
-                                </p>
-                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {{ $cow->date_of_birth }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-700">
-                            <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-                                <i class="fa-thin fa-cow"></i>
-                            </div>
-                            <div>
-                                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                    Shade
-                                </p>
-                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {{ $cow->shade ? $cow->shade->shade_no : '' }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-700">
-                            <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-                                <i class="fa-thin fa-cow"></i>
-                            </div>
-                            <div>
-                                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                    Color
-                                </p>
-                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {{ $cow->color ? $cow->color->color_name : '' }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-700">
-                            <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-                                <i class="fa-thin fa-cow"></i>
-                            </div>
-                            <div>
-                                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                    Estimated Live Weight
-                                </p>
-                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {{ $cow->estimated_live_weight }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-700">
-                            <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-                                <i class="fa-thin fa-cow"></i>
-                            </div>
-                            <div>
-                                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                    Status
-                                </p>
-                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {{ $cow->status_type }}
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    @if ($cow->is_purchased == 2)
-                        <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Purchased Data</h4>
-
-                        <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-
-                            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-700">
-                                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-                                    <i class="fa-thin fa-cow"></i>
-                                </div>
-                                <div>
-                                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                        Purchased Price
+                        <div class="grid gap-6 mb-8 md:grid-cols-3 xl:grid-cols-3 border-2 border-gray-700 p-4 rounded-md ">
+                            @foreach ($assignCowToStaff->assignLists as $list)
+                                @if ($list->type == 1)
+                                    <p class="text-base font-semibold text-gray-600 dark:text-gray-300">
+                                        {{ $list->cow->name }}
                                     </p>
-                                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                        {{ $cow->purchased_price }}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-700">
-                                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-                                    <i class="fa-thin fa-cow"></i>
-                                </div>
-                                <div>
-                                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                        Labour cost
-                                    </p>
-                                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                        {{ $cow->labour_cost }} &#2547;
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-700">
-                                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-                                    <i class="fa-thin fa-cow"></i>
-                                </div>
-                                <div>
-                                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                        Transition
-                                    </p>
-                                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                        {{ $cow->transition_cost }} &#2547;
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-700">
-                                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-                                    <i class="fa-thin fa-cow"></i>
-                                </div>
-                                <div>
-                                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                        Supplier
-                                    </p>
-                                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                        {{ $cow->supplier ? $cow->supplier->supplier_name : '' }}
-                                    </p>
-                                </div>
-                            </div>
+                                    @include('website.pages.assign_to_staff.includes.time-input-field', [
+                                        'title' => 'Set feed time',
+                                        'name' => 'cow[feed' . $list->cow->id . ']',
+                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->cow->id, 'cow_id', 1)
+                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->cow->id, 'cow_id', 1)->feeding_time
+                                            : '',
+                                    ])
+                                    @include('website.pages.assign_to_staff.includes.time-input-field', [
+                                        'title' => 'Set bath time',
+                                        'name' => 'cow[bath' . $list->cow->id . ']',
+                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->cow->id, 'cow_id', 1)
+                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->cow->id, 'cow_id', 1)->bath_time
+                                            : '',
+                                    ])
+                                    <input type="hidden" name="cowids[{{ $list->cow->id }}]" value="{{ $list->cow->id }}">
+                                @endif
+                            @endforeach
                         </div>
-                    @endif
 
-                    <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Gallery</h4>
-                    <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
-                        @forelse ($cow->cowImages as $image)
-                            <!-- Card -->
-                            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-700">
-                                <img src="{{ $image->image }}" alt="">
-                            </div>
-                        @empty
-                            <p class="mb-4 text-center font-semibold text-gray-600 dark:text-gray-300">
-                                No Images Found
-                            </p>
-                        @endforelse
-                    </div>
+                        <p class="mt-4 text-base font-semibold text-gray-600 dark:text-gray-300">Bull</p>
+
+                        <div class="grid gap-6 mb-8 md:grid-cols-3 xl:grid-cols-3 border-2 border-gray-700 p-4 rounded-md ">
+                            @foreach ($assignCowToStaff->assignLists as $list)
+                                @if ($list->type == 2)
+                                    <p class="text-base font-semibold text-gray-600 dark:text-gray-300">
+                                        {{ $list->bull->name }}
+                                    </p>
+                                    @include('website.pages.assign_to_staff.includes.time-input-field', [
+                                        'title' => 'Set feed time',
+                                        'name' => 'bull[feed' . $list->bull->id . ']',
+                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->bull->id, 'bull_id', 2)
+                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->bull->id, 'bull_id', 2)->feeding_time
+                                            : '',
+                                    ])
+                                    @include('website.pages.assign_to_staff.includes.time-input-field', [
+                                        'title' => 'Set bath time',
+                                        'name' => 'bull[bath' . $list->bull->id . ']',
+                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->bull->id, 'bull_id', 2)
+                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->bull->id, 'bull_id', 2)->bath_time
+                                            : '',
+                                    ])
+                                    <input type="hidden" name="bullids[{{ $list->bull->id }}]" value="{{ $list->bull->id }}">
+                                @endif
+                            @endforeach
+                        </div>
+
+                        <p class="mt-4 text-base font-semibold text-gray-600 dark:text-gray-300">Calf</p>
+
+                        <div class="grid gap-6 mb-8 md:grid-cols-3 xl:grid-cols-3 border-2 border-gray-700 p-4 rounded-md ">
+                            @foreach ($assignCowToStaff->assignLists as $list)
+                                @if ($list->type == 3)
+                                    <p class="text-base font-semibold text-gray-600 dark:text-gray-300">
+                                        {{ $list->calf->name }}
+                                    </p>
+                                    @include('website.pages.assign_to_staff.includes.time-input-field', [
+                                        'title' => 'Set feed time',
+                                        'name' => 'calf[feed' . $list->calf->id . ']',
+                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->calf->id, 'calf_id', 3)
+                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->calf->id, 'calf_id', 3)->feeding_time
+                                            : '',
+                                    ])
+                                    @include('website.pages.assign_to_staff.includes.time-input-field', [
+                                        'title' => 'Set bath time',
+                                        'name' => 'calf[bath' . $list->calf->id . ']',
+                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->calf->id, 'calf_id', 3)
+                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->calf->id, 'calf_id', 3)->bath_time
+                                            : '',
+                                    ])
+                                    <input type="hidden" name="calfids[{{ $list->calf->id }}]" value="{{ $list->calf->id }}">
+                                @endif
+                            @endforeach
+                        </div>
+
+                        <div class="flex items-center justify-between ">
+                            <div></div>
+                            <button
+                                class="mt-6 flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                                Assign Task
+                            </button>
+                        </div>
+                    </form>
 
                 </div>
             </div>
