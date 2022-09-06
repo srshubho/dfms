@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\FeedData;
+
 
 function getRoute()
 {
@@ -29,4 +31,18 @@ function getMiddleware()
     }
 }
 
+function feed_done($assign_id, $column,  $cow_id, $table_type, $date)
+{
+    return FeedData::where([
+        [$column, $cow_id],
+        ['assign_id', $assign_id],
+        ['type', $table_type],
+        ['assign_id', $assign_id],
+        ['date', $date]
+    ])->first();
+}
 
+function bath_done()
+{
+    # code...
+}

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('assign_tasks', function (Blueprint $table) {
+        Schema::create('feed_data', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('assign_id')->nullable();
@@ -28,11 +28,14 @@ return new class extends Migration
             $table->unsignedBigInteger('calf_id')->nullable();
             $table->foreign('calf_id')->references('id')->on('calves')->onDelete('cascade');
 
+            $table->unsignedBigInteger('item_id');
+            $table->foreign('item_id')->references('id')->on('feed_items')->onDelete('cascade');
+
+            $table->unsignedBigInteger('feeded_by');
+            $table->foreign('feeded_by')->references('id')->on('users')->onDelete('cascade');
+
             $table->tinyInteger("type");
-            $table->string('note')->nullable();
-            $table->time('feeding_time')->nullable();
-            $table->time('bath_time')->nullable();
-            $table->boolean('bath_status')->nullable();
+            $table->string("quantity")->nullable();
             $table->date("date")->nullable();
             $table->timestamps();
         });
@@ -45,6 +48,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assign_tasks');
+        Schema::dropIfExists('feed_data');
     }
 };

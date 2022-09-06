@@ -43,15 +43,15 @@
                                     @include('website.pages.assign_to_staff.includes.time-input-field', [
                                         'title' => 'Set feed time',
                                         'name' => 'cow[feed' . $list->cow->id . ']',
-                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->cow->id, 'cow_id', 1)
-                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->cow->id, 'cow_id', 1)->feeding_time
+                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->cow->id, 'cow_id', 1, $date)
+                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->cow->id, 'cow_id', 1, $date)->feeding_time
                                             : '',
                                     ])
                                     @include('website.pages.assign_to_staff.includes.time-input-field', [
                                         'title' => 'Set bath time',
                                         'name' => 'cow[bath' . $list->cow->id . ']',
-                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->cow->id, 'cow_id', 1)
-                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->cow->id, 'cow_id', 1)->bath_time
+                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->cow->id, 'cow_id', 1, $date)
+                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->cow->id, 'cow_id', 1, $date)->bath_time
                                             : '',
                                     ])
                                     <input type="hidden" name="cowids[{{ $list->cow->id }}]" value="{{ $list->cow->id }}">
@@ -70,15 +70,15 @@
                                     @include('website.pages.assign_to_staff.includes.time-input-field', [
                                         'title' => 'Set feed time',
                                         'name' => 'bull[feed' . $list->bull->id . ']',
-                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->bull->id, 'bull_id', 2)
-                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->bull->id, 'bull_id', 2)->feeding_time
+                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->bull->id, 'bull_id', 2, $date)
+                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->bull->id, 'bull_id', 2, $date)->feeding_time
                                             : '',
                                     ])
                                     @include('website.pages.assign_to_staff.includes.time-input-field', [
                                         'title' => 'Set bath time',
                                         'name' => 'bull[bath' . $list->bull->id . ']',
-                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->bull->id, 'bull_id', 2)
-                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->bull->id, 'bull_id', 2)->bath_time
+                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->bull->id, 'bull_id', 2, $date)
+                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->bull->id, 'bull_id', 2, $date)->bath_time
                                             : '',
                                     ])
                                     <input type="hidden" name="bullids[{{ $list->bull->id }}]" value="{{ $list->bull->id }}">
@@ -97,15 +97,15 @@
                                     @include('website.pages.assign_to_staff.includes.time-input-field', [
                                         'title' => 'Set feed time',
                                         'name' => 'calf[feed' . $list->calf->id . ']',
-                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->calf->id, 'calf_id', 3)
-                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->calf->id, 'calf_id', 3)->feeding_time
+                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->calf->id, 'calf_id', 3, $date)
+                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->calf->id, 'calf_id', 3, $date)->feeding_time
                                             : '',
                                     ])
                                     @include('website.pages.assign_to_staff.includes.time-input-field', [
                                         'title' => 'Set bath time',
                                         'name' => 'calf[bath' . $list->calf->id . ']',
-                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->calf->id, 'calf_id', 3)
-                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->calf->id, 'calf_id', 3)->bath_time
+                                        'time' => $assignCowToStaff->getTime($assignCowToStaff->id, $list->calf->id, 'calf_id', 3, $date)
+                                            ? $assignCowToStaff->getTime($assignCowToStaff->id, $list->calf->id, 'calf_id', 3, $date)->bath_time
                                             : '',
                                     ])
                                     <input type="hidden" name="calfids[{{ $list->calf->id }}]" value="{{ $list->calf->id }}">

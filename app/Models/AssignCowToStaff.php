@@ -27,14 +27,15 @@ class AssignCowToStaff extends Model
         return $this->hasmany(AssignTask::class);
     }
 
-    public function getTime($assign_id, $cow_id, $column, $type)
+    public function getTime($assign_id, $cow_id, $column, $type, $date)
     {
-        $today_date = Carbon::now()->toDateString();
+        // dd("hey");
+        // $today_date = Carbon::now()->toDateString();
         return AssignTask::where([
             [$column, $cow_id],
             ['type', $type],
             ['assign_id', $assign_id],
-            ['date', $today_date]
+            ['date', $date]
         ])->first();
     }
 }

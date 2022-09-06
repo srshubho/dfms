@@ -82,7 +82,8 @@ class AssignCowToStaffController extends Controller
      */
     public function show(AssignCowToStaff $assignCowToStaff)
     {
-        return view('website.pages.assign_to_staff.show', compact('assignCowToStaff'));
+        $date = Carbon::today();
+        return view('website.pages.assign_to_staff.show', compact('assignCowToStaff', 'date'));
     }
 
     /**

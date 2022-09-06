@@ -107,18 +107,98 @@
                                     </td>
 
                                     <td class="px-4 py-3 w-full">
-                                        @include('website.pages.assign_to_staff.includes.shortcut', [
-                                            'name' => 'cow',
-                                            'table_type' => 1,
-                                        ])
-                                        @include('website.pages.assign_to_staff.includes.shortcut', [
-                                            'name' => 'bull',
-                                            'table_type' => 2,
-                                        ])
-                                        @include('website.pages.assign_to_staff.includes.shortcut', [
-                                            'name' => 'calf',
-                                            'table_type' => 3,
-                                        ])
+                                        <p class="text-base font-semibold text-gray-600 dark:text-gray-300">Cow</p>
+                                        @foreach ($assignCowToStaff->assignLists as $list)
+                                            @if ($list->type == 1)
+                                                <span class="block">
+                                                    <a href="{{ route('cow.show', $list->cow->id) }}" class="text-sm select-none ml-4 hover:underline">
+                                                        {{ $list->cow->name }}
+                                                    </a>
+                                                    (<span class="text-xs font-thin text-gray-600 dark:text-white"> Feed: </span><span
+                                                        class="displayInline p-0.5 focus:outline-none text-xs font-thin text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 rounded-lg dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                                        @include('website.pages.assign_to_staff.includes.time-show', [
+                                                            'staff_id' => $assignCowToStaff->id,
+                                                            'cow_id' => $list->cow->id,
+                                                            'column_name' => 'cow_id',
+                                                            'table_type' => 1,
+                                                            'data_type' => 'feeding_time',
+                                                        ])
+                                                    </span>,
+                                                    <span class="text-xs font-thin text-gray-600 dark:text-white"> Bath: </span> <span
+                                                        class="displayInline p-0.5 focus:outline-none text-xs font-thin text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 rounded-lg dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                                        @include('website.pages.assign_to_staff.includes.time-show', [
+                                                            'staff_id' => $assignCowToStaff->id,
+                                                            'cow_id' => $list->cow->id,
+                                                            'column_name' => 'cow_id',
+                                                            'table_type' => 1,
+                                                            'data_type' => 'bath_time',
+                                                        ])
+                                                    </span>)
+                                                </span>
+                                            @endif
+                                        @endforeach
+                                        <p class="mt-4 text-base font-semibold text-gray-600 dark:text-gray-300">Bull</p>
+                                        @foreach ($assignCowToStaff->assignLists as $list)
+                                            @if ($list->type == 2)
+                                                <span class="block">
+                                                    <a href="{{ route('bull.show', $list->bull->id) }}" class="text-sm select-none ml-4 hover:underline">
+                                                        {{ $list->bull->name }}
+                                                    </a>
+                                                    (<i class="fa-solid fa-circle-check text-green-600"></i>
+                                                    <span class="text-xs font-thin text-gray-600 dark:text-white"> Feed: </span><span
+                                                        class="displayInline p-0.5 focus:outline-none text-xs font-thin text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 rounded-lg dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                                        @include('website.pages.assign_to_staff.includes.time-show', [
+                                                            'staff_id' => $assignCowToStaff->id,
+                                                            'cow_id' => $list->bull->id,
+                                                            'column_name' => 'bull_id',
+                                                            'table_type' => 2,
+                                                            'data_type' => 'feeding_time',
+                                                        ])
+                                                    </span>,
+                                                    <i class="fa-sharp fa-solid fa-circle-xmark text-red-600"></i>
+                                                    <span class="text-xs font-thin text-gray-600 dark:text-white"> Bath: </span> <span
+                                                        class="displayInline p-0.5 focus:outline-none text-xs font-thin text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 rounded-lg dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                                        @include('website.pages.assign_to_staff.includes.time-show', [
+                                                            'staff_id' => $assignCowToStaff->id,
+                                                            'cow_id' => $list->bull->id,
+                                                            'column_name' => 'bull_id',
+                                                            'table_type' => 2,
+                                                            'data_type' => 'bath_time',
+                                                        ])
+                                                    </span>)
+                                                </span>
+                                            @endif
+                                        @endforeach
+                                        <p class="mt-4 text-base font-semibold text-gray-600 dark:text-gray-300">Calf</p>
+                                        @foreach ($assignCowToStaff->assignLists as $list)
+                                            @if ($list->type == 3)
+                                                <span class="block">
+                                                    <a href="{{ route('calf.show', $list->calf->id) }}" class="text-sm select-none ml-4 hover:underline">
+                                                        {{ $list->calf->name }}
+                                                    </a>
+                                                    (<span class="text-xs font-thin text-gray-600 dark:text-white"> Feed: </span><span
+                                                        class="displayInline p-0.5 focus:outline-none text-xs font-thin text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 rounded-lg dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                                        @include('website.pages.assign_to_staff.includes.time-show', [
+                                                            'staff_id' => $assignCowToStaff->id,
+                                                            'cow_id' => $list->calf->id,
+                                                            'column_name' => 'calf_id',
+                                                            'table_type' => 3,
+                                                            'data_type' => 'feeding_time',
+                                                        ])
+                                                    </span>,
+                                                    <span class="text-xs font-thin text-gray-600 dark:text-white"> Bath: </span> <span
+                                                        class="displayInline p-0.5 focus:outline-none text-xs font-thin text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 rounded-lg dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                                        @include('website.pages.assign_to_staff.includes.time-show', [
+                                                            'staff_id' => $assignCowToStaff->id,
+                                                            'cow_id' => $list->calf->id,
+                                                            'column_name' => 'calf_id',
+                                                            'table_type' => 3,
+                                                            'data_type' => 'bath_time',
+                                                        ])
+                                                    </span>)
+                                                </span>
+                                            @endif
+                                        @endforeach
                                     </td>
                                     <td class="px-4 py-3">
                                         <div class="flex items-center space-x-4 text-sm">

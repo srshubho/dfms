@@ -15,6 +15,7 @@ use App\Http\Controllers\Website\SettingsController;
 use App\Http\Controllers\Website\SupplierController;
 use App\Http\Controllers\Website\InseminationController;
 use App\Http\Controllers\Admin\AssignCowToStaffController;
+use App\Http\Controllers\Staff\FeedController;
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -45,4 +46,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Route::name('admin.')->group(function () {
     // });
+
+    Route::group(['middleware' => ['is_staff']], function () {
+        Route::get('feed', [FeedController::class, 'index'])->name("feed.index");
+        Route::get('feed-data/{assigned}/{type}/table/{table}/id/{cow_id}/{date}', [FeedController::class, 'feedData'])->name("feedData");
+        Route::post('feed-data/{assigned}/{type}/table/{table}/id/{cow_id}', [FeedController::class, 'saveFeedData'])->name("feedData.store");
+        Route::get('changeBathStatus', [FeedController::class, 'changeBathStatus']);
+    });
 });

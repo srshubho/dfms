@@ -142,6 +142,17 @@
                 ])
             </li>
         @endif
+        @if (auth()->user()->user_type == 3)
+            <li class="relative px-6 py-3">
+                @include('website.includes.active_sidebar', ['links' => ['feed', 'feed-data/*/cow_id/table/*/id/*']])
+                @include('website.includes.individual_sidebar', [
+                    'links' => ['feed', 'feed-data/*/cow_id/table/*/id/*'],
+                    'name' => 'Feeding and Bath',
+                    'route' => 'feed.index',
+                    'icon' => '<i class="fa-light fa-pan-food"></i>',
+                ])
+            </li>
+        @endif
     </ul>
     {{-- <div class="px-6 my-6">
         <button
