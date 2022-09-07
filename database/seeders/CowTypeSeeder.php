@@ -18,18 +18,12 @@ class CowTypeSeeder extends Seeder
         $types = [
             [
                 'type_name' => 'cow',
-
-
             ],
             [
                 'type_name' => 'bull',
-
-
             ],
             [
                 'type_name' => 'calf',
-
-
             ],
             
         ];

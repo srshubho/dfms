@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\CalfSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\ColorSeeder;
+use Database\Seeders\VaccineSeeder;
 use Database\Seeders\SupplierSeeder;
 
 
@@ -30,6 +31,7 @@ class DatabaseSeeder extends Seeder
             CowTypeSeeder::class,
             ShadeSeeder::class,
             BullSeeder::class,
+            VaccineSeeder::class
         ]);
     }
 }

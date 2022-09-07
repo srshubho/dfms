@@ -15,6 +15,7 @@ use App\Http\Controllers\Website\CowTypeCntroller;
 use App\Http\Controllers\Website\VaccineController;
 use App\Http\Controllers\Website\SettingsController;
 use App\Http\Controllers\Website\SupplierController;
+use App\Http\Controllers\Website\VaccinationController;
 use App\Http\Controllers\Website\InseminationController;
 use App\Http\Controllers\Admin\AssignCowToStaffController;
 
@@ -41,6 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('cow', CowController::class);
         Route::resource('insemination', InseminationController::class);
         Route::resource('vaccine', VaccineController::class);
+        Route::resource('vaccination', VaccinationController::class);
         Route::resource('assign-cow-to-staff', AssignCowToStaffController::class);
         Route::post('assign-task/{assign_task}', [AssignCowToStaffController::class, 'assigntask'])->name('assigntask');
     });

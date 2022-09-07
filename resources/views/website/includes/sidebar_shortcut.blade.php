@@ -152,6 +152,17 @@
                     'icon' => '<i class="fa-regular fa-shield-virus"></i>',
                 ])
             </li>
+            <li class="relative px-6 py-3">
+                @include('website.includes.active_sidebar', [
+                    'links' => ['vaccination', 'vaccination/create', 'vaccination/*/edit', 'vaccination/*'],
+                ])
+                @include('website.includes.individual_sidebar', [
+                    'links' => ['vaccination', 'vaccination/create', 'vaccination/*/edit', 'vaccination/*'],
+                    'name' => 'Vaccination',
+                    'route' => 'vaccination.index',
+                    'icon' => '<i class="fa-regular fa-shield-virus"></i>',
+                ])
+            </li>
         @endif
         @if (auth()->user()->user_type == 3)
             <li class="relative px-6 py-3">
