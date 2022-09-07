@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Staff\FeedController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BreedController;
 use App\Http\Controllers\Website\CowController;
@@ -11,11 +12,11 @@ use App\Http\Controllers\Website\CalfController;
 use App\Http\Controllers\Website\ColorController;
 use App\Http\Controllers\Website\ShadeController;
 use App\Http\Controllers\Website\CowTypeCntroller;
+use App\Http\Controllers\Website\VaccineController;
 use App\Http\Controllers\Website\SettingsController;
 use App\Http\Controllers\Website\SupplierController;
 use App\Http\Controllers\Website\InseminationController;
 use App\Http\Controllers\Admin\AssignCowToStaffController;
-use App\Http\Controllers\Staff\FeedController;
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -39,9 +40,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('calf', CalfController::class);
         Route::resource('cow', CowController::class);
         Route::resource('insemination', InseminationController::class);
+        Route::resource('vaccine', VaccineController::class);
         Route::resource('assign-cow-to-staff', AssignCowToStaffController::class);
         Route::post('assign-task/{assign_task}', [AssignCowToStaffController::class, 'assigntask'])->name('assigntask');
-        // Route::get('')
     });
 
     // Route::name('admin.')->group(function () {

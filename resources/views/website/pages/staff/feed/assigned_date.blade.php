@@ -31,7 +31,7 @@ $not_set = '<span class="p-2 focus:outline-none text-xs font-thin text-white bg-
                         @if ($assigned->getTime($assigned->id, $list->$name->id, $name . '_id', $table_type, $date)->feeding_time)
                             <span
                                 class="p-2 focus:outline-none text-xs font-thin text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 rounded-lg dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                                {{ Carbon\Carbon::parse($assigned->getTime($assigned->id, $list->$name->id, $name . '_id', $table_type, $date)->feeding_time)->format('h:m a') }}
+                                {{ Carbon\Carbon::parse($assigned->getTime($assigned->id, $list->$name->id, $name . '_id', $table_type, $date)->feeding_time)->format('h:i a') }}
                             </span>
                         @else
                             {!! $not_set !!}
@@ -71,7 +71,7 @@ $not_set = '<span class="p-2 focus:outline-none text-xs font-thin text-white bg-
                         @if ($assigned->getTime($assigned->id, $list->$name->id, $name . '_id', $table_type, $date)->bath_time)
                             <span
                                 class="p-2 focus:outline-none text-xs font-thin text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 rounded-lg dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                                {{ Carbon\Carbon::parse($assigned->getTime($assigned->id, $list->$name->id, $name . '_id', $table_type, $date)->feeding_time)->format('h:m a') }}
+                                {{ Carbon\Carbon::parse($assigned->getTime($assigned->id, $list->$name->id, $name . '_id', $table_type, $date)->bath_time)->format('h:i a') }}
                             </span>
                         @else
                             {!! $not_set !!}
@@ -82,7 +82,17 @@ $not_set = '<span class="p-2 focus:outline-none text-xs font-thin text-white bg-
                     <span>
                         @if ($assigned->getTime($assigned->id, $list->$name->id, $name . '_id', $table_type, $date))
                             @if ($assigned->getTime($assigned->id, $list->$name->id, $name . '_id', $table_type, $date)->bath_time)
-                                <input type="checkbox" {{ $list->bath_status ? 'checked' : '' }}
+                                @php
+                                    $bath_time = strtotime($assigned->getTime($assigned->id, $list->$name->id, $name . '_id', $table_type, $date)->bath_time);
+                                    $current_time = time();
+                                    $diff = $current_time - $bath_time;
+                                    if ($diff >= 0) {
+                                        $can_entry = true;
+                                    } else {
+                                        $can_entry = false;
+                                    }
+                                @endphp
+                                <input type="checkbox" {{ $list->bath_status ? 'checked' : '' }} {{ $can_entry ? '' : 'disabled' }}
                                     {{ $assigned->getTime($assigned->id, $list->$name->id, $name . '_id', $table_type, $date)->bath_status ? 'checked' : '' }}
                                     id="single-col-{{ $assigned->getTime($assigned->id, $list->$name->id, $name . '_id', $table_type, $date)->id }}"
                                     data-id="{{ $assigned->getTime($assigned->id, $list->$name->id, $name . '_id', $table_type, $date)->id }}"

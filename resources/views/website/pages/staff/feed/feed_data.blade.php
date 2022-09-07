@@ -58,8 +58,8 @@
 
                 <div class="flex items-center justify-between ">
                     <div></div>
-                    <button typ="submit"
-                        class="mt-6 flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                    <button typ="submit" {{ count($feed_items) > 0 ? '' : 'disabled' }}
+                        class="mt-6 flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple {{ count($feed_items) > 0 ? '' : 'disabled cursor-not-allowed' }}">
                         <span>Entry</span>
                     </button>
                 </div>

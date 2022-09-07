@@ -17,7 +17,7 @@ $notSet = '
         @if ($assignCowToStaff->getTime($assign_id, $cow_id, $column_name, $table_type, $date)->feeding_time)
             <span
                 class="bg-green-700 hover:bg-green-800 p-0.5 focus:outline-none text-xs font-thin text-white  focus:ring-4 focus:ring-green-300 rounded-lg dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                {{ Carbon\Carbon::parse($assignCowToStaff->getTime($assign_id, $cow_id, $column_name, $table_type, $date)->feeding_time)->format('h:m a') }}
+                {{ Carbon\Carbon::parse($assignCowToStaff->getTime($assign_id, $cow_id, $column_name, $table_type, $date)->feeding_time)->format('h:i a') }}
             </span>
         @else
             {!! $notSet !!}
@@ -30,7 +30,7 @@ $notSet = '
         @if ($assignCowToStaff->getTime($assign_id, $cow_id, $column_name, $table_type, $date)->bath_time)
             <span
                 class="bg-green-700 hover:bg-green-800 p-0.5 focus:outline-none text-xs font-thin text-white  focus:ring-4 focus:ring-green-300 rounded-lg dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                {{ Carbon\Carbon::parse($assignCowToStaff->getTime($assign_id, $cow_id, $column_name, $table_type, $date)->bath_time)->format('h:m a') }}
+                {{ Carbon\Carbon::parse($assignCowToStaff->getTime($assign_id, $cow_id, $column_name, $table_type, $date)->bath_time)->format('h:i a') }}
             </span>
         @else
             {!! $notSet !!}
