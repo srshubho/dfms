@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('bull', BullController::class);
         Route::resource('calf', CalfController::class);
         Route::resource('cow', CowController::class);
+        Route::delete('delete-image/{cowImage}', [CowController::class, 'deleteImage'])->name("deleteImage");;
         Route::resource('insemination', InseminationController::class);
         Route::resource('vaccine', VaccineController::class);
         Route::resource('vaccination', VaccinationController::class);

@@ -214,8 +214,14 @@
                     <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
                         @forelse ($cow->cowImages as $image)
                             <!-- Card -->
-                            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-700">
+                            <div class="flex flex-wrap justify-center items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-700">
                                 <img src="{{ $image->image }}" alt="">
+                                <button
+                                    class="focus:outline-none text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 my-2 dark:bg-red-500 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                                    aria-label="Delete" id="deleteButton{{ $image->id }}" data-id="{{ $image->id }}"
+                                    onclick="dataDelete({{ $image->id }})" @click="openModal">
+                                    Delete
+                                </button>
                             </div>
                         @empty
                             <p class="mb-4 text-center font-semibold text-gray-600 dark:text-gray-300">
@@ -224,6 +230,11 @@
                         @endforelse
                     </div>
 
+
+                    <!-- Modal backdrop. This what you want to place close to the closing body tag -->
+                    @include('website.includes.delete_modal')
+                    <!-- End of modal backdrop -->
+
                 </div>
             </div>
         </div>
@@ -231,4 +242,13 @@
 @endsection
 
 @push('scripts')
+    <script>
+        function dataDelete(id) {
+            var data_id = $("#deleteButton" + id).data('value');
+            let route = "{{ route('deleteImage', ['cowImage' => ':id']) }}";
+            route = route.replace(":id", id);
+
+            $("#route").attr("action", route)
+        }
+    </script>
 @endpush

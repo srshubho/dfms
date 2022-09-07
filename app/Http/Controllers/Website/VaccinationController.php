@@ -7,6 +7,7 @@ use App\Models\Vaccine;
 use App\Models\Vaccination;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class VaccinationController extends Controller
 {
@@ -45,6 +46,7 @@ class VaccinationController extends Controller
         $dataValidate = $request->validate([
             'calf_id' => 'required|integer',
             'vaccine_id' => 'required|integer',
+            'date' => 'before:tomorrow'
         ]);
 
         $vaccination = new Vaccination();
@@ -89,6 +91,7 @@ class VaccinationController extends Controller
         $dataValidate = $request->validate([
             'calf_id' => 'required|integer',
             'vaccine_id' => 'required|integer',
+            'date' => 'before:tomorrow'
         ]);
 
         $this->dataStore($request, $vaccination);
@@ -112,6 +115,11 @@ class VaccinationController extends Controller
     {
         $vaccination->calf_id = $request->calf_id;
         $vaccination->vaccine_id = $request->vaccine_id;
+        if ($request->date) {
+            $vaccination->date = $request->date;
+        } else {
+            $vaccination->date = Carbon::today();
+        }
 
         $vaccination->save();
     }

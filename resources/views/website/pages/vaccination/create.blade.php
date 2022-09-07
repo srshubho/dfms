@@ -17,7 +17,6 @@
 
                 <div class="grid gap-6 my-4 md:grid-cols-2 xl:grid-cols-2">
 
-
                     <label class="block mt-4 text-sm">
                         <span class="text-gray-700 dark:text-gray-400">
                             Calf
@@ -59,6 +58,21 @@
                             </span>
                         @enderror
                     </label>
+
+                    <label class="block mt-4 text-sm">
+                        <span class="text-gray-700 dark:text-gray-400">Date Of Production</span>
+                        <input type="date" name="date" id="date" value="{{ old('date') ? old('date') : '' }}"
+                            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                        @error('date')
+                            <span class="text-xs text-red-600 dark:text-red-400">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                        <p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                            You can keep this field empty. If empty today's date will be stored.
+                        </p>
+                    </label>
+
                 </div>
 
                 <div class="flex items-center justify-between ">

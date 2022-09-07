@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('vaccine_id')->nullable();
             $table->foreign('vaccine_id')->references('id')->on('vaccines')->onDelete('cascade');
 
+            $table->date("date")->nullable();
             $table->timestamps();
         });
     }

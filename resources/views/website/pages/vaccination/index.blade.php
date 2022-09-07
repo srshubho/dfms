@@ -31,6 +31,7 @@
                                 <th class="px-4 py-3">#</th>
                                 <th class="px-4 py-3">Calf</th>
                                 <th class="px-4 py-3">Vaccine</th>
+                                <th class="px-4 py-3">Date</th>
                                 <th class="px-4 py-3">Action</th>
                             </tr>
                         </thead>
@@ -40,6 +41,10 @@
                                     <td class="px-4 py-3">{{ $loop->index + 1 }}</td>
                                     <td class="px-4 py-3">{{ $vaccination->calf->name }}</td>
                                     <td class="px-4 py-3">{{ $vaccination->vaccine->vaccine_name }}</td>
+                                    <td class="px-4 py-3">
+                                        {{ Carbon\Carbon::parse($vaccination->date)->format('d M Y') }}
+                                        {{-- {{ $vaccination->date->format('D M Y') }} --}}
+                                    </td>
                                     <td class="px-4 py-3">
                                         <div class="flex items-center space-x-4 text-sm">
                                             <a href="{{ route('vaccination.edit', $vaccination->id) }}">

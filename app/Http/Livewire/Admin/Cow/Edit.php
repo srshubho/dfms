@@ -58,7 +58,7 @@ class Edit extends Component
         'supplier_id' => 'nullable|numeric',
         'type_id' => 'nullable|numeric',
         'shade_id' => 'nullable|numeric',
-        'is_purchased' => 'required|string',
+        'is_purchased' => 'required|numeric',
     ];
 
     public function saveData()

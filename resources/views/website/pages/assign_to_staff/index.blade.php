@@ -122,14 +122,14 @@
                                     </td>
                                     <td class="px-4 py-3">
                                         <div class="flex items-center space-x-4 text-sm">
-                                            <a href="{{ route('assign-cow-to-staff.edit', $assignCowToStaff->id) }}">
+                                            {{-- <a href="{{ route('assign-cow-to-staff.edit', $assignCowToStaff->id) }}">
                                                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                                     style="color: rgb(95, 69, 224)">
                                                     <path
                                                         d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
                                                     </path>
                                                 </svg>
-                                            </a>
+                                            </a> --}}
                                             {{-- <a href="{{ route('assign-cow-to-staff.show', $assignCowToStaff->id) }}">
                                                 <i class="fa-solid fa-eye" style="color: rgb(78, 180, 221)"></i>
                                             </a> --}}

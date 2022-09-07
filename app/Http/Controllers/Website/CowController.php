@@ -152,4 +152,10 @@ class CowController extends Controller
             }
         }
     }
+
+    public function deleteImage(CowImage $cowImage)
+    {
+        $cowImage->delete();
+        return redirect()->back()->with(['message' => 'Image deleted successfully!', 'alert-type' => 'success']);
+    }
 }
