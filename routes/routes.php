@@ -44,6 +44,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('insemination', InseminationController::class);
         Route::resource('vaccine', VaccineController::class);
         Route::resource('vaccination', VaccinationController::class);
+        Route::get('next-vaccination', [VaccinationController::class, 'nextVaccination'])->name("nextVaccination");
         Route::resource('assign-cow-to-staff', AssignCowToStaffController::class);
         Route::post('assign-task/{assign_task}', [AssignCowToStaffController::class, 'assigntask'])->name('assigntask');
     });

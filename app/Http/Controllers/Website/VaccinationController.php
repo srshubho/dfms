@@ -121,6 +121,29 @@ class VaccinationController extends Controller
             $vaccination->date = Carbon::today();
         }
 
+        $vaccine = Vaccine::find($request->vaccine_id);
+        if ($vaccine) {
+            if ($vaccine->subsequent_dose) {
+                $vaccine_date = Carbon::createFromFormat('Y-m-d', $request->date);
+                $vaccination->next_date = $vaccine_date->addMonth($vaccine->subsequent_dose);
+            }
+        }
+
+        $count = Vaccination::where([
+            ['calf_id', $request->calf_id],
+            ['vaccine_id', $request->vaccine_id]
+        ])->count();
+
+        $vaccination->vaccine_count = $count + 1;
+
         $vaccination->save();
+    }
+
+    public function nextVaccination()
+    {
+        $calves = calf::select("id", "name", "date_of_birth")->get();
+        $vaccines = Vaccine::all();
+        $today = Carbon::today();
+        return view('website.pages.vaccination.next-vaccination', compact('calves', 'vaccines', 'today'));
     }
 }

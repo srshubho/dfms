@@ -15,10 +15,17 @@
                 Vaccines List
             </h4>
 
-            <a class="p-2 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-                href="{{ route('vaccine.create') }}">
-                <span>Create &RightArrow;</span>
-            </a>
+            <div>
+                <a class="mx-2 p-2 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+                    href="{{ route('nextVaccination') }}">
+                    <span>Next Vaccination</span>
+                </a>
+                <a class="p-2 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+                    href="{{ route('vaccine.create') }}">
+                    <span>Create &RightArrow;</span>
+                </a>
+            </div>
+
         </div>
 
         <div class="w-full overflow-hidden rounded-lg shadow-xs">

@@ -117,7 +117,11 @@ class VaccineController extends Controller
         $vaccine->age_of_first_dose = $request->age_of_first_dose;
         $vaccine->subsequent_dose = $request->subsequent_dose;
         $vaccine->booster = $request->booster;
-        $vaccine->repeat = $request->repeat;
+        if ($request->subsequent_dose) {
+            $vaccine->repeat = 1;
+        } else {
+            $vaccine->repeat = 0;
+        }
         $vaccine->remarks = $request->remarks;
 
         $vaccine->save();

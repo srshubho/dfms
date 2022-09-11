@@ -23,6 +23,8 @@ return new class extends Migration
             $table->foreign('vaccine_id')->references('id')->on('vaccines')->onDelete('cascade');
 
             $table->date("date")->nullable();
+            $table->integer("vaccine_count")->nullable();
+            $table->date("next_date")->nullable();
             $table->timestamps();
         });
     }

@@ -6,6 +6,7 @@ use App\Models\Cow;
 use App\Models\calf;
 use App\Models\Color;
 use App\Models\Shade;
+use App\Models\Vaccine;
 use App\Models\Insemination;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -61,7 +62,8 @@ Controller
      */
     public function show(calf $calf)
     {
-        return view('website.pages.calf.show', compact('calf'));
+        $vaccines = Vaccine::all();
+        return view('website.pages.calf.show', compact('calf', 'vaccines'));
     }
 
     /**

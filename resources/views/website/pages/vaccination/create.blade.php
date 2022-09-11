@@ -26,7 +26,7 @@
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                             <option value="" selected>Choose Calf</option>
                             @foreach ($calves as $calf)
-                                <option value="{{ $calf->id }}" {{ old('calf_id') ? 'selected' : '' }}>
+                                <option value="{{ $calf->id }}" {{ old('calf_id') == $calf->id ? 'selected' : '' }}>
                                     {{ $calf->name }}
                                 </option>
                             @endforeach
@@ -47,7 +47,7 @@
                             class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                             <option value="" selected>Choose Vaccine</option>
                             @foreach ($vaccines as $vaccine)
-                                <option value="{{ $vaccine->id }}" {{ old('vaccine_id') ? 'selected' : '' }}>
+                                <option value="{{ $vaccine->id }}" {{ old('vaccine_id') == $vaccine->id ? 'selected' : '' }}>
                                     {{ $vaccine->vaccine_name }}
                                 </option>
                             @endforeach

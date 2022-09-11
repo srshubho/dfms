@@ -45,9 +45,9 @@
                         </p>
                     </label>
 
-                    <label class="block text-sm">
+                    {{-- <label class="block text-sm">
                         <span class="text-gray-700 dark:text-gray-400">Booster Dose</span>
-                        <input type="text" name="booster" id="booster" value="{{ old('booster') ? old('booster') : '' }}"
+                        <input type="number" name="booster" id="booster" value="{{ old('booster') ? old('booster') : '' }}"
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                             placeholder="Enter booster" />
                         @error('booster')
@@ -55,19 +55,14 @@
                                 {{ $message }}
                             </span>
                         @enderror
-                    </label>
-
-                    {{-- <div class="flex items-center mt-6">
-                        <input id="checkbox-1" type="checkbox" value=""
-                            class="w-8 h-8 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                            Booster Dose
-                        </label>
-                    </div> --}}
+                        <p id="helper-text-explanation" class="text-xs text-gray-500 dark:text-gray-400">
+                            Enter minimum age in month. Ex: 1 year=12
+                        </p>
+                    </label> --}}
 
                     <label class="block text-sm">
                         <span class="text-gray-700 dark:text-gray-400">Subsequent Dose</span>
-                        <input type="text" name="subsequent_dose" id="subsequent_dose"
+                        <input type="number" name="subsequent_dose" id="subsequent_dose"
                             value="{{ old('subsequent_dose') ? old('subsequent_dose') : '' }}"
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                             placeholder="Enter subsequent dose" />
@@ -76,9 +71,12 @@
                                 {{ $message }}
                             </span>
                         @enderror
+                        <p id="helper-text-explanation" class="text-xs text-gray-500 dark:text-gray-400">
+                            Enter minimum age in month. Ex: 1 year=12
+                        </p>
                     </label>
 
-                    <div class="flex items-center mt-6">
+                    {{-- <div class="flex items-center mt-6">
                         <input id="checkbox-1" type="checkbox" value="1" name="repeat"
                             class="w-8 h-8 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="checkbox-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -89,7 +87,7 @@
                                 {{ $message }}
                             </span>
                         @enderror
-                    </div>
+                    </div> --}}
                 </div>
                 <div>
                     <label for="notes" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Remarks</label>

@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string("vaccine_name");
             $table->integer("age_of_first_dose")->nullable();
-            $table->string("subsequent_dose")->nullable();
-            $table->string("booster")->nullable();
+            $table->integer("subsequent_dose")->nullable();
             $table->boolean("repeat")->default("0")->nullable();
+            $table->integer("booster")->nullable();
             $table->string("remarks")->nullable();
             $table->timestamps();
         });
