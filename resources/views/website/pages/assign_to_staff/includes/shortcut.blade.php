@@ -5,7 +5,9 @@
             <a href="{{ route($name . '.show', $list->$name->id) }}" class="text-sm select-none ml-4 hover:underline">
                 {{ $list->$name->name }}
             </a>
-            (@if (feed_done($assignCowToStaff->id, $name . '_id', $list->$name->id, $table_type, $date))
+            (@if ($assignCowToStaff->getTime($assignCowToStaff->id, $list->$name->id, $name . '_id', $table_type, $date)->feeding_status == 1
+                ? 'checked'
+                : '')
                 <i class="fa-solid fa-circle-check text-green-600"></i>
             @else
                 <i class="fa-sharp fa-solid fa-circle-xmark text-red-600"></i>
