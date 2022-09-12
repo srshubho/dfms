@@ -45,8 +45,9 @@ class FeedController extends Controller
         // dd($cow_data);
 
         $feed_items = FeedItem::all();
+        $assigned = AssignCowToStaff::whereDate('created_at', $date)->where('staff_id', auth()->user()->id)->first();
 
-        return view("website.pages.staff.feed.feed_data", compact('cow_data', 'feed_items', 'column', 'assign_id', 'cow_id', 'table_type', 'date'));
+        return view("website.pages.staff.feed.feed_data", compact('assigned', 'cow_data', 'feed_items', 'column', 'assign_id', 'cow_id', 'table_type', 'date'));
     }
 
     public function saveFeedData(Request $request)
@@ -64,6 +65,15 @@ class FeedController extends Controller
         }
 
         return redirect()->route("feed.index")->with(['message' => 'Feed data inserted successfully!', 'alert-type' => 'success']);
+    }
+
+    public function changeFeedStatus(Request $request)
+    {
+        $obj = AssignTask::find($request->id);
+        $obj->feeding_status = $request->status;
+        $obj->save();
+
+        return response()->json(['success' => 'Status change successfully.']);
     }
 
     public function changeBathStatus(Request $request)

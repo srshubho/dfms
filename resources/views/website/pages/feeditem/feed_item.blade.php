@@ -43,7 +43,7 @@
                                 <label class="block text-sm">
                                     <span class="text-gray-700 dark:text-gray-400">{{ $cow->name }}</span>
                                     <input type="text" name="item_unit_cow[{{ $cow->id }}]" id="item_name"
-                                        value="{{ getItemUnitValue($feeditem->id, $cow->id, 'cow')->unit }}"
+                                        value="{{ getItemUnitValue($feeditem->id, $cow->id, 'cow') ? getItemUnitValue($feeditem->id, $cow->id, 'cow')->unit : '' }}"
                                         class="common_value block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                         placeholder="Enter value with unit" />
                                 </label>
@@ -60,7 +60,7 @@
                                 <label class="block text-sm">
                                     <span class="text-gray-700 dark:text-gray-400">{{ $bull->name }}</span>
                                     <input type="text" name="item_unit_bull[{{ $bull->id }}]" id="item_name"
-                                        value="{{ getItemUnitValue($feeditem->id, $bull->id, 'bull')->unit }}"
+                                        value="{{ getItemUnitValue($feeditem->id, $bull->id, 'bull') ? getItemUnitValue($feeditem->id, $bull->id, 'bull')->unit : '' }}"
                                         class="common_value block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                         placeholder="Enter value with unit" />
                                 </label>
@@ -77,7 +77,7 @@
                                 <label class="block text-sm">
                                     <span class="text-gray-700 dark:text-gray-400">{{ $calf->name }}</span>
                                     <input type="text" name="item_unit_calf[{{ $calf->id }}]" id="item_name"
-                                        value="{{ getItemUnitValue($feeditem->id, $calf->id, 'calf')->unit }}"
+                                        value="{{ getItemUnitValue($feeditem->id, $calf->id, 'calf') ? getItemUnitValue($feeditem->id, $calf->id, 'calf')->unit : '' }}"
                                         class="common_value block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                         placeholder="Enter value with unit" />
                                 </label>

@@ -42,7 +42,7 @@ $not_set = '<span class="p-2 focus:outline-none text-xs font-thin text-white bg-
                     <span>
                         @if ($assigned->getTime($assigned->id, $list->$name->id, $name . '_id', $table_type, $date))
                             @if ($assigned->getTime($assigned->id, $list->$name->id, $name . '_id', $table_type, $date)->feeding_time)
-                                @if (feed_done($assigned->id, $name . '_id', $list->$name->id, $table_type, $date))
+                                @if ($assigned->getTime($assigned->id, $list->$name->id, $name . '_id', $table_type, $date)->feeding_status == 1)
                                     <i class="fa-solid fa-circle-check text-green-600 ml-2"></i>
                                 @else
                                     <i class="fa-sharp fa-solid fa-circle-xmark text-red-600 ml-2"></i>

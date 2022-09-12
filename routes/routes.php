@@ -57,6 +57,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('feed', [FeedController::class, 'index'])->name("feed.index");
         Route::get('feed-data/{assigned}/{type}/table/{table}/id/{cow_id}/{date}', [FeedController::class, 'feedData'])->name("feedData");
         Route::post('feed-data/{assigned}/{type}/table/{table}/id/{cow_id}', [FeedController::class, 'saveFeedData'])->name("feedData.store");
+        Route::get('changeFeedStatus', [FeedController::class, 'changeFeedStatus']);
         Route::get('changeBathStatus', [FeedController::class, 'changeBathStatus']);
     });
 });

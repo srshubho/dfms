@@ -29,14 +29,22 @@ class AssignCowToStaffList extends Model
         return $this->belongsTo(calf::class, 'calf_id');
     }
 
-    public function feedData($assign_id, $column, $cow_id, $table_type, $item_id, $date)
+    // public function feedData($assign_id, $column, $cow_id, $table_type, $item_id, $date)
+    // {
+    //     $feedData = FeedData::where([
+    //         [$column, $cow_id],
+    //         ['assign_id', $assign_id],
+    //         ['type', $table_type],
+    //         ['item_id', $item_id],
+    //     ])->whereDate('date', $date)->first();
+    //     return  $feedData;
+    // }
+
+    public function feedData($item_id, $cow_id, $type)
     {
-        $feedData = FeedData::where([
-            [$column, $cow_id],
-            ['assign_id', $assign_id],
-            ['type', $table_type],
-            ['item_id', $item_id],
-        ])->whereDate('date', $date)->first();
-        return  $feedData;
+        return CowFeedItemAndUnit::where([
+            ["feed_item_id", $item_id],
+            [$type, $cow_id]
+        ])->first();
     }
 }

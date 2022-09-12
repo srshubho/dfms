@@ -31,6 +31,7 @@ return new class extends Migration
             $table->tinyInteger("type");
             $table->string('note')->nullable();
             $table->time('feeding_time')->nullable();
+            $table->boolean('feeding_status')->nullable();
             $table->time('bath_time')->nullable();
             $table->boolean('bath_status')->nullable();
             $table->date("date")->nullable();
