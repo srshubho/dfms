@@ -121,10 +121,10 @@
             </li>
             <li class="relative px-6 py-3">
                 @include('website.includes.active_sidebar', [
-                    'links' => ['feeditem', 'feeditem/create', 'feeditem/*/edit'],
+                    'links' => ['feeditem', 'feeditem/create', 'feeditem/*/edit','feeditem/*'],
                 ])
                 @include('website.includes.individual_sidebar', [
-                    'links' => ['feeditem', 'feeditem/create', 'feeditem/*/edit'],
+                    'links' => ['feeditem', 'feeditem/create', 'feeditem/*/edit','feeditem/*'],
                     'name' => 'Feed Item',
                     'route' => 'feeditem.index',
                     'icon' => '<i class="fa-solid fa-wheat"></i>',

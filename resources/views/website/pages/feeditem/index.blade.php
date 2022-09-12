@@ -6,13 +6,13 @@
 @section('content')
     <div class="container grid px-6 mx-auto">
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Breeds
+            Feed Item
         </h2>
 
         <!-- With actions -->
         <div class="flex items-center justify-between ">
             <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-                Breed List
+                Feed Item List
             </h4>
 
             <a class="p-2 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
@@ -47,6 +47,9 @@
                                                         d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
                                                     </path>
                                                 </svg>
+                                            </a>
+                                            <a href="{{ route('feeditem.show', $item->id) }}">
+                                                <i class="fa-solid fa-eye" style="color: rgb(78, 180, 221)"></i>
                                             </a>
                                             <button
                                                 class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray deleteButton"

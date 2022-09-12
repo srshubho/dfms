@@ -55,7 +55,7 @@
                                             @endif
                                         @else
                                             {{-- FIRST DOSE HERE --}}
-                                            @if ($calf_age_in_month <= $vaccine->age_of_first_dose)
+                                            @if ($calf_age_in_month >= $vaccine->age_of_first_dose)
                                                 <td class="px-4 py-3">{{ $calf->name }} {{ $calf->id }}</td>
                                                 <td class="px-4 py-3">{{ $calf_age_in_month }}</td>
                                                 <td class="px-4 py-3">{{ $vaccine->vaccine_name }}</td>

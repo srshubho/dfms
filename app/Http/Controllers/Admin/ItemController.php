@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Cow;
+use App\Models\Bull;
+use App\Models\calf;
 use App\Models\FeedItem;
 use Illuminate\Http\Request;
+use App\Models\CowFeedItemAndUnit;
 use App\Http\Controllers\Controller;
 
 class ItemController extends Controller
@@ -49,9 +53,13 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(FeedItem $feeditem)
     {
-        //
+        $cows = Cow::all();
+        $calves = calf::all();
+        $bulls = Bull::all();
+        // dd($cows, $calves, $bulls);
+        return view('website.pages.feeditem.feed_item', compact('feeditem', 'cows', 'calves', 'bulls'));
     }
 
     /**
@@ -100,5 +108,35 @@ class ItemController extends Controller
         $feeditem->item_name = $request->item_name;
 
         $feeditem->save();
+    }
+
+    public function feedunit(Request $request)
+    {
+        $this->commonFeedUnitFunction($request->item_unit_cow, $request->feed_item_id, "cow");
+        $this->commonFeedUnitFunction($request->item_unit_bull, $request->feed_item_id, "bull");
+        $this->commonFeedUnitFunction($request->item_unit_calf, $request->feed_item_id, "calf");
+        return redirect()->back()->with(['message' => 'FeedItem with unit inserted successfully!', 'alert-type' => 'success']);
+    }
+
+    public function commonFeedUnitFunction($item_unit, $feed_item_id, $name)
+    {
+        foreach ($item_unit as $key => $item_unit_cow) {
+            if ($name == "cow") {
+                CowFeedItemAndUnit::updateOrInsert(
+                    ["feed_item_id" => $feed_item_id, "cow_id" => $key],
+                    ["unit" => $item_unit_cow]
+                );
+            } elseif ($name == "bull") {
+                CowFeedItemAndUnit::updateOrInsert(
+                    ["feed_item_id" => $feed_item_id, "bull_id" => $key],
+                    ["unit" => $item_unit_cow]
+                );
+            } elseif ($name == "calf") {
+                CowFeedItemAndUnit::updateOrInsert(
+                    ["feed_item_id" => $feed_item_id, "calf_id" => $key],
+                    ["unit" => $item_unit_cow]
+                );
+            }
+        }
     }
 }

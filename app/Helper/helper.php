@@ -4,6 +4,7 @@ use Carbon\Carbon;
 use App\Models\Vaccine;
 use App\Models\FeedData;
 use App\Models\Vaccination;
+use App\Models\CowFeedItemAndUnit;
 
 if (!function_exists('str_ordinal')) {
     /**
@@ -90,4 +91,12 @@ function getNextDose($calf_id, $vaccine_id)
     ])->whereBetween('next_date', [$today, $nextSevenDayDate])->orderBy("created_at", "desc")->first();
 
     return $getNextDose;
+}
+
+function getItemUnitValue($item_id, $cow_id, $type)
+{
+    return CowFeedItemAndUnit::where([
+        ["feed_item_id", $item_id],
+        [$type . "_id", $cow_id]
+    ])->first();
 }

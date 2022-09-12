@@ -25,13 +25,13 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ColorSeeder::class,
             SupplierSeeder::class,
-            CowSeeder::class,
-            CalfSeeder::class,
+            // CowSeeder::class,
+            // CalfSeeder::class,
             BreedSeeder::class,
             CowTypeSeeder::class,
             ShadeSeeder::class,
-            BullSeeder::class,
-            VaccineSeeder::class
+            // BullSeeder::class,
+            // VaccineSeeder::class
         ]);
     }
 }

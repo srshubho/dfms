@@ -16,7 +16,7 @@
             </h4>
 
             <div>
-                <a class="mx-2 p-2 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+                <a class="mx-2 p-2 mb-8 text-sm font-semibold text-white bg-green-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
                     href="{{ route('nextVaccination') }}">
                     <span>Next Vaccination</span>
                 </a>
@@ -38,7 +38,7 @@
                                 <th class="px-4 py-3">#</th>
                                 <th class="px-4 py-3">Vaccines Name</th>
                                 <th class="px-4 py-3">Age at first dose</th>
-                                <th class="px-4 py-3">Booster Dose</th>
+                                {{-- <th class="px-4 py-3">Booster Dose</th> --}}
                                 <th class="px-4 py-3">Subsequent Dose</th>
                                 <th class="px-4 py-3">Repeat</th>
                                 <th class="px-4 py-3">Remarks</th>
@@ -52,7 +52,7 @@
                                     <td class="px-4 py-3">{{ $vaccine->vaccine_name }}</td>
                                     <td class="px-4 py-3">{{ $vaccine->age_of_first_dose }}</td>
                                     <td class="px-4 py-3">{{ $vaccine->subsequent_dose }}</td>
-                                    <td class="px-4 py-3">{{ $vaccine->booster }}</td>
+                                    {{-- <td class="px-4 py-3">{{ $vaccine->booster }}</td> --}}
                                     <td class="px-4 py-3">
                                         @if ($vaccine->repeat)
                                             Yes

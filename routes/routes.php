@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::resource('breed', BreedController::class);
         Route::resource('feeditem', ItemController::class);
+        Route::post('feedunit', [ItemController::class, 'feedunit'])->name("feedunit");
         Route::resource('color', ColorController::class);
         Route::resource('cow-type', CowTypeCntroller::class);
         Route::resource('supplier', SupplierController::class);
